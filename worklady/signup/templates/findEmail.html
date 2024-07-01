@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Email 검색</title>
+</head>
+<body>
+    <h1>Email 검색 페이지</h1>
+    <form method="POST" action="{% url 'findemail' %}">
+        {% csrf_token %}
+        <label for="id">이메일:</label>
+        <input type="email" id="id" name="id" required>
+        <button type="submit">검색</button>
+    </form>
+    <div id="result">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

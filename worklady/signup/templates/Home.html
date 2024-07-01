@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <a href="{% url 'main' %}"><button type="logout">logout</button></a>
+    <p><strong>user name:</strong> {{ user.name }}</p>
+    <p><strong>email:</strong> {{ user.id }}</p>
+    <p><strong>birthDay:</strong> {{ user.birthday }}</p>
+    <p><strong>phoneNum:</strong>{{user.phone_number}}</p>
+</body>
+</html>
