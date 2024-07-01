@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form id="signup-form" method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="email" id="emailField" name="email" placeholder="이메일 입력" required>
+        <button type="button" id="send-verification">본인인증 요청</button>
+        <input type="text" name="verification_code" id="verification_code" placeholder="인증 번호 입력" required>
+        <button type="button" id="verify-code">인증번호 확인</button>
+        <br>
+        <input type="checkbox" id="check-all" onclick="checkAll()">
+        <label for="check-all">전체 약관 동의</label>
+        <br>
+        <input type="checkbox" id="clause1" name="clause1">
+        <label for="clause1">약관 1 동의</label><br>
+        
+        <input type="checkbox" id="workladyClause" name="workladyClause">
+        <label for="workladyClause"><a href="{% url 'workladyClause' %}">이용약관</a> 동의</label><br>
+        
+        <input type="checkbox" id="privacyClause" name="privacyClause">
+        <label for="privacyClause"><a href="{% url 'privacyClause' %}">개인정보 동의</a></label><br>
+        
+        <input type="checkbox" id="clause4" name="clause4">
+        <label for="clause4">약관 4 동의</label><br>
+        
+        <input type="checkbox" id="clause5" name="clause5">
+        <label for="clause5">약관 5 동의</label><br>
+        
+        <input type="submit" value="Register" id="submit-btn" disabled>
+    </form>
+
+    <script>
+        function checkAll() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkAllCheckbox = document.getElementById('check-all');
+            
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = checkAllCheckbox.checked;
+            });
+            
+            document.getElementById('submit-btn').disabled = !checkAllCheckbox.checked;
+        }
+        
+        document.getElementById('send-verification').addEventListener('click', function() {
+            const email = document.getElementById('emailField').value;
+            fetch('{% url "send_verification_email" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({
+                    'email': email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error);
+            });
+        });
+
+        document.getElementById('verify-code').addEventListener('click', function() {
+            const verification_code = document.getElementById('verification_code').value;
+            fetch('{% url "verify_code" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({
+                    'verification_code': verification_code
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    document.getElementById('signup-form').submit();
+                } else {
+                    alert(data.error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

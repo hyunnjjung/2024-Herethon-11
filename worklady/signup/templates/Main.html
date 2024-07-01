@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+<body>
+    <!--<a href="{% url 'login' %}"><button type="button">LOGIN</button></a>-->
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">로그인</button>
+    </form>
+    <br>
+    <br>
+    <a href="{% url 'join' %}"><button type="button">회원가입</button></a>
+    <a href="{% url 'findemail' %}"><button>이메일찾기</button></a>&nbsp;<button>비밀번호 찾기</button>
+    <br>
+    <a >간편로그인, 회원가입</a>
+    <br>
+    <a><button>카카오</button></a>
+    <a href="{% url 'naver'}"><button>네이버</button></a>
+    <button>구글</button>
+</body>
+</html>
