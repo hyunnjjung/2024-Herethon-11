@@ -20,4 +20,5 @@ urlpatterns = [
     #path('find_pw/',views.PwResetEmailSendView.as_view()),
     #path('pwchange/<str:uid>/<str:token>',views.PasswordChangeView.as_view(), name ='pwchange'),
     #path('pwchange/<str:uid>/<str:token>/', views.PasswordChangeView.as_view(), name='pwchange'),
+    path('rest-auth/', include('dj_rest_auth.urls')),
 ]
