@@ -18,6 +18,8 @@ from django.http import JsonResponse
 from django.utils.crypto import get_random_string
 from django.http import JsonResponse
 
+from .forms import SignUpForm, LoginForm, EmailFindForm 
+
 User = CustomUser
 '''
 def save(self, *args, **kwargs):
@@ -92,14 +94,20 @@ class EmailFindSerializer(serializers.Serializer):
 
 def findemail(request):
     if request.method == 'POST':
-        serializer = EmailFindSerializer(data=request.POST)
-        if serializer.is_valid():
-            email = serializer.validated_data['id']
-            message = "존재하는 이메일입니다." if CustomUser.objects.filter(id=email).exists() else "존재하지 않는 이메일입니다."
+        form = EmailFindForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['id']
+            name = form.cleaned_data['name']
+            
+            masked_email = '***' + email[3:]
+            
+            message = f"{masked_email} (존재하는 이메일)" if CustomUser.objects.filter(id=email, name=name).exists() else "존재하지 않는 이메일 또는 이름입니다."
             return JsonResponse({'message': message})
         else:
-            return JsonResponse(serializer.errors, status=400)
-    return render(request, 'findEmail.html')
+            return JsonResponse(form.errors, status=400)
+    else:
+        form = EmailFindForm()
+    return render(request, 'findEmail.html', {'form': form})
 
 #본인인증 figma형식으로 구현 시도중 ...
 # 이메일 인증 코드 전송 뷰

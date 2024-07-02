@@ -66,3 +66,17 @@ def login_page(request):
     else:
         form = LoginForm()
     return render(request, 'Login.html', {'form': form})
+
+class EmailFindForm(forms.Form):
+    id = forms.EmailField(label='이메일', max_length=64)
+    name = forms.CharField(label='이름', max_length=30)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        id = cleaned_data.get('id')
+        name = cleaned_data.get('name')
+
+        if id and name:
+            if not CustomUser.objects.filter(id=id, name=name).exists():
+                raise forms.ValidationError("존재하지 않는 이메일 또는 이름입니다.")
+        return cleaned_data
