@@ -60,3 +60,24 @@ class Rating(models.Model):
     def __str__(self):
         return f'Rating: {self.value} by {self.user} for Answer {self.answer.id}'
 
+
+
+
+
+class Chat(models.Model):
+    sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+    message = models.TextField(verbose_name="메시지")
+    timestamp = models.DateTimeField(auto_now_add=True)
+    is_rejected = models.BooleanField(default=False)  # Track rejection status
+    
+    def __str__(self):
+        return f"{self.sender} -> {self.receiver}: {self.message[:20]}"
+
+class ChatRating(models.Model):
+    message = models.ForeignKey(Chat, related_name='ratings', on_delete=models.CASCADE)
+    rater = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.message} rated {self.rating} by {self.rater}"

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ user.username }}'s Profile</title>
+    <style>
+      .message-list {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .message-item {
+        display: flex;
+        margin-bottom: 10px;
+      }
+      .message-item .message-content {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 5px;
+      }
+      .message-item.sent .message-content {
+        background-color: #dcf8c6;
+        margin-left: auto;
+        text-align: right;
+      }
+      .message-item.received .message-content {
+        background-color: #f1f0f0;
+        margin-right: auto;
+      }
+      .timestamp {
+        font-size: 0.8em;
+        color: #888;
+      }
+    </style>
+    <script>
+      function disableMessageInput() {
+        document.getElementById("message-input").disabled = true;
+      }
+      function enableMessageInput() {
+        document.getElementById("message-input").disabled = false;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Messages</h2>
+    <ul class="message-list">
+      {% for message in messages %}
+      <li
+        class="message-item {% if message.sender == request.user %}sent{% else %}received{% endif %}"
+      >
+        <div class="message-content">
+          <strong>{{ message.sender.username }}:</strong> {{ message.message }}
+          <div class="timestamp">{{ message.timestamp }}</div>
+          {% if message.sender != request.user %}
+          <form method="post" style="margin-top: 10px">
+            {% csrf_token %}
+            <input type="hidden" name="message_id" value="{{ message.id }}" />
+            <label for="rating">Rate this message:</label>
+            <select name="rating">
+              {% for i in "12345" %}
+              <option value="{{ i }}">{{ i }}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" name="rating">Submit</button>
+            <button type="submit" name="reject">Reject</button>
+            <button type="submit" name="reply" onclick="enableMessageInput()">
+              Reply
+            </button>
+          </form>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2>Send a Message</h2>
+    <form method="post">
+      {% csrf_token %}
+      <textarea id="message-input" name="message" rows="4" cols="50"></textarea
+      ><br />
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>

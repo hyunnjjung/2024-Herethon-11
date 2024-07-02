@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Question, Answer, Rating
+from .models import Question, Answer, Rating, Chat, ChatRating, User
 from django.db.models import Q
 from .models import Tag
 from django.db.models import Avg
@@ -115,3 +115,34 @@ def answer_create(request, pk):
     # If request method is not POST or content is empty, render the template with the question
     return render(request, 'question/answer_create.html', {'question': question})
 
+
+
+
+@login_required
+def profile_chat(request, id):
+    user = get_object_or_404(User, id=id)
+    if request.method == 'POST':
+        if 'message' in request.POST:
+            message = request.POST.get('message')
+            if message:
+                Chat.objects.create(sender=request.user, receiver=user, message=message)
+                return redirect('profile_chat', id=id)
+        elif 'rating' in request.POST:
+            message_id = request.POST.get('message_id')
+            rating = request.POST.get('rating')
+            message = get_object_or_404(Chat, id=message_id)
+            ChatRating.objects.create(message=message, rater=request.user, rating=rating)
+            return redirect('profile_chat', id=id)
+        elif 'reject' in request.POST: 
+            message_id = request.POST.get('message_id') 
+            message = get_object_or_404(Chat, id=message_id) 
+            if message.receiver == request.user: 
+                message.is_rejected = True 
+                message.save() 
+                return redirect('profile_chat', id=id) 
+        elif 'reply' in request.POST: 
+            pass  # No specific action needed for reply, just keep the form open
+    messages = Chat.objects.filter(receiver=user).order_by('-timestamp')
+    return render(request, 'question/profile_chat.html', {
+        'messages': messages,
+    })

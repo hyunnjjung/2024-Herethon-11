@@ -8,4 +8,5 @@ urlpatterns = [
     path('question/', views.question_list, name='question_list'),
     path('question/<int:pk>/answer_create', views.answer_create, name='answer_create'),
     re_path(r'^question/tag/(?P<slug>[-\w]+)/$', views.tag, name='tag'),
+    path('chat/<int:id>/', views.profile_chat, name='profile_chat'),
 ]
