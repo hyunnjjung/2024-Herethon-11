@@ -16,13 +16,13 @@
 
     <h2>코인 거래 내역</h2>
     <form action="{% url 'coin_history' %}" method="GET">
-      <input type="radio" name="transaction_type" value="all" id="all" {% if transaction_type = 'all' or not transaction_type %}checked{% endif %}>
+      <input type="radio" name="transaction_type" value="all" id="all" {% if transaction_type == 'all' or not transaction_type %}checked{% endif %}>
       <label for="all">전체</label>
       
-      <input type="radio" name="transaction_type" value="purchase" id="purchase" {% if transaction_type = 'purchase' %}checked{% endif %}>
+      <input type="radio" name="transaction_type" value="purchase" id="purchase" {% if transaction_type == 'purchase' %}checked{% endif %}>
       <label for="purchase">구매 내역</label>
       
-      <input type="radio" name="transaction_type" value="use" id="use" {% if transaction_type = 'use' %}checked{% endif %}>
+      <input type="radio" name="transaction_type" value="use" id="use" {% if transaction_type == 'use' %}checked{% endif %}>
       <label for="use">사용 내역</label>
       
       <input type="submit" value="필터 적용">
