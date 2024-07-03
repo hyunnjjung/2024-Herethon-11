@@ -2,81 +2,62 @@ from django import forms
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
 from django.http import HttpResponseBadRequest, JsonResponse
+from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
 User = CustomUser
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username')
+    email = forms.EmailField(label='Email')  
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     def clean(self):
         cleaned_data = super().clean()
-        username = cleaned_data.get('username')
+        email = cleaned_data.get('email')  
         password = cleaned_data.get('password')
 
-        if username and password:
-            user = authenticate(username=username, password=password)
+        if email and password:
+            user = authenticate(email=email, password=password)
             if user is None:
-                raise forms.ValidationError('Invalid username or password.')
+                raise forms.ValidationError('Invalid email or password.')
 
         return cleaned_data
 
-class SignUpForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    password_confirm = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput())
+class SignUpForm(UserCreationForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput())
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput())
 
     class Meta:
         model = User
-        fields = ('id', 'name', 'birthday', 'password', 'password_confirm', 'phone_number')
-        widgets = {
-            'password': forms.PasswordInput(),
-            'password_confirm': forms.PasswordInput(),
-        }
+        fields = ('email', 'name', 'birthday', 'phone_number', 'password1', 'password2')
 
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get('password')
-        password_confirm = cleaned_data.get('password_confirm')
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
 
-        if password and password_confirm and password != password_confirm:
-            raise forms.ValidationError("비밀번호가 일치하지 않습니다.")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords do not match.")
+
+        return cleaned_data
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])
+        user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()
         return user
 
-def login_page(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                # 로그인 성공
-                login(request, user)
-                return redirect('home')
-            else:
-                # 로그인 실패
-                print("로그인 실패")
-    else:
-        form = LoginForm()
-    return render(request, 'Login.html', {'form': form})
-
 class EmailFindForm(forms.Form):
-    id = forms.EmailField(label='이메일', max_length=64)
-    name = forms.CharField(label='이름', max_length=30)
+    email = forms.EmailField(label='Email', max_length=64)
+    name = forms.CharField(label='Name', max_length=30)
 
     def clean(self):
         cleaned_data = super().clean()
-        id = cleaned_data.get('id')
+        email = cleaned_data.get('email')
         name = cleaned_data.get('name')
 
-        if id and name:
-            if not CustomUser.objects.filter(id=id, name=name).exists():
-                raise forms.ValidationError("존재하지 않는 이메일 또는 이름입니다.")
+        if email and name:
+            if not CustomUser.objects.filter(email=email, name=name).exists():
+                raise forms.ValidationError("Email or name does not exist.")
         return cleaned_data

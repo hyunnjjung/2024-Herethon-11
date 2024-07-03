@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status, serializers
+from django.urls import reverse
 
 User = CustomUser
 
@@ -41,21 +42,18 @@ def join_page(request):
 
 def login_page(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)  
+        form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username'] 
+            email = form.cleaned_data['email']  
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, email=email, password=password)  
             if user is not None:
-                # 로그인 성공
                 login(request, user)
                 return redirect('home')
             else:
-                # 로그인 실패
                 print("로그인 실패")
-                pass
     else:
-        form = LoginForm()  
+        form = LoginForm()
     return render(request, 'Login.html', {'form': form})
 
 def main_page(request):
@@ -87,12 +85,12 @@ def findemail(request):
     if request.method == 'POST':
         form = EmailFindForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['id']
+            email = form.cleaned_data['email']
             name = form.cleaned_data['name']
             
             masked_email = '***' + email[3:]
             
-            message = f"{masked_email} (존재하는 이메일)" if CustomUser.objects.filter(id=email, name=name).exists() else "존재하지 않는 이메일 또는 이름입니다."
+            message = f"{masked_email} (존재하는 이메일)" if CustomUser.objects.filter(email=email, name=name).exists() else "존재하지 않는 이메일 또는 이름입니다."
             return JsonResponse({'message': message})
         
         else:
@@ -165,9 +163,8 @@ def send_reset_password_email(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         if email:
-            user = User.objects.filter(id=email).first()
+            user = User.objects.filter(email=email).first()
             if user:
-                # 사용자가 존재하는 경우에만 이메일 전송
                 token = default_token_generator.make_token(user)
                 uid = urlsafe_base64_encode(force_bytes(user.pk))
 
@@ -214,6 +211,7 @@ def reset_password(request, uidb64, token):
         return render(request, 'reset_password.html', {'form': form})
     else:
         return render(request, 'password_reset_invalid.html')
+
 
 def find_pw_page(request):
     return render(request, 'findPw.html')

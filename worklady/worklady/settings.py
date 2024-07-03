@@ -75,6 +75,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     #`allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
+    
+    'signup.authentication.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+
 ]
 
 LOGIN_REDIRECT_URL = '/'
@@ -160,8 +164,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '이메일 보낼 구글 이메일 주소'
-EMAIL_HOST_PASSWORD = '이메일 키'
+EMAIL_HOST_USER = '이메일 보낼 이메일주소'
+EMAIL_HOST_PASSWORD = '이메일 2증 인증키 번호'
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_MAIL = EMAIL_HOST_USER
 
