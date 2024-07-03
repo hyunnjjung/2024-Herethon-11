@@ -44,6 +44,7 @@ INSTALLED_APPS = [
   
     'signup',
     'myprofile',
+    'coin',
     
     'rest_framework.authtoken',
     'dj_rest_auth',

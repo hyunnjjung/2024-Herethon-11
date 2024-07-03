@@ -1,5 +1,6 @@
 from django.db import models
-from worklady.signup.models import CustomUser
+from signup.models import CustomUser
+
 
 class Coin(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
