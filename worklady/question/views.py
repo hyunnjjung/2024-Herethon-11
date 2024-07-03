@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Question, Answer, Rating, Chat, ChatRating, User
+from .models import Question, Answer, Rating, Chat, ChatRating
 from django.db.models import Q
 from .models import Tag
 from django.db.models import Avg

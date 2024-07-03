@@ -1,8 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db import models
 from django.utils.text import slugify
+from signup.models import CustomUser
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -24,7 +24,7 @@ class Tag(models.Model):
 class Question(models.Model):
     title = models.CharField(max_length=50) #글의 제목
     content = models.TextField()
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     answered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
@@ -35,7 +35,7 @@ class Question(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(to=Question, related_name='answers', on_delete=models.CASCADE)
     content = models.TextField()
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)  # Rating value (from 1 to 5)
     
@@ -50,7 +50,7 @@ class Answer(models.Model):
         return 0
 
 class Rating(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     answer = models.ForeignKey(to=Answer, related_name='ratings', on_delete=models.CASCADE)
     value = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
 
@@ -65,8 +65,8 @@ class Rating(models.Model):
 
 
 class Chat(models.Model):
-    sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
-    receiver = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+    sender = models.ForeignKey(CustomUser, related_name='sent_messages', on_delete=models.CASCADE)
+    receiver = models.ForeignKey(CustomUser, related_name='received_messages', on_delete=models.CASCADE)
     message = models.TextField(verbose_name="메시지")
     timestamp = models.DateTimeField(auto_now_add=True)
     is_rejected = models.BooleanField(default=False)  # Track rejection status
@@ -76,7 +76,7 @@ class Chat(models.Model):
 
 class ChatRating(models.Model):
     message = models.ForeignKey(Chat, related_name='ratings', on_delete=models.CASCADE)
-    rater = models.ForeignKey(User, on_delete=models.CASCADE)
+    rater = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField()
 
     def __str__(self):
