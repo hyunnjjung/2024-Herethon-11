@@ -1,33 +1,32 @@
 /* iPhone 15 Pro portrait orientation */
 @media only screen and (min-device-width: 393px) and (max-device-width: 430px) and (min-device-height: 852px) and (max-device-height: 932px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   /* 세로 방향 스타일 정의 */
-  body {
-    background-color: lightblue;
-  }
 }
-
 body {
   width: 393px;
   height: 852px;
   background: #fff;
   margin: 0%;
+  position: relative;
 }
 
 header {
   display: flex;
-  margin: 19px 27px 17.6px 27px;
+  padding: 19px 27px 17.6px 27px;
   align-items: center;
-  justify-content: space-between;
-}
-
-.line {
-  width: 100%;
-  height: 0px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border: 1px rgba(138, 136, 136, 0.38) solid;
+  position: fixed;
+  gap: 87px;
+  z-index: 100;
+  background: #fff;
+  height: 37px;
 }
 
 .navbar {
+  z-index: 100;
+  position: fixed;
+  top: 70px;
+  background: #fff;
+  width: 100%;
   ul {
     display: flex;
     list-style: none;
@@ -46,10 +45,15 @@ header {
         color: inherit;
         text-decoration: none;
       }
+      .nav-QnA {
+        color: #5422e1;
+      }
     }
   }
 }
-
+.blank {
+  height: 123px;
+}
 .banner {
   margin-top: 3px;
   width: 393px;
