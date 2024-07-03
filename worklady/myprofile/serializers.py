@@ -4,6 +4,7 @@ from .models import Profile, Education, Career
 from signup.models import CustomUser
 
 class EducationSerializer(ModelSerializer): 
+    
     class Meta:
         model = Education
         fields = ['school', 'grade']
@@ -81,25 +82,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         instance.introduce = validated_data.get('introduce', instance.introduce)
         instance.save()
 
-        if school and grade:
-            instance.education.clear()
-            education, created = Education.objects.get_or_create(school=school, grade=grade)
+        instance.education.clear()
+        for education_data in educations_data:
+            education, created = Education.objects.get_or_create(**education_data)
             instance.education.add(education)
 
-        else:
-            instance.education.clear()
-            for education_data in educations_data:
-                education, created = Education.objects.get_or_create(**education_data)
-                instance.education.add(education)
-
-        if department and category:
-            instance.career.clear()
-            career, created = Career.objects.get_or_create(department=department, category=category)
+        instance.career.clear()
+        for career_data in careers_data:
+            career, created = Career.objects.get_or_create(**career_data)
             instance.career.add(career)
-        else:
-            instance.career.clear()
-            for career_data in careers_data:
-                career, created = Career.objects.get_or_create(**career_data)
-                instance.career.add(career)
 
         return instance
