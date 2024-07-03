@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'dj_rest_auth.registration',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.google',  #구글
+    'allauth.socialaccount.providers.naver',  #네이버
+    'allauth.socialaccount.providers.kakao',  #카카오
 ]
 
 SITE_ID = 1
@@ -69,7 +71,6 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware', 
 ]
 
-SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`

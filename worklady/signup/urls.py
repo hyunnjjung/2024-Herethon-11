@@ -21,4 +21,5 @@ urlpatterns = [
     path('find_pw/', views.find_pw_page, name='find_pw'),
     path('send_reset_password_email/', views.send_reset_password_email, name='send_reset_password_email'),
     path('password_reset_complete/',password_reset_complete, name='password_reset_complete'),
+    path('rest-auth/', include('dj_rest_auth.urls')),
 ]
