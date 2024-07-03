@@ -125,6 +125,13 @@ header {
   button {
     border: none;
     background: #fff;
+    color: #8a8888;
+    font-family: "Noto Sans KR";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: -0.408px;
   }
   .filter {
     padding: 0 81px 15px 25px;
@@ -143,6 +150,16 @@ header {
     line-height: 22px; /* 157.143% */
     letter-spacing: -0.408px;
   }
+}
+/* 활성화된 버튼 스타일 */
+.filter button.active {
+  color: #5422e1;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px; /* 169.231% */
+  letter-spacing: -0.408px;
 }
 
 /* qna.gen.index */

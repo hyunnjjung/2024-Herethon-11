@@ -1,6 +1,24 @@
 // script.js
 
 //localStorage.clear();
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".filter button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // 모든 버튼에서 active 클래스 제거
+      buttons.forEach((btn) => {
+        btn.classList.remove("active");
+        btn.querySelector("img").src = "../image/Vector.png"; // 기본 이미지 경로
+      });
+
+      // 클릭된 버튼에 active 클래스 추가
+      this.classList.add("active");
+      this.querySelector("img").src = "../image/Vector_selected.png"; // 활성화된 이미지 경로
+    });
+  });
+});
+
 let posts = JSON.parse(localStorage.getItem("posts")) || [];
 let currentPostId = localStorage.getItem("currentPostId");
 
