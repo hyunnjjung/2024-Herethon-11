@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <title>mainPage</title>
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <button onclick="sidebar.open()">
+          <img style="width: 28px; height: 24px" src="image/Group.png" />
+        </button>
+        <aside class="side_bar js-side_bar"></aside>
+      </div>
+      <img
+        class="header_logo"
+        style="width: 96.1px; height: 26.4px"
+        src="image/워크레디 로고 수정 (이름+로고) 2.png"
+      />
+      <a class="nav-MyPage" href="#none"><img src="image/bi_person.png" /></a>
+    </header>
+    <div class="line"></div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li><a class="nav-QnA" href="#none">멘토 Q&A</a></li>
+      </ul>
+    </nav>
+    <div class="line"></div>
+
+    <section class="banner">
+      <img class="banner_img" src="image/Rectangle 507.png" />
+      <div>
+        <img class="banner_logo" src="image/banner_logo.png" />
+        <div class="banner_headline">
+          여성들이 성장할 수 있도록 돕는 <br />커리어 네트워킹 플렛폼
+        </div>
+      </div>
+    </section>
+
+    <section class="mentorOfMonth">
+      <div>
+        <div class="mentor_title">이달의 멘토</div>
+        <a class="nav-ViewProfile" href="#none">
+          <div>더보기</div>
+          <img src="image/화살표.png" />
+        </a>
+      </div>
+      <div class="mentor-card-container">
+        <div class="mentor-card">
+          <div class="mentor-card-inner">
+            <img
+              src="image/mentor김사자.png"
+              style="width: 93px; height: 104px"
+              class="mentor-img"
+            />
+            <div class="mentor-info">
+              <div class="mentor-name">김사자</div>
+              <div class="mentor-field">UX</div>
+              <div class="mentor-rating">평균 별점</div>
+              <div class="mentor-tags"># UI # UX # UX기획</div>
+              <div class="rating-stars"></div>
+              <div class="rating-score"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mentor-card">
+          <div class="mentor-card-inner">
+            <img
+              src="image/mentor이수빈.png"
+              style="width: 93px; height: 104px"
+              class="mentor-img"
+            />
+            <div class="mentor-info">
+              <div class="mentor-name">이수빈</div>
+              <div class="mentor-field">서비스기획</div>
+              <div class="mentor-rating">평균 별점</div>
+              <div class="mentor-tags"># 콘텐츠 기획 # 서비스</div>
+              <div class="rating-stars"></div>
+              <div class="rating-score"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="latestQnA">
+      <div>
+        <div class="latestQnA_title">멘토 Q&A 최신 질문</div>
+        <a class="nav-QnA" href="#none">
+          <div>더보기</div>
+          <img src="image/화살표.png" />
+        </a>
+      </div>
+      <div class="questions-container">
+        <div class="question-card">
+          <div class="question-inner">
+            <div class="question-tags"># 유통 # 무역 # 구매</div>
+            <div class="question-title">물류 직무, 여성은 잘 뽑지 않나요?</div>
+            <div class="question-answers">답변 2</div>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="question-inner">
+            <div class="question-tags"># 서비스기획 # UX # UI</div>
+            <div class="question-title">UX 취업, 도메인이 중요할까요?</div>
+            <div class="question-answers">답변 1</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

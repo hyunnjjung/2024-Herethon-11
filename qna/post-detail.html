@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="qna.gen.css" />
+    <title>일반 Q&A 글 확인, 댓글 작성 및 확인</title>
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <button onclick="sidebar.open()">
+          <img style="width: 28px; height: 24px" src="image/Group.png" />
+        </button>
+        <aside class="side_bar js-side_bar"></aside>
+      </div>
+      <img
+        class="header_logo"
+        style="width: 96.1px; height: 26.4px"
+        src="image/워크레디 로고 수정 (이름+로고) 2.png"
+      />
+      <a class="nav-MyPage" href="#none"><img src="image/bi_person.png" /></a>
+    </header>
+    <div class="line"></div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li>
+          <a class="nav-QnA" href="#none">멘토 Q&A</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="line"></div>
+
+    <div class="qna-navbar">
+      <a class="nav-genQ" href="#none">일반 Q&A</a>
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px rgba(0, 0, 0, 0.38) solid;
+        "
+      ></div>
+      <a class="nav-oneQ" href="#none">1 : 1 Q&A</a>
+    </div>
+    <div class="line"></div>
+
+    <div class="post-container">
+      <p id="post-tag"></p>
+      <h1 id="post-title"></h1>
+      <div class="post-middle"><img src="image/mynaui_letter-q-square.png" />'{nickname}'님의 질문</p></div>
+      <p id="post-content"></p>
+    </div>
+    <div class="line"></div>
+    <div class="comment-container">
+      <h3>답변을 작성해 주세요</h3>
+      <div id="comments">
+        <!-- 댓글 목록 -->
+      </div>
+      <textarea
+        id="new-comment-content"
+        placeholder="답변의 내용을 작성해 주세요."
+      ></textarea>
+      <button id="comment-submit" onclick="addComment()">답변 등록하기</button>
+    </div>
+    <script src="qna.gen.js"></script>
+  </body>
+</html>
