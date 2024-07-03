@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('signup.urls')),
     path('', include('myprofile.urls')),
     path('', include('coin.urls')),
+    path("", include("question.urls")),
     path('authaccounts/', include('allauth.urls')),
 ]
 
