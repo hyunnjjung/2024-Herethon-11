@@ -6,23 +6,27 @@ body {
   height: 852px;
   background: #fff;
   margin: 0%;
+  position: relative;
 }
 
 header {
   display: flex;
-  margin: 19px 27px 17.6px 27px;
+  padding: 19px 27px 17.6px 27px;
   align-items: center;
-  justify-content: space-between;
-}
-
-.line {
-  width: 100%;
-  height: 0px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border: 1px rgba(138, 136, 136, 0.38) solid;
+  position: fixed;
+  gap: 87px;
+  z-index: 100;
+  background: #fff;
+  height: 37px;
+  top: 0px;
 }
 
 .navbar {
+  z-index: 100;
+  position: fixed;
+  top: 70px;
+  background: #fff;
+  width: 100%;
   ul {
     display: flex;
     list-style: none;
@@ -49,32 +53,36 @@ header {
 }
 
 .qna-navbar {
-  width: 332px;
+  width: 100%;
   height: 55px;
+  background: #fff;
+  z-index: 100;
+  position: fixed;
+  top: 125.6px;
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
+  .nav-genQ,
+  .nav-oneQ {
+    padding: 17px 60px;
+    white-space: nowrap;
+    width: 83px;
+    height: 28px;
+    font-size: 17px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+  }
 }
-
-.nav-genQ,
-.nav-oneQ {
-  padding: 17px 60px;
-  white-space: nowrap;
-  width: 83px;
-  height: 28px;
-  font-size: 17px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 500;
-  line-height: 22px;
-  color: rgba(0, 0, 0, 0.3);
-  text-decoration: none;
-}
-
 .nav-genQ {
   color: #5422e1;
 }
 
 .search-box {
+  position: relative;
+  top: 180px;
   width: 331px;
   height: 44px;
   background: #f5f5f5e5;
@@ -106,6 +114,8 @@ header {
 }
 
 .middle {
+  position: relative;
+  top: 180px;
   display: flex;
   align-items: flex-start;
   white-space: nowrap;
@@ -136,6 +146,10 @@ header {
 }
 
 /* qna.gen.index */
+.forum {
+  position: relative;
+  top: 180px;
+}
 #post-list {
   display: flex;
   flex-direction: column;
@@ -237,7 +251,11 @@ header {
 }
 
 /* post-detail */
+.blank {
+  height: 180px;
+}
 .post-container {
+  position: static;
   width: 84%;
   #post-tag {
     display: flex;
@@ -286,7 +304,7 @@ header {
 }
 .comment-container {
   width: 84%;
-  position: absolute;
+  position: static;
   display: flex;
   flex-direction: column;
   h3 {
