@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,21 +12,22 @@
         <button>비밀번호 찾기</button>
     </a>
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">로그인</button>
-</form>
-<br>
-<a href="{% url 'join' %}"><button type="button">회원가입</button></a>
-<a href="{% url 'findemail' %}"><button>이메일찾기</button></a>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">로그인</button>
+    </form>
+    <br>
+    <a href="{% url 'join' %}"><button type="button">회원가입</button></a>
+    <a href="{% url 'findemail' %}"><button>이메일찾기</button></a>
 
-<br>
-<a>간편로그인, 회원가입</a>
-<br>
-<a><button>카카오</button></a>
-<a><button>네이버</button></a>
-<button>구글</button>
+    <br>
+    <a>간편로그인, 회원가입</a>
+    <br>
+    {% load socialaccount %}
+    <a href="{% provider_login_url 'kakao' %}"><button>카카오</button></a>
+    <a href="{% provider_login_url 'naver' %}"><button>네이버</button></a>
+    <a href="{% provider_login_url 'google' %}"><button>구글</button></a>
 
 </body>
 </html>
