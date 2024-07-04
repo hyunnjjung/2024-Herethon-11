@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>코인 구매하기</title>
+</head>
+<body>
+    <h2>코인 구매하기</h2>
+
+    <form action="{% url 'process_coin_purchase' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            <input type="radio" id="option1" name="coin_option" value="10">
+            <label for="option1">10코인 (1회 질문 가능) - 5000원</label>
+        </div>
+        <div>
+            <input type="radio" id="option2" name="coin_option" value="20">
+            <label for="option2">20코인 (2회 질문 가능) - 12000원</label>
+        </div>
+        <div>
+            <input type="radio" id="option3" name="coin_option" value="30">
+            <label for="option3">30코인 (3회 질문 가능) - 15000원</label>
+        </div>
+
+        <h3>결제수단</h3>
+        <div>
+            <input type="radio" id="kakao" name="payment_method" value="kakao">
+            <label for="kakao">카카오페이</label>
+        </div>
+        <div>
+            <input type="radio" id="naver" name="payment_method" value="naver">
+            <label for="naver">네이버페이</label>
+        </div>
+        <div>
+            <input type="radio" id="toss" name="payment_method" value="toss">
+            <label for="toss">토스페이</label>
+        </div>
+
+        <button type="submit">구매하기</button>
+    </form>
+</body>
+</html>
