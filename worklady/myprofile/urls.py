@@ -18,7 +18,7 @@ certificate_router.register('certificate', CertificateViewSet, basename='certifi
 urlpatterns = [
     path('', include(profile_router.urls)),
     # 검색 테스트
-    path('profile/list/', ProfileViewSet.as_view({'get': 'list_view'}), name='profile_list'),
+    path('profiles/list/', ProfileViewSet.as_view({'get': 'list_view'}), name='profile_list'),
     path('profile/<int:profile_id>/', include(education_router.urls)),
     path('profile/<int:profile_id>/', include(career_router.urls)),
     path('profile/<int:profile_id>/', include(certificate_router.urls)),
