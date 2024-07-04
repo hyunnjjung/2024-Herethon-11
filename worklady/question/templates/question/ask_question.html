@@ -1,0 +1,49 @@
+<!-- question/ask_question.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ask a Question</title>
+  </head>
+  <body>
+    <h2>질문을 작성해주세요</h2>
+    <form method="post">
+      {% csrf_token %} {% if error %}
+      <p>{{ error }}</p>
+      {% endif %}
+
+      <label for="tags">질문 분야</label><br />
+      <input
+        type="text"
+        id="tags"
+        name="tags"
+        placeholder="# UI # 유통 # IT # 생산 # 회계 # 무역 등"
+      /><br /><br />
+
+      <label for="id_title">제목</label><br />
+      <input
+        type="text"
+        id="id_title"
+        name="title"
+        required
+        placeholder="제목을 작성해 주세요."
+      /><br /><br />
+
+      <label for="id_content">내용</label><br />
+      <textarea
+        id="id_content"
+        name="content"
+        rows="4"
+        cols="50"
+        placeholder="질문의 내용을 작성해 주세요."
+        required
+      ></textarea
+      ><br /><br />
+
+      <input type="submit" value="질문하기" />
+    </form>
+
+    <a href="{% url 'question_list' %}">Back to Question List</a>
+  </body>
+</html>
