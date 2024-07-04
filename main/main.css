@@ -8,6 +8,9 @@ body {
   background: #fff;
   margin: 0%;
   position: relative;
+  .height {
+    height: 852px;
+  }
 }
 
 header {
