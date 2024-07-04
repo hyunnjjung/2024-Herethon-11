@@ -1,7 +1,6 @@
 from django.db import models
 from signup.models import CustomUser
 
-
 class Coin(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     amount = models.IntegerField(default=0)

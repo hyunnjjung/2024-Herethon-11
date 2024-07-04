@@ -182,3 +182,8 @@ REST_FRAMEWORK = {
     'rest_framework.authentication.TokenAuthentication', 
     ],
 }
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None # username 필드 사용 x
+ACCOUNT_EMAIL_REQUIRED = True            # email 필드 사용 o
+ACCOUNT_USERNAME_REQUIRED = False        # username 필드 사용 x
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
