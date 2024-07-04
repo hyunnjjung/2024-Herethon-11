@@ -1,8 +1,21 @@
 from django.db import models
-# from django.contrib.auth.models import CustomUser
-from signup.models import CustomUser
-
+from signup.models import CustomUser   
+    
+class Profile(models.Model):
+    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    my_image = models.ImageField(verbose_name="프로필사진", upload_to='profile_image')
+    short_intro = models.CharField(verbose_name="한줄소개", max_length=200)
+    interest = models.CharField(verbose_name="대표관심분야", max_length=200)
+    current_job = models.CharField(verbose_name="현재관심분야", max_length=200)
+    introduce = models.TextField(verbose_name="소개", default='') 
+    created_at = models.DateTimeField(verbose_name="작성일", auto_now_add=True)
+    
+    def __str__(self):
+        return self.short_intro
+    
 class Education(models.Model):
+    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     school = models.CharField(verbose_name="학교명", max_length=200, null=True, blank=True)
     GRADES = [
         ('1학년', '1학년'),
@@ -16,6 +29,8 @@ class Education(models.Model):
         return self.school
     
 class Career(models.Model):
+    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     department = models.CharField(verbose_name="부서", max_length=200, null=True, blank=True)
     CATEGORIES = [
         ('전 근무지', '전 근무지'),
@@ -26,26 +41,9 @@ class Career(models.Model):
     def __str__(self):
         return self.department
     
-# class Certificate(models.Model):
-#     certificate = models.CharField(verbose_name="자격증", max_length=300, blank=True, null=True)
-#     def __str__(self):
-#         return self.certificate    
-    
-class Profile(models.Model):
-    #회원가입시 본인의 이름 불러오기 User table에서
+class Certificate(models.Model):
     username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    my_image = models.ImageField(verbose_name="프로필사진", upload_to='profile_image')
-    short_intro = models.CharField(verbose_name="한줄소개", max_length=200)
-    #education 테이블과 join
-    education = models.ManyToManyField(Education, verbose_name="학력", blank=True, null=True,)
-    #career 테이블과 join - 필수 아님
-    career = models.ManyToManyField(Career, verbose_name="경력", blank=True, null=True,)
-    # 자격증도 여러개 추가 가능 - 필수 아님 
-    # certificates = models.ForeignKey(Certificate, on_delete=models.CASCADE, verbose_name="자격증", null=True, blank=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='certificate')
     certificate = models.CharField(verbose_name="자격증", max_length=300, blank=True, null=True)
-    interest = models.CharField(verbose_name="대표관심분야", max_length=200)
-    current_job = models.CharField(verbose_name="현재관심분야", max_length=200)
-    introduce = models.TextField(verbose_name="소개", default='') 
-    
     def __str__(self):
-        return self.introduce
+        return self.certificate 
