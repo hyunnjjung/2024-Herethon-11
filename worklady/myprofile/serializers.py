@@ -28,3 +28,4 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ['id', 'my_image', 'short_intro', 
                   'interest', 'current_job', 'introduce', 'username', 'created_at']
+        
