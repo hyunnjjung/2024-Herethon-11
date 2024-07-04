@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Profile
+from .models import Profile, Education, Career, Certificate
 from django.db.models import Q
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer, EducationSerializer, CareerSerializer, CertificateSerializer
 from rest_framework.viewsets import ModelViewSet 
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -30,3 +30,36 @@ class ProfileViewSet(ModelViewSet):
     def list_view(self, request):
         profiles = self.get_queryset()
         return render(request, 'profile_list.html', {'profiles': profiles})
+    
+class EducationViewSet(ModelViewSet):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+    
+    def perform_create(self, serializer): 
+        serializer.save(username=self.request.user)
+    
+    def get_queryset(self, **kwargs):
+        id = self.kwargs['profile_id']
+        return self.queryset.filter(profile=id)
+
+class CareerViewSet(ModelViewSet):
+    queryset = Career.objects.all()
+    serializer_class = CareerSerializer
+    
+    def perform_create(self, serializer): 
+        serializer.save(username=self.request.user)
+        
+    def get_queryset(self, **kwargs):
+        id = self.kwargs['profile_id']
+        return self.queryset.filter(profile=id)
+
+class CertificateViewSet(ModelViewSet):
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
+    
+    def perform_create(self, serializer): 
+        serializer.save(username=self.request.user)
+    
+    def get_queryset(self, **kwargs):
+        id = self.kwargs['profile_id']
+        return self.queryset.filter(profile=id)
