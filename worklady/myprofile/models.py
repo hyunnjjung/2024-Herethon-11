@@ -43,7 +43,7 @@ class Career(models.Model):
     
 class Certificate(models.Model):
     username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='certificate')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     certificate = models.CharField(verbose_name="자격증", max_length=300, blank=True, null=True)
     def __str__(self):
         return self.certificate 

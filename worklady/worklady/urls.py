@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('myprofile.urls')),
     path('', include('coin.urls')),
     path("", include("question.urls")),
+    path("", include('myprofile.urls')),
     path('authaccounts/', include('allauth.urls')),
 ]
 

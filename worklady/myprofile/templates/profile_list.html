@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+    <div><a href="{% url 'create_profile1' %}">프로필 작성</a></div>
     <h1>Profile List</h1>
     <form method="get" action="{% url 'profile_list' %}">
         <input type="text" name="q" placeholder="Search...">
@@ -38,10 +39,12 @@
             </tr>
         </thead>
         <tbody>
-            {% for profile in profiles %}
-            <tr>
-                <td>{{ profile.id }}</td>
-                <td>{{ profile.username.name }}</td>
+            {% for profile in profiles%}
+                <td><a href="{% url 'profile_detail' profile.id %}">
+                    {{ profile.id }}
+                    </a>
+                </td>
+                <td>{{ profile.username.username }}</td>
                 <td>{{ profile.short_intro }}</td>
                 <td>{{ profile.interest }}</td>
                 <td>{{ profile.current_job }}</td>
