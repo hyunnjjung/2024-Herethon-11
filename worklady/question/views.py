@@ -6,6 +6,22 @@ from .models import Tag
 from django.db.models import Avg
 from django.http import HttpResponseRedirect
 
+
+
+@login_required
+def my_questions(request):
+    
+    questions = Question.objects.filter(author=request.user).order_by('-created_at')
+
+    filter_option = request.GET.get('filter', '')
+    if filter_option == 'answered':
+        questions = questions.filter(answers__isnull=False).distinct()
+    elif filter_option == 'unanswered':
+        questions = questions.filter(answers__isnull=True)
+        
+    return render(request, 'question/my_questions.html', {'questions': questions})
+
+
 def question_list(request):
     query = request.GET.get('q', '')
     questions = Question.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))

@@ -9,4 +9,5 @@ urlpatterns = [
     path('question/<int:pk>/answer_create', views.answer_create, name='answer_create'),
     re_path(r'^question/tag/(?P<slug>[-\w]+)/$', views.tag, name='tag'),
     path('chat/<int:id>/', views.profile_chat, name='profile_chat'),
+    path('my-questions/', views.my_questions, name='my_questions'),
 ]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My Questions</h1>
+    <a href="{% url 'my_questions' %}">전체</a>
+    <a href="?filter=answered">답변완료</a>
+    <a href="?filter=unanswered">답변대기</a>
+    {% for question in questions %}
+    <br />
+    <div class="question-container">
+      <p>{% for tag in question.tags.all %} #{{ tag.name }} {% endfor %}</p>
+      <h2>
+        <a href="{% url 'question_detail' question.id %}"
+          >{{ question.title }}</a
+        >
+      </h2>
+      <p>답변 {{ question.answers.count }}</p>
+      <p>{{ question.content|truncatewords:80 }}</p>
+    </div>
+    {% endfor %}
+  </body>
+</html>
