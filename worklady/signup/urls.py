@@ -22,4 +22,6 @@ urlpatterns = [
     path('send_reset_password_email/', views.send_reset_password_email, name='send_reset_password_email'),
     path('password_reset_complete/',password_reset_complete, name='password_reset_complete'),
     path('rest-auth/', include('dj_rest_auth.urls')),
+    #소셜로그인 성공 후 기본 url path 화면으로 넘어가게 설정 -> 추후 / path 사용시 메인페이지로 view바꾸기 가능
+    path('', views.socialSuccess, name="socialSuccess"),
 ]

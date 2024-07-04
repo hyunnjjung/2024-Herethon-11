@@ -218,3 +218,7 @@ def find_pw_page(request):
 
 def password_reset_complete(request):
     return render(request, 'password_reset_complete.html')
+
+#소셜로그인 성공 후 돌아갈 페이지
+def socialSuccess(request):
+    return render(request, 'signup_success.html')
