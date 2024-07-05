@@ -23,38 +23,38 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            #print("valid")
             form.save()
-            return redirect('signup_success')
+            return redirect('signup_success')  # 회원가입 성공 후 signup_success 페이지로 리다이렉트
         else:
-            #print("notvalid")
-            return render(request, 'signup.html', {'form':form})
+            # 폼이 유효하지 않은 경우, 에러와 함께 다시 signup 페이지를 렌더링합니다.
+            return render(request, 'signup1.html', {'form': form})
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form':form})
-
+    
+    return render(request, 'signup1.html', {'form': form})
 def signup_success(request):
-    return render(request, 'signup_success.html')
+    return render(request, 'signup4.html')
 
 def join_page(request):
     form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'signup1.html', {'form': form})
 
 def login_page(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']  
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)  
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home') 
             else:
-                print("로그인 실패")
+                form.add_error(None, '유효하지 않은 이메일 또는 비밀번호입니다.')
     else:
         form = LoginForm()
-    return render(request, 'Home.html', {'form': form})
+    
+    return render(request, 'login1.html', {'form': form})
 
 def main_page(request):
     form = LoginForm()
@@ -63,11 +63,11 @@ def main_page(request):
 def home_page(request):
     return render(request, 'Home.html')
 
-def privacyClause(request):
-    return render(request, 'privacyClause.html')
+def signup2_view(request):
+    return render(request, 'signup2.html')
 
-def workladyClause(request):
-    return render(request, 'workladyClause.html')
+def signup3_view(request):
+    return render(request, 'signup3.html')
 
 def findemail(request):
     return render(request, 'findEmail.html')
@@ -112,13 +112,15 @@ def send_verification_email(request):
             send_mail(
                 '[워크레디] 이메일 인증 코드',
                 f'워크레디를 찾아주셔서 감사합니다. 인증 코드는 {verification_code}입니다.',
-                'your_email@gmail.com',
+                'your_email@gmail.com',  # 발신자 이메일 설정
                 [email],
                 fail_silently=False,
             )
             return JsonResponse({'message': '인증 코드가 이메일로 전송되었습니다.'}, status=200)
-
-    return JsonResponse({'error': '잘못된 요청입니다.'}, status=400)
+        else:
+            return JsonResponse({'error': '이메일 주소를 입력해주세요.'}, status=400)
+    else:
+        return JsonResponse({'error': '잘못된 요청입니다.'}, status=400)
 
 # 이메일 인증 코드 검증 뷰
 def verify_code(request):
