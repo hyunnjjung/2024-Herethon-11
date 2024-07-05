@@ -11,25 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="qna.gen.css" />
+    <link rel="stylesheet" href="{% static 'css/qna.gen.css' %}" />
     <title>일반질문1</title>
   </head>
   <body>
     <header>
-      <div class="sidebar">
-        <button onclick="sidebar.open()">
-          <img style="width: 28px; height: 24px" src="../image/Group.png" />
-        </button>
-        <aside class="side_bar js-side_bar"></aside>
-      </div>
+      <div class="blank"></div>
       <a class="nav-main" href="../main/main.html"
         ><img
           class="header_logo"
           style="width: 96.1px; height: 26.4px"
-          src="../image/워크레디 로고 수정 (이름+로고) 2.png"
+          src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
       /></a>
       <a class="nav-MyPage" href="#none"
-        ><img src="../image/bi_person.png"
+        ><img src="{% static 'img/bi_person.png' %}"
       /></a>
     </header>
     <div
@@ -43,13 +38,85 @@
         z-index: 200;
       "
     ></div>
+    <div id="menu-trigger" class="menu-trigger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <div id="sidebar" class="sidebar">
+      <div
+        style="
+          position: fixed;
+          width: 318px;
+          height: 0;
+          top: 70px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px #5422e1 solid;
+        "
+      ></div>
+      <div class="ham-menu mt-5">
+        <div class="welcome">이수빈님, 반갑습니다.</div>
+        <div class="menu-list">
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 등록</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 보기</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >멘토 Q&A<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../qna/qna.gen.index.html">일반 질문</a></li>
+                <li><a href="../qna/qna.chat.index.html">1:1 질문</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >마이페이지<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
+                <li><a href="../my_qna/myanswer.html">답변 관리</a></li>
+                <li><a href="#">코인 사용 내역 조회</a></li>
+                <li><a href="#">코인 구매하기</a></li>
+                <li><a href="#">현금 전환하기</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div
+            style="
+              position: absolute;
+              width: 318px;
+              height: 0;
+              bottom: -28px;
+              left: -28px;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+              border: 1px #5422e1 solid;
+            "
+          ></div>
+        </div>
+        <a class="logout" href="#"
+          >로그아웃<img src="{% static 'img/mage_logout.png' %}"
+        /></a>
+      </div>
+    </div>
 
     <nav class="navbar">
       <ul>
         <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
         <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
         <li>
-          <a class="nav-QnA" href="genqna1.html">멘토 Q&A</a>
+          <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
         </li>
       </ul>
     </nav>
@@ -66,9 +133,12 @@
     ></div>
 
     <div class="qna-navbar">
-      <a class="nav-genQ" href="genqna1.html">일반 Q&A</a>
-      <img src="../image/Line 9.png" style="top: 2px; position: relative" />
-      <a class="nav-oneQ" href="chatqna1.html">1 : 1 Q&A</a>
+      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <img
+        src="{% static 'img/Line 9.png' %}"
+        style="top: 2px; position: relative"
+      />
+      <a class="nav-oneQ" href="qna.chat.index.html">1 : 1 Q&A</a>
     </div>
     <div
       style="
@@ -90,21 +160,21 @@
         placeholder="질문을 검색해 보세요!"
       />
       <button class="search-btn" type="submit">
-        <img src="../image/carbon_search.png" />
+        <img src="{% static 'img/carbon_search.png' %}" />
       </button>
     </form>
 
     <div class="middle">
       <div class="filter">
         <button class="all_filter" data-filter="*">
-          <img src="../image/Vector.png" />전체
+          <img src="{% static 'img/Vector.png' %}" />전체
         </button>
         <button class="waiting_filter" data-filter="N">
-          <img src="../image/Vector.png" />답변 대기 질문
+          <img src="{% static 'img/Vector.png' %}" />답변 대기 질문
         </button>
       </div>
       <button class="nav-question" onclick="location.href='genqna5.html'">
-        <img src="../image/ph_pencil-line.png" />질문하기
+        <img src="{% static 'img/ph_pencil-line.png' %}" />질문하기
       </button>
     </div>
 
@@ -113,6 +183,6 @@
         <!-- 게시글 목록 -->
       </div>
     </div>
-    <script src="qna.gen.js"></script>
+    <script src="{% static 'js/qna.gen.js' %}"></script>
   </body>
 </html>

@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <!-- css 파일 불러오기 -->
-    <link rel="stylesheet" type="text/css" href="find.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/find.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +18,7 @@
       <header>
         <div class="title_box">
           <div class="page_title">이메일 찾기</div>
-          <img src="../image/ph_x.png" alt="X아이콘" />
+          <img src="{% static 'img/ph_x.png' %}" alt="X아이콘" />
         </div>
         <div class="shadow_line"></div>
       </header>
@@ -44,6 +45,6 @@
       <div>가입되지 않은 이메일입니다.</div>
       <p>이름 또는 이메일 주소를 한번 더 확인해주세요.</p>
     </div>
-    <script src="find.js"></script>
+    <script src="{% static 'js/find.js' %}"></script>
   </body>
 </html>

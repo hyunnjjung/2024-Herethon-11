@@ -1,8 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewsource port"
+      content="width=device-width, initial-scale=1.0"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -11,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <title>메인페이지</title>
   </head>
   <body>
@@ -22,10 +26,10 @@
           ><img
             class="header_logo"
             style="width: 96.1px; height: 26.4px"
-            src="../image/워크레디 로고 수정 (이름+로고) 2.png"
+            src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
         /></a>
         <a class="nav-MyPage" href="#none"
-          ><img src="../image/bi_person.png"
+          ><img src="{% static 'img/bi_person.png' %}"
         /></a>
       </header>
       <div
@@ -71,7 +75,9 @@
             </ul>
             <ul class="ham-top-menu">
               <li>
-                <a href="#">멘토 Q&A<img src="../image/sidebar_down.png" /></a>
+                <a href="#"
+                  >멘토 Q&A<img src="{% static 'img/sidebar_down.png' %}"
+                /></a>
                 <ul class="ham-sub-menu">
                   <li><a href="../qna/qna.gen.index.html">일반 질문</a></li>
                   <li><a href="../qna/qna.chat.index.html">1:1 질문</a></li>
@@ -81,7 +87,7 @@
             <ul class="ham-top-menu">
               <li>
                 <a href="#"
-                  >마이페이지<img src="../image/sidebar_down.png"
+                  >마이페이지<img src="{% static 'img/sidebar_down.png' %}"
                 /></a>
                 <ul class="ham-sub-menu">
                   <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
@@ -105,7 +111,7 @@
             ></div>
           </div>
           <a class="logout" href="#"
-            >로그아웃<img src="../image/mage_logout.png"
+            >로그아웃<img src="{% static 'img/mage_logout.png' %}"
           /></a>
         </div>
       </div>
@@ -133,9 +139,9 @@
 
       <div class="blank"></div>
       <section class="banner">
-        <img class="banner_img" src="../image/Rectangle 507.png" />
+        <img class="banner_img" src="{% static 'img/Rectangle 507.png' %}" />
         <div>
-          <img class="banner_logo" src="../image/banner_logo.png" />
+          <img class="banner_logo" src="{% static 'img/banner_logo.png' %}" />
           <div class="banner_headline">
             여성들이 성장할 수 있도록 돕는 <br />커리어 네트워킹 플랫폼
           </div>
@@ -147,14 +153,14 @@
           <div class="mentor_title">이달의 멘토</div>
           <a class="nav-ViewProfile" href="#none">
             <div>더보기</div>
-            <img src="../image/화살표.png" />
+            <img src="{% static 'img/화살표.png' %}" />
           </a>
         </div>
         <div class="mentor-card-container">
           <div class="mentor-card">
             <div class="mentor-card-inner">
               <img
-                src="../image/mentor김사자.png"
+                src="{% static 'img/mentor김사자.png' %}"
                 style="width: 93px; height: 104px"
                 class="mentor-img"
               />
@@ -164,8 +170,14 @@
                 <div class="mentor-tags"># UI # UX # UX기획</div>
                 <div class="mentor-rating">
                   평균 별점
-                  <img src="../image/별점1.png" class="rating-stars-1" />
-                  <img src="../image/별점0.5.png" class="rating-stars-0.5" />
+                  <img
+                    src="{% static 'img/별점1.png' %}"
+                    class="rating-stars-1"
+                  />
+                  <img
+                    src="{% static 'img/별점0.5.png' %}"
+                    class="rating-stars-0.5"
+                  />
                   <div class="rating-score"></div>
                 </div>
               </div>
@@ -174,7 +186,7 @@
           <div class="mentor-card">
             <div class="mentor-card-inner">
               <img
-                src="../image/mentor이수빈.png"
+                src="{% static 'img/mentor이수빈.png' %}"
                 style="width: 93px; height: 104px"
                 class="mentor-img"
               />
@@ -184,8 +196,14 @@
                 <div class="mentor-tags"># 콘텐츠 기획 # 서비스</div>
                 <div class="mentor-rating">
                   평균 별점
-                  <img src="../image/별점1.png" class="rating-stars-1" />
-                  <img src="../image/별점0.5.png" class="rating-stars-0.5" />
+                  <img
+                    src="{% static 'img/별점1.png' %}"
+                    class="rating-stars-1"
+                  />
+                  <img
+                    src="{% static 'img/별점0.5.png' %}"
+                    class="rating-stars-0.5"
+                  />
                   <div class="rating-score"></div>
                 </div>
               </div>
@@ -199,7 +217,7 @@
           <div class="latestQnA_title">멘토 Q&A 최신 질문</div>
           <a class="nav-QnA" href="../qna/qna.gen.index.html">
             <div>더보기</div>
-            <img src="../image/화살표.png" />
+            <img src="{% static 'img/화살표.png' %}" />
           </a>
         </div>
         <div class="questions-container">
@@ -221,7 +239,7 @@
           </div>
         </div>
       </section>
-      <script src="main.js"></script>
+      <script src="{% static 'js/main.js' %}"></script>
     </div>
   </body>
 </html>
