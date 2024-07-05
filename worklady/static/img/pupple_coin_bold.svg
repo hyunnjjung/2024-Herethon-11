@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="akar-icons:coin" clip-path="url(#clip0_374_4294)">
+<g id="Group" filter="url(#filter0_d_374_4294)">
+<path id="Vector" d="M16.3587 29.1276C9.36312 29.1276 3.69205 23.1581 3.69205 15.7943C3.69205 8.43047 9.36312 2.46094 16.3587 2.46094C23.3543 2.46094 29.0254 8.43047 29.0254 15.7943C29.0254 23.1581 23.3543 29.1276 16.3587 29.1276Z" stroke="#5422E1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M19.6914 11.5276C18.8428 10.8395 17.784 10.463 16.6914 10.4609C13.9301 10.4609 11.6914 12.8476 11.6914 15.7943C11.6914 18.7409 13.9301 21.1276 16.6914 21.1276C17.8167 21.1276 18.8554 20.7303 19.6914 20.0609" stroke="#5422E1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_374_4294" x="0.191406" y="0.960938" width="32.334" height="33.666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="1"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_374_4294"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_374_4294" result="shape"/>
+</filter>
+<clipPath id="clip0_374_4294">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

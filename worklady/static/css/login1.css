@@ -1,0 +1,172 @@
+* {
+  /* 전체 폰트 적용*/
+  font-family: "inter";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_name {
+  width: 195px;
+  height: 67px;
+  flex-shrink: 0;
+  margin-top: 159.98px;
+}
+
+.logo_image {
+  width: 58px;
+  height: 60px;
+  flex-shrink: 0;
+  margin-top: 14px;
+}
+
+.login_box {
+  width: 247px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 2px solid #dadada;
+  background: #fff;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input_box {
+  height: 40px;
+  border: none;
+  background-color: transparent;
+}
+
+.middle_line {
+  width: 247px;
+  height: 1px;
+  background: #dadada;
+}
+
+input[type="text"],
+input[type="password"] {
+  color: rgba(138, 136, 136, 0.8);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: transparent; /* 배경 투명하게 */
+  margin-left: 9px;
+}
+
+input:focus {
+  outline: none; /* 클릭 시 테두리 없앰 */
+}
+
+.submit_box {
+  width: 247px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 2px solid #5422e1;
+  background: #5422e1;
+  margin-top: 29px;
+  box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+input[type="submit"] {
+  background-color: transparent; /* 배경 투명하게 */
+  width: 247px;
+  height: 38px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #6c6c6c;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 21px;
+}
+
+.V_line {
+  color: #8a8888;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0px 9px 0px 7px;
+}
+
+a:link,
+a:visited {
+  color: #6c6c6c;
+  text-decoration: none;
+}
+
+.easy_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 91px;
+}
+
+.easy_title .text {
+  color: #6c6c6c;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0px 6px;
+}
+
+hr {
+  width: 70px;
+  height: 1px;
+  background: #8a8888;
+  border: none;
+}
+
+.easy_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 260px;
+  margin-top: 21px;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #6c6c6c;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.social img {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  margin-bottom: 6px;
+}

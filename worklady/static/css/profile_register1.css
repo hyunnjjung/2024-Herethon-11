@@ -1,0 +1,232 @@
+* {
+  /* 전체 폰트 적용*/
+  font-family: "inter";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: fixed;
+}
+
+.time_bar {
+  background-color: #fff;
+}
+
+.title_box {
+  width: 393px;
+  height: 63px;
+  flex-shrink: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_bar img {
+  width: 28px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 96.1px;
+  height: 26.401px;
+  flex-shrink: 0;
+  margin: 0px 94.04px 0px 93px;
+}
+
+.mypage img {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+.subtitle_box {
+  width: 100%;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+
+.menu {
+  width: 131px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #fff;
+  color: #8a8888;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.menu.active {
+  color: #5422e1;
+  font-weight: 700;
+  border-bottom: 1px solid #5422e1;
+}
+
+.puple_line {
+  width: 131px;
+  height: 1px;
+  color: #5422e1;
+}
+
+.shadow_line {
+  width: 393px;
+  height: 1px;
+  background: rgba(138, 136, 136, 0.38);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+/* 여기까지 고정 헤더 */
+
+.main {
+  margin-top: 171px;
+  width: 393px;
+}
+
+.introduce {
+  padding: 22px 15px 22px 25px;
+}
+
+.title {
+  color: #000;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 122.222% */
+  letter-spacing: -0.408px;
+}
+
+.intro_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+}
+
+.profile_img {
+  width: 147px;
+  height: 157px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: url(../img/subin_profile.png) lightgray 50% / cover no-repeat;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-right: 20px;
+}
+
+.username {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 122.222% */
+  letter-spacing: -0.408px;
+}
+
+.edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 81px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1.5px solid #5422e1;
+  background: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  color: #5422e1;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+  letter-spacing: -0.408px;
+  padding: 0px 2px;
+  margin-left: 9.18px;
+}
+
+.edit img {
+  width: 21px;
+  height: 21px;
+  margin-bottom: 1px;
+}
+
+.job {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 129.412% */
+  letter-spacing: -0.408px;
+  margin-top: 5px;
+}
+
+.education,
+.company {
+  color: #000;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.408px;
+  margin-top: 3px;
+}
+
+.puple_shadow_line {
+  width: 393px;
+  height: 1px;
+  background: rgba(84, 34, 225, 0.38);
+  box-shadow: 0px 2px 4px 0px rgba(109, 80, 208, 0.25);
+}
+
+.text {
+  padding: 0px 28px;
+}
+
+.text .title {
+  margin-top: 17px;
+}
+
+.hashtag {
+  color: #5422e1;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 183.333% */
+  letter-spacing: -0.408px;
+  margin-top: 5px;
+}
+
+.intro_myself,
+.career {
+  color: #000;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 183.333% */
+  letter-spacing: -0.408px;
+  margin-top: 5px;
+}

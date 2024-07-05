@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- css 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/mypage1.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>mypage1_page</title>
+    <!-- 모바일 크기 적용 -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: 852px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="time_bar">
+          <img src="../../static/img/time_bar.svg" alt="최상단바" />
+        </div>
+        <div class="title_box">
+          <div class="menu_bar">
+            <img src="../../static/img/menu.svg" alt="메뉴바" />
+          </div>
+          <div class="logo">
+            <img src="../../static/img/logo_full.png" alt="로고" />
+          </div>
+          <div class="mypage">
+            <img src="../../static/img/person.svg" alt="마이페이지" />
+          </div>
+        </div>
+        <div class="shadow_line"></div>
+        <div class="subtitle_box">
+          <button class="menu" id="menu1">프로필 등록</button>
+          <button class="menu" id="menu2">프로필 확인</button>
+          <button class="menu" id="menu3">멘토 Q&A</button>
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="main">
+        <div class="introduce">
+          <div class="profile_img"></div>
+          <div class="information">
+            <div class="username">이수빈</div>
+            <div class="email">likelion@example.com</div>
+            <button class="mycoin">MY 코인</button>
+          </div>
+        </div>
+        <div class="page_box">
+          <div class="title">질문</div>
+          <div class="indiv_page">
+            <div class="page_move">
+              <img class="icon" src="../../static/img/my_question.svg" alt="my질문기록" />
+              <span>MY 질문 기록</span>
+              <img class="arrow_back" src="../../static/img/arrow-back.svg" alt="바로가기아이콘" />
+            </div>
+            <div class="page_move">
+              <img class="icon" src="../../static/img/comment.svg" alt="my질문기록" />
+              <span>답변 관리</span>
+              <img class="arrow_back" src="../../static/img/arrow-back.svg" alt="바로가기아이콘" />
+            </div>
+          </div>
+        </div>
+        <div class="puple_shadow_line"></div>
+        <div class="page_box">
+          <div class="title">코인</div>
+          <div class="indiv_page">
+            <div class="page_move">
+              <img class="icon" src="../../static/img/coin.svg" alt="my질문기록" />
+              <span>코인 사용 내역 조회</span>
+              <img class="arrow_back" src="../../static/img/arrow-back.svg" alt="바로가기아이콘" />
+            </div>
+            <div class="page_move">
+              <img class="icon" src="../../static/img/coin.svg" alt="my질문기록" />
+              <span>코인 구매하기</span>
+              <img class="arrow_back" src="../../static/img/arrow-back.svg" alt="바로가기아이콘" />
+            </div>
+          </div>
+        </div>
+        <div class="puple_shadow_line"></div>
+        <div class="page_box">
+          <div class="title">기타</div>
+          <div class="indiv_page">
+            <div class="page_move">
+              <img class="icon" src="../../static/img/clip.svg" alt="my질문기록" />
+              <span>서비스 이용약관</span>
+              <img class="arrow_back" src="../../static/img/arrow-back.svg" alt="바로가기아이콘" />
+            </div>
+            <div class="page_move">
+              <img class="icon" src="../../static/img/logout.svg" alt="my질문기록" />
+              <span>로그아웃</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <script src="../../static/js/profile_register1.js"></script>
+  </body>
+</html>

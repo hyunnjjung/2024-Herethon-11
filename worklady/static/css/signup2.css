@@ -1,0 +1,72 @@
+* {
+  /* 전체 폰트 적용*/
+  font-family: "inter";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: fixed;
+}
+
+.title_box {
+  width: 393px;
+  height: 109px;
+  flex-shrink: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.page_title {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 110% */
+  letter-spacing: -0.408px;
+  position: absolute;
+  left: 94.94px;
+  top: 68px;
+}
+
+.title_box img {
+  width: 27.929px;
+  height: 28px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 26.58px;
+  top: 63px;
+}
+
+.shadow_line {
+  width: 393px;
+  height: 1px;
+  background: rgba(138, 136, 136, 0.38);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+/* 여기까지 고정 헤더 */
+
+.terms {
+  margin-top: 133px;
+  width: 329px;
+  height: 935px;
+  flex-shrink: 0;
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+pre {
+  margin: 0;
+}
