@@ -1,14 +1,14 @@
-from myprofile.models import Profile
+
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 from signup.models import CustomUser
+from myprofile.models import Profile
 
 
 class MentorProfile(models.Model):
-    user = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     # Add other mentor-specific fields here
-
 
 class Chat_Question(models.Model):
     question_text = models.TextField()
@@ -17,6 +17,7 @@ class Chat_Question(models.Model):
     is_accepted = models.BooleanField(default=False)
     is_answered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_declined = models.BooleanField(default=False)
 
     def __str__(self):
         return f'[{self.id}]'
@@ -34,6 +35,7 @@ class Evaluation(models.Model):
     answer = models.OneToOneField(Chat_Answer, on_delete=models.CASCADE)
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+
 
 
 class Tag(models.Model):
