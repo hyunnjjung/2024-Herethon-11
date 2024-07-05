@@ -94,7 +94,7 @@
           </div>
           {% for profile in profiles%}
           <div class="intro_info">
-            <div class="profile_img"></div>
+            <div class="profile_img"><img src="{{ profile.my_image.url }}" alt="Profile Image" /></div>
             <div class="infomation">
               <div class="username" onclick=location.href="{% url 'profile_detail' profile.id %}">
                 <!--이름 누르면 하나의 페이지 보기로 이동-->
@@ -104,7 +104,7 @@
               <div class="mycategory">{{ profile.current_job }}</div>
               <div class="hashtag">{{ profile.interest }}</div>
               {% for education in profile.education_set.all %}
-              <div class="education">학력 | {{education.school}}</div>
+              <div class="education">학력 | {{education.school}} {{education.grade}}</div>
               {% endfor %}
               {% for career in profile.career_set.all %}
               <div class="company">{{ career.category }} | {{ career.department }}</div>

@@ -1,32 +1,145 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{ profile_form.as_p }}
-                <hr/>
-                <h3>Education</h3>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_register2.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>profile_register2_page</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="time_bar">
+          <img src="{% static 'img/time_bar.svg' %}" alt="최상단바" />
+        </div>
+        <div class="title_box">
+          <div class="menu_bar">
+            <img src="{% static 'img/menu.svg' %}" alt="메뉴바" />
+          </div>
+          <div class="logo">
+            <img src="{% static 'img/logo_full.png' %}" alt="로고" />
+          </div>
+          <div class="mypage">
+            <img src="{% static  'img/person.svg' %}" alt="마이페이지" />
+          </div>
+        </div>
+        <div class="shadow_line"></div>
+        <div class="subtitle_box">
+          <button class="menu" id="menu1">프로필 등록</button>
+          <button class="menu" id="menu2">프로필 확인</button>
+          <button class="menu" id="menu3">멘토 Q&A</button>
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="main">
+        <div class="head_title">프로필을 수정합니다.</div>
+        <div class="profile_box">
+          <form class="profile_form" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="uploda_group">
+              <label for="profile_image" class="image_upload">
+                <img
+                  id="profile_preview"
+                  src="{{ profile_form.my_image.url }}"
+                  alt="프로필 사진"
+                />
+                {{ profile_form.my_image }}
+                <div class="essential">* 필수 입력 항목입니다.</div>
+                <span>사진 수정</span>
+              </label>
+            </div>
+            <div class="form_group">
+              <div class="essential">* 필수 입력 항목입니다.</div>
+              {{profile_form.short_intro}}
+            </div>
+            <div class="form_group">
+              <div class="title">학력</div>
+              <div class="select_box">
                 {% for form in education_forms %}
-                    {{ form.as_p }}
+                    {{ form.school }} {{form.grade}}
                 {% endfor %}
-                <h3>Career</h3>
+              </div>
+              <button type="button" class="add_field" data-type="education">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">경력</div>
+              <div class="select_box">
                 {% for form in career_forms %}
-                    {{ form.as_p }}
+                    {{ form.department }}{{ form.category }}
                 {% endfor %}
-                <h3>Certificates</h3>
-                {% for form in certificate_forms %}
-                    {{ form.as_p }}
-                {% endfor %}
-                <input type="submit" value="수정하기">
-            </form>      
-        </div> <br>
-</body>
+              </div>
+              <button type="button" class="add_field" data-type="experience">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">자격증</div>
+              {% for form in certificate_forms %}
+              <div class="select_box2">
+                {{ form.certificate }}
+              </div>
+              {% endfor %}
+              <button type="button" class="add_field" data-type="certification">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">
+                대표(관심) 분야
+                <div class="essential">* 필수 입력 항목입니다.</div>
+              </div>
+              {{profile_form.interest}}
+            </div>
+            <div class="form_group">
+              <div class="title">
+                현재(관심) 직무
+                <div class="essential">* 필수 입력 항목입니다.</div>
+              </div>
+              {{profile_form.current_job}}
+            </div>
+            <div class="form_group">
+              <div class="title">소개</div>
+              {{profile_form.introduce}}
+            </div>
+            <div class="form_group">
+              <button type="submit" class="submit_button">수정하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+    <script src="{% static 'js/profile_register2.js' %}"></script>
+  </body>
 </html>
