@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from coin.models import Coin
+from coin.models import Coin, CoinTransaction
 from signup.models import CustomUser
 
 from .forms import QuestionForm, AnswerForm, EvaluationForm
@@ -21,7 +21,7 @@ def chat_view(request, mentor_id):
         if request.user == mentor.user:
             # Mentor answering the most recent unanswered question
             if 'answer_question' in request.POST:
-                question = questions.filter(is_answered=False).first()
+                question = questions.filter(is_answered=False).last()
                 if question:
                     a_form = AnswerForm(request.POST)
                     if a_form.is_valid():
@@ -30,6 +30,16 @@ def chat_view(request, mentor_id):
                         answer.save()
                         question.is_answered = True
                         question.save()
+
+                        user_coin, created = Coin.objects.get_or_create(user=request.user)
+                        user_coin.amount += 7
+                        user_coin.save()
+
+                        CoinTransaction.objects.create(
+                            user=request.user,
+                            transaction_type='답변',
+                            amount=7,
+                        )
                         return redirect('chat_view', mentor_id=mentor_id)
 
             # Accepting or rejecting a question
@@ -43,7 +53,7 @@ def chat_view(request, mentor_id):
             elif 'reject_question' in request.POST:
                 question_id = request.POST.get('question_id')
                 question = get_object_or_404(Chat_Question, id=question_id)
-                question.is_accepted = False
+                question.is_declined = True
                 question.save()
                 return redirect('chat_view', mentor_id=mentor_id)
 
@@ -51,12 +61,24 @@ def chat_view(request, mentor_id):
             # User asking a question
             if 'ask_question' in request.POST:
                 q_form = QuestionForm(request.POST)
+                user_coin = Coin.objects.get(user=request.user)
                 if q_form.is_valid():
+
                     question = q_form.save(commit=False)
                     question.asker = request.user
                     question.mentor = mentor
-                    question.is_accepted = True  # Automatically accept the question
+                    question.is_accepted = False  # Automatically accept the question
                     question.save()
+
+                    user_coin.amount -= 10
+                    user_coin.save()
+
+                    CoinTransaction.objects.create(
+                        user=request.user,
+                        transaction_type='질문',
+                        amount=-10,
+                    )
+
                     return redirect('chat_view', mentor_id=mentor_id)
 
             # Handling evaluation
@@ -84,6 +106,17 @@ def chat_view(request, mentor_id):
         'e_form': e_form,
     }
     return render(request, 'question/chat.html', context)
+
+@login_required
+def my_answers_view(request, mentor_id):
+    mentor = get_object_or_404(MentorProfile, id=mentor_id)
+    questions = Chat_Question.objects.filter(mentor=mentor).order_by('created_at')
+
+    context = {
+        'mentor': mentor,
+        'questions': questions,
+    }
+    return render(request, 'question/my_answers.html', context)
 
 
 @login_required

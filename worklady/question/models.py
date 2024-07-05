@@ -17,6 +17,7 @@ class Chat_Question(models.Model):
     is_accepted = models.BooleanField(default=False)
     is_answered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_declined = models.BooleanField(default=False)
 
     def __str__(self):
         return f'[{self.id}]'

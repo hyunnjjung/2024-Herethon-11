@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{ mentor.user }}의 답변 관리</h1>
+    <div>
+      {% for question in questions %}
+      <a href="{% url 'chat_view' question.mentor.id %}">
+        <p>{{ question.asker }}</p>
+        <p>{{ question.question_text|truncatewords:10 }}</p>
+        {% if question.is_accepted %}
+        <p>답변한 질문</p>
+        {% elif question.is_declined %} 거절한 질문 {% else %}
+        <p>답변 대기 질문</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </body>
+</html>
