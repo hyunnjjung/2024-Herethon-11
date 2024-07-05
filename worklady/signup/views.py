@@ -223,4 +223,7 @@ def password_reset_complete(request):
 
 #소셜로그인 성공 후 돌아갈 페이지
 def socialSuccess(request):
-    return render(request, 'signup4.html')
+    return render(request, 'coin4.html')
+
+def mypage(request):
+    return render(request, 'mypage1.html')

@@ -23,5 +23,6 @@ urlpatterns = [
     path('rest-auth/', include('dj_rest_auth.urls')),
     #소셜로그인 성공 후 기본 url path 화면으로 넘어가게 설정 -> 추후 / path 사용시 메인페이지로 view바꾸기 가능
     path('', views.socialSuccess, name="socialSuccess"),
+    path('mypage/', views.mypage, name='mypage'),
     
 ]

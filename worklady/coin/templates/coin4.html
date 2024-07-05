@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- CSS 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/coin4.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <title>coin4_page</title>
+    <!-- 모바일 크기 적용 -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: 852px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="title_box">
+          <img src="{% static 'img/logo_full' %}" alt="로고" />
+          <img src="{% static 'img/x.png' %}" alt="X아이콘" />
+        </img>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="logo_image">
+        <img src="{% static 'img/logo_image.png' %}" alt="로고_아이콘만" />
+      </div>
+      <div class="text_box">
+        <div class="text">
+          <span>결제가 완료되었어요!</span>
+          워크레디와 함께해주셔서 감사합니다 :&#41;
+        </div>
+      </div>
+      <button class="submit_box" onclick="goToMain()">
+        <input class="input-submit" type="submit" value="MY코인으로 돌아가기" />
+      </button>
+    </article>
+    <script>
+      function goToMain() {
+        window.location.href = "{% url 'main' %}";
+      }
+    </script>
+  </body>
+</html>

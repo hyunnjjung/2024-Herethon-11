@@ -1,0 +1,111 @@
+* {
+  /* 전체 폰트 적용*/
+  font-family: "inter";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: fixed;
+}
+
+.title_box {
+  width: 393px;
+  height: 109px;
+  flex-shrink: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.page_title {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 110% */
+  letter-spacing: -0.408px;
+  margin: 68px 0px 18px 159.94px;
+}
+
+.title_box img {
+  width: 27.929px;
+  height: 28px;
+  flex-shrink: 0;
+  position: absolute;
+  right: 26.58px;
+  top: 63px;
+}
+
+.shadow_line {
+  width: 393px;
+  height: 1px;
+  background: rgba(138, 136, 136, 0.38);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+/* 여기까지 고정 헤더 */
+
+.logo_image {
+  margin-top: 279px;
+}
+
+.text_box img {
+  width: 121px;
+  height: 39px;
+  flex-shrink: 0;
+}
+
+.text span {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 50px; /* 185.185% */
+  letter-spacing: -0.408px;
+}
+
+.text {
+  color: #000;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 183.333% */
+  letter-spacing: -0.408px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit_box {
+  width: 339px;
+  height: 42px;
+  border-radius: 5px;
+  border: 2px solid #5422e1;
+  background: #5422e1;
+  box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 57px;
+}
+
+input[type="submit"] {
+  background-color: transparent; /* 배경 투명하게 */
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
