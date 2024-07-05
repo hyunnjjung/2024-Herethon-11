@@ -26,7 +26,9 @@ urlpatterns = [
     path('', include('myprofile.urls')),
     path('', include('coin.urls')),
     path("", include("question.urls")),
+    path("", include('myprofile.urls')),
     path('authaccounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
