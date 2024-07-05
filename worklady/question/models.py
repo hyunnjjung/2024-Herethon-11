@@ -1,3 +1,4 @@
+from myprofile.models import Profile
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
@@ -5,8 +6,9 @@ from signup.models import CustomUser
 
 
 class MentorProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(Profile, on_delete=models.CASCADE)
     # Add other mentor-specific fields here
+
 
 class Chat_Question(models.Model):
     question_text = models.TextField()
