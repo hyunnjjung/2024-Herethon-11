@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <!-- CSS 파일 불러오기 -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/signup4.css' %}" />
@@ -34,88 +34,35 @@
         align-items: center;
         justify-content: center;
       }
-      
-      .title_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        border-bottom: 1px solid #ccc;
-        width: 100%;
-      }
-      
-      .page_title {
-        font-size: 24px;
-        font-weight: bold;
-      }
-      
-      .shadow_line {
-        width: 100%;
-        height: 1px;
-        background-color: #ccc;
-      }
-      
-      .logo_image {
-        margin-top: 20px;
-      }
-      
-      .logo_image img {
-        width: 150px; /* Adjust as necessary */
-        height: auto;
-      }
-      
-      .text_box {
-        text-align: center;
-        margin-top: 20px;
-      }
-      
-      .text {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-      
-      .submit_box {
-        margin-top: 20px;
-      }
-      
-      .input-submit {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-      
-      .input-submit:hover {
-        background-color: #0056b3;
-      }
     </style>
-</head>
-<body>
-<article>
-  <header>
-    <div class="title_box">
-      <div class="page_title">회원가입</div>
-      <img src="{% static 'img/x.png' %}" alt="X아이콘" />
-    </div>
-    <div class="shadow_line"></div>
-  </header>
-  <div class="logo_image">
-    <img src="{% static 'img/logo_image.png' %}" alt="로고_아이콘만" />
-  </div>
-  <div class="text_box">
-    <div class="text">
-      <img src="{% static 'img/logo_name.png' %}" alt="로고_이름만" />
-      에
-    </div>
-    <div class="text">오신 것을 환영합니다!</div>
-  </div>
-  <div class="submit_box">
-    <input class="input-submit" type="submit" value="다음" />
-  </div>
-</article>
-</body>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="title_box">
+          <div class="page_title">회원가입</div>
+          <img src="{% static 'img/x.png' %}" alt="X아이콘" />
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="logo_image">
+        <img src="{% static 'img/logo_image.png' %}" alt="로고_아이콘만" />
+      </div>
+      <div class="text_box">
+        <div class="text">
+          <img src="{% static 'img/logo_name.png' %}" alt="로고_이름만" />
+          에
+        </div>
+        <div class="text">오신 것을 환영합니다!</div>
+      </div>
+      <button class="submit_box" onclick="goToMain()">
+        <input class="input-submit" type="submit" value="다음" />
+      </button>
+    </article>
+    <script>
+      function goToMain() {
+        window.location.href = "{% url 'main' %}";
+      }
+    </script>
+  </body>
 </html>

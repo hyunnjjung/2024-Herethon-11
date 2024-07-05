@@ -9,7 +9,6 @@ urlpatterns = [
     path('signup/success', signup_success, name = 'signup_success'),
     path('join/',join_page, name='join'),
     path('login/',login_page, name='login'),
-    path('main/', main_page, name='main'),
     path('home/', home_page, name='home'),
     path('signup2/', views.signup2_view, name='signup2'),
     path('signup3/', views.signup3_view, name='signup3'),

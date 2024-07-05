@@ -24,7 +24,7 @@ def user_detail(request):
     profile = get_object_or_404(Profile, user=request.user)
     profile = Profile.objects.prefetch_related('education_set', 'career_set', 'certificate_set').get(user=request.user)
 
-    return render(request, "user_detail.html", {
+    return render(request, "profile_register1.html", {
         "profile": profile,
         "educations": profile.education_set.all(),
         "careers": profile.career_set.all(),
@@ -133,3 +133,6 @@ def keyword_list2(request, interest1, interest2):
     ).distinct().order_by('-created_at')
     
     return render(request, "profile_list.html", {'profiles': profiles})
+
+def main(request):
+    return render(request, 'main_page.html')

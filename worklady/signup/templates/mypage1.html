@@ -9,19 +9,19 @@
     <div class="information">
       <div class="username">이수빈</div>
       <div class="email">likelion@example.com</div>
-      <button class="mycoin">MY 코인</button>
+      <button class="mycoin" OnClick=location.href="{% url 'coin_history' %}">MY 코인</a></button>
     </div>
   </div>
   <div class="page_box">
     <div class="title">질문</div>
     <div class="indiv_page">
-      <div class="page_move">
+      <div class="page_move" OnClick=location.href="{% url 'coin_history' %}">
         <img class="icon" src="{% static 'img/my_question.svg' %}" alt="my질문기록" />
         <span>MY 질문 기록</span>
         <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
       </div>
-      <div class="page_move">
-        <img class="icon" src="{% static 'img/comment.svg' %}" alt="my질문기록" />
+      <div class="page_move" OnClick=location.href="{% url 'coin_history' %}">
+        <img class="icon" src="{% static 'img/comment.svg' %}" alt="답변 관리" />
         <span>답변 관리</span>
         <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
       </div>
@@ -31,13 +31,13 @@
   <div class="page_box">
     <div class="title">코인</div>
     <div class="indiv_page">
-      <div class="page_move">
-        <img class="icon" src="{% static 'img/coin.svg' %}" alt="my질문기록" />
+      <div class="page_move" OnClick=location.href="{% url 'coin_history' %}">
+        <img class="icon" src="{% static 'img/coin.svg' %}" alt="코인 사용 내역 조회" />
         <span>코인 사용 내역 조회</span>
         <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
       </div>
-      <div class="page_move">
-        <img class="icon" src="{% static 'img/coin.svg' %}" alt="my질문기록" />
+      <div class="page_move" OnClick=location.href="{% url 'coin_history' %}">
+        <img class="icon" src="{% static 'img/coin.svg' %}" alt="코인 구매" />
         <span>코인 구매하기</span>
         <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
       </div>
@@ -48,12 +48,12 @@
     <div class="title">기타</div>
     <div class="indiv_page">
       <div class="page_move">
-        <img class="icon" src="{% static 'img/clip.svg' %}" alt="my질문기록" />
+        <img class="icon" src="{% static 'img/clip.svg' %}" alt="서비스 이용약관" />
         <span>서비스 이용약관</span>
         <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
       </div>
       <div class="page_move">
-        <img class="icon" src="{% static 'img/logout.svg' %}" alt="my질문기록" />
+        <img class="icon" src="{% static 'img/logout.svg' %}" alt="로그아웃" />
         <span>로그아웃</span>
       </div>
     </div>
