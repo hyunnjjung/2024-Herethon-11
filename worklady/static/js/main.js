@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         subMenu.classList.toggle("active");
         if (subMenu.classList.contains("active")) {
           subMenu.style.display = "block";
-          img.src = "../image/sidebar_up.png"; // 이미지 변경
+          img.src = "static/img/sidebar_up.png"; // 이미지 변경
         } else {
           subMenu.style.display = "none";
-          img.src = "../image/sidebar_down.png"; // 원래 이미지로 복구
+          img.src = "static/img/sidebar_down.png"; // 원래 이미지로 복구
         }
       }
     });

@@ -1,0 +1,245 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewsource port"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>메인페이지</title>
+  </head>
+  <body>
+    <div class="height">
+      <header>
+        <div class="blank"></div>
+        <a class="nav-main" href="../main/main.html"
+          ><img
+            class="header_logo"
+            style="width: 96.1px; height: 26.4px"
+            src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
+        /></a>
+        <a class="nav-MyPage" href="#none"
+          ><img src="{% static 'img/bi_person.png' %}"
+        /></a>
+      </header>
+      <div
+        style="
+          width: 393px;
+          height: 0;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px rgba(138, 136, 136, 0.38) solid;
+          position: fixed;
+          top: 70px;
+          z-index: 200;
+        "
+      ></div>
+      <div id="menu-trigger" class="menu-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div id="overlay" class="overlay"></div>
+      <div id="sidebar" class="sidebar">
+        <div
+          style="
+            position: fixed;
+            width: 318px;
+            height: 0;
+            top: 70px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            border: 1px #5422e1 solid;
+          "
+        ></div>
+        <div class="ham-menu mt-5">
+          <div class="welcome">이수빈님, 반갑습니다.</div>
+          <div class="menu-list">
+            <ul class="ham-top-menu">
+              <li>
+                <a href="#">프로필 등록</a>
+              </li>
+            </ul>
+            <ul class="ham-top-menu">
+              <li>
+                <a href="#">프로필 보기</a>
+              </li>
+            </ul>
+            <ul class="ham-top-menu">
+              <li>
+                <a href="#"
+                  >멘토 Q&A<img src="{% static 'img/sidebar_down.png' %}"
+                /></a>
+                <ul class="ham-sub-menu">
+                  <li><a href="../qna/qna.gen.index.html">일반 질문</a></li>
+                  <li><a href="../qna/qna.chat.index.html">1:1 질문</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="ham-top-menu">
+              <li>
+                <a href="#"
+                  >마이페이지<img src="{% static 'img/sidebar_down.png' %}"
+                /></a>
+                <ul class="ham-sub-menu">
+                  <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
+                  <li><a href="../my_qna/myanswer.html">답변 관리</a></li>
+                  <li><a href="#">코인 사용 내역 조회</a></li>
+                  <li><a href="#">코인 구매하기</a></li>
+                  <li><a href="#">현금 전환하기</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div
+              style="
+                position: absolute;
+                width: 318px;
+                height: 0;
+                bottom: -28px;
+                left: -28px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+                border: 1px #5422e1 solid;
+              "
+            ></div>
+          </div>
+          <a class="logout" href="#"
+            >로그아웃<img src="{% static 'img/mage_logout.png' %}"
+          /></a>
+        </div>
+      </div>
+
+      <nav class="navbar">
+        <ul>
+          <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+          <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+          <li>
+            <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
+          </li>
+        </ul>
+      </nav>
+      <div
+        style="
+          width: 393px;
+          height: 0;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px rgba(138, 136, 136, 0.38) solid;
+          position: fixed;
+          top: 125px;
+          z-index: 200;
+        "
+      ></div>
+
+      <div class="blank"></div>
+      <section class="banner">
+        <img class="banner_img" src="{% static 'img/Rectangle 507.png' %}" />
+        <div>
+          <img class="banner_logo" src="{% static 'img/banner_logo.png' %}" />
+          <div class="banner_headline">
+            여성들이 성장할 수 있도록 돕는 <br />커리어 네트워킹 플랫폼
+          </div>
+        </div>
+      </section>
+
+      <section class="mentorOfMonth">
+        <div>
+          <div class="mentor_title">이달의 멘토</div>
+          <a class="nav-ViewProfile" href="#none">
+            <div>더보기</div>
+            <img src="{% static 'img/화살표.png' %}" />
+          </a>
+        </div>
+        <div class="mentor-card-container">
+          <div class="mentor-card">
+            <div class="mentor-card-inner">
+              <img
+                src="{% static 'img/mentor김사자.png' %}"
+                style="width: 93px; height: 104px"
+                class="mentor-img"
+              />
+              <div class="mentor-info">
+                <div class="mentor-name">김사자</div>
+                <div class="mentor-field">UX</div>
+                <div class="mentor-tags"># UI # UX # UX기획</div>
+                <div class="mentor-rating">
+                  평균 별점&nbsp
+                  <img
+                    src="{% static 'img/별점1.png' %}"
+                    class="rating-stars-1"
+                  />
+                  <img
+                    src="{% static 'img/별점0.5.png' %}"
+                    class="rating-stars-0.5"
+                  />
+                  <div class="rating-score"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mentor-card">
+            <div class="mentor-card-inner">
+              <img
+                src="{% static 'img/mentor이수빈.png' %}"
+                style="width: 93px; height: 104px"
+                class="mentor-img"
+              />
+              <div class="mentor-info">
+                <div class="mentor-name">이수빈</div>
+                <div class="mentor-field">서비스기획</div>
+                <div class="mentor-tags"># 콘텐츠 기획 # 서비스</div>
+                <div class="mentor-rating">
+                  평균 별점
+                  <img
+                    src="{% static 'img/별점1.png' %}"
+                    class="rating-stars-1"
+                  />
+                  <img
+                    src="{% static 'img/별점0.5.png' %}"
+                    class="rating-stars-0.5"
+                  />
+                  <div class="rating-score"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="latestQnA">
+        <div>
+          <div class="latestQnA_title">멘토 Q&A 최신 질문</div>
+          <a class="nav-QnA" href="../qna/qna.gen.index.html">
+            <div>더보기</div>
+            <img src="{% static 'img/화살표.png' %}" />
+          </a>
+        </div>
+        <div class="questions-container">
+          <div class="question-card">
+            <div class="question-inner">
+              <div class="question-tags"># 유통 # 무역 # 구매</div>
+              <div class="question-title">
+                물류 직무, 여성은 잘 뽑지 않나요?
+              </div>
+              <div class="question-answers">답변 2</div>
+            </div>
+          </div>
+          <div class="question-card">
+            <div class="question-inner">
+              <div class="question-tags"># 서비스기획 # UX # UI</div>
+              <div class="question-title">UX 취업, 도메인이 중요할까요?</div>
+              <div class="question-answers">답변 1</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="{% static 'js/main.js' %}"></script>
+    </div>
+  </body>
+</html>

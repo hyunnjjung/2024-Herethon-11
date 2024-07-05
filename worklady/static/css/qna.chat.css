@@ -77,6 +77,118 @@ header {
 }
 
 /* chatroom */
+.blank {
+  height: 181px;
+}
+.leftside {
+  margin: 20px 14px;
+  display: flex;
+  img {
+    width: 62px;
+    height: 65px;
+    border-radius: 15px;
+    background: lightgray 50% / cover no-repeat;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .left_bubble {
+    width: 216px;
+    fill: #fff;
+    stroke-width: 1px;
+    stroke: rgba(84, 34, 225, 0.5);
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    p {
+      color: #000;
+      font-family: Inter;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.408px;
+    }
+  }
+}
+.rightside {
+  margin: 20px 14px;
+  display: flex;
+  flex-direction: row-reverse;
+  .right_bubble {
+    width: 241px;
+    p {
+      color: #000;
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.408px;
+    }
+  }
+}
+
+.wrap {
+  padding: 0;
+  background-color: white;
+}
+
+.wrap .chat {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.chat.ch1 img {
+  width: 62px;
+  height: 65px;
+  border-radius: 15px;
+  background: lightgray 50% / cover no-repeat;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.wrap .chat .textbox {
+  position: relative;
+  display: inline-block;
+  max-width: calc(100% - 70px);
+  padding: 10px;
+  margin-top: 7px;
+  font-size: 13px;
+  border-radius: 10px;
+  background-color: #eee9ff;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  color: #000;
+}
+
+.wrap .chat .textbox::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  font-size: 1.5rem;
+  color: #eee9ff; /* 텍스트 색상 */
+}
+
+.wrap .ch1 .textbox {
+  margin-left: 20px;
+}
+
+.wrap .ch1 .textbox::before {
+  left: -15px;
+  content: "◀";
+}
+
+.wrap .ch2 {
+  flex-direction: row-reverse;
+}
+
+.wrap .ch2 .textbox {
+  margin-right: 20px;
+  background-color: #f0f0f0;
+}
+
+.wrap .ch2 .textbox::before {
+  right: -15px;
+  content: "▶";
+  color: #f0f0f0;
+}
+
 .mychat {
   border-radius: 10px;
   background: rgba(132, 128, 128, 0.1);
