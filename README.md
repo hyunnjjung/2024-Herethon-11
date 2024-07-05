@@ -10,12 +10,13 @@
 ### 여성들이 성장할 수 있도록 다양한 Q&A 기능을 제공하며, <br/>
 ### 모든 사용자의 프로필을 공개해 선택의 폭을 넓히는 커리어 네트워킹 플랫폼
 <br/>
-
 <img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/695bfd57-a59a-4c4d-8536-e742a68a02e6">
 <br/>
+<br/>
+## ProtoType
 <img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/57d3c6df-9351-4467-bb57-49215b67a424">
 <img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/9eb5bdad-b5ab-45d8-bd13-0f1904815d46">
-<img src"https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/389ccc8e-9a87-44ae-9b82-e07967063f0f">
+<img src"https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/10be9300-f913-456c-9e79-419b5535582b">
 <br/>
 <br/>
 
