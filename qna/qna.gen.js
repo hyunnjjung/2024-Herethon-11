@@ -46,7 +46,7 @@ function addPost() {
     document.getElementById("new-post-title").value = "";
     document.getElementById("new-post-content").value = "";
     localStorage.setItem("currentPostId", newPost.id);
-    location.href = "post-detail.html";
+    location.href = "genqna4.html";
   }
 }
 
@@ -71,7 +71,7 @@ function renderPostList() {
 
 function viewPost(id) {
   localStorage.setItem("currentPostId", id);
-  location.href = "post-detail.html";
+  location.href = "genqna4.html";
 }
 
 function renderPostDetail() {

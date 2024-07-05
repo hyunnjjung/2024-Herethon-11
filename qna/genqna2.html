@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="qna.chat.css" />
-    <title>1:1 Q&A</title>
+    <link rel="stylesheet" href="qna.gen.css" />
+    <title>일반질문2</title>
   </head>
   <body>
     <header>
@@ -49,7 +49,7 @@
         <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
         <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
         <li>
-          <a class="nav-QnA" href="qna.gen.index.html">멘토 Q&A</a>
+          <a class="nav-QnA" href="genqna1.html">멘토 Q&A</a>
         </li>
       </ul>
     </nav>
@@ -66,9 +66,9 @@
     ></div>
 
     <div class="qna-navbar">
-      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <a class="nav-genQ" href="genqna1.html">일반 Q&A</a>
       <img src="../image/Line 9.png" style="top: 2px; position: relative" />
-      <a class="nav-oneQ" href="qna.chat.index.html">1 : 1 Q&A</a>
+      <a class="nav-oneQ" href="chatqna1.html">1 : 1 Q&A</a>
     </div>
     <div
       style="
@@ -82,48 +82,25 @@
       "
     ></div>
 
-    <div class="chatroom-container">
-      <div class="title">나의 멘토 목록</div>
-      <div class="content">
-        <div id="chatroom-list">
-          <!-- 채팅 방 목록 -->
-          <div class="chatroom">
-            <img src="../image/mentor김사자.png" />
-            <div>
-              <h2>김사자</h2>
-              <p>
-                안녕하세요.<br />
-                답변드리도록 하겠습니다. 우선 SI에서 테크 회사로 넘어가기 위한
-                스토리를 짤 필요가 있습니다.
-              </p>
-            </div>
-          </div>
-          <div class="chatroom">
-            <img src="../image/mentor김사자.png" />
-            <div>
-              <h2>이정은</h2>
-              <p>
-                안녕하세요.<br />
-                지금부터 드릴 답변은 제조업 특히 자동차 산업 구매에 대한 내용을
-                기반으로 하고 있습니다.
-              </p>
-            </div>
-          </div>
-          <div class="chatroom">
-            <img src="../image/mentor김사자.png" />
-            <div>
-              <h2>박다은</h2>
-              <p>
-                만나 뵙게 되어 반갑습니다. 패키지 디자이너로 진로를 잡으셨으나,
-                산디과 학사편입과 학원 포폴 준비로 둘 중에 고민 중에 계신 것으로
-                보입니다.
-              </p>
-            </div>
-          </div>
-        </div>
+    <div class="blank"></div>
+    <div class="post-container">
+      <p id="post-tag"></p>
+      <h1 id="post-title"></h1>
+      <div class="post-middle"><img src="../image/mynaui_letter-q-square.png" />'{nickname}'님의 질문</p></div>
+      <p id="post-content"></p>
+    </div>
+    <div style="width: 100%; height: 0; box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25); border: 1px rgba(84, 34, 225, 0.38) solid"></div>
+    <div class="comment-container">
+      <div class="comment-title">
+        <img src="../image/mynaui_letter-a-square.png"/>
+        <div>‘김수민’님의 답변</div>
+        <img src="../image/별점1.png"/>
+        <button id="star-score-submit">제출</button>
+      </div>
+      <div id="comments">
+        <!-- 댓글 목록 -->
       </div>
     </div>
-
-    <script src="qna.chat.js"></script>
+    <script src="qna.gen.js"></script>
   </body>
 </html>

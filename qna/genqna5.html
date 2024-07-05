@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="qna.gen.css" />
+    <title>일반질문5</title>
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <button onclick="sidebar.open()">
+          <img style="width: 28px; height: 24px" src="../image/Group.png" />
+        </button>
+        <aside class="side_bar js-side_bar"></aside>
+      </div>
+      <a class="nav-main" href="../main/main.html"
+        ><img
+          class="header_logo"
+          style="width: 96.1px; height: 26.4px"
+          src="../image/워크레디 로고 수정 (이름+로고) 2.png"
+      /></a>
+      <a class="nav-MyPage" href="#none"
+        ><img src="../image/bi_person.png"
+      /></a>
+    </header>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 70px;
+        z-index: 200;
+      "
+    ></div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li>
+          <a class="nav-QnA" href="qna.gen.index.html">멘토 Q&A</a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 125px;
+        z-index: 200;
+      "
+    ></div>
+
+    <div class="qna-navbar">
+      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <img src="../image/Line 9.png" style="top: 2px; position: relative" />
+      <a class="nav-oneQ" href="qna.chat.index.html">1 : 1 Q&A</a>
+    </div>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 180.6px;
+        z-index: 200;
+      "
+    ></div>
+    <div class="question-container">
+      <div class="title">질문을 작성해 주세요.</div>
+      <div class="content">
+        질문 분야<input
+          id="new-post-tag"
+          placeholder="# UI # 유통 # IT # 생산 # 회계 # 무역 등"
+        />
+        제목<input
+          type="text"
+          id="new-post-title"
+          placeholder="제목을 작성해 주세요."
+        />
+        내용<textarea
+          id="new-post-content"
+          placeholder="질문의 내용을 작성해 주세요."
+        ></textarea>
+        <button id="new-post-submit" onclick="addPost()">질문하기</button>
+      </div>
+    </div>
+    <script src="qna.gen.js"></script>
+  </body>
+</html>

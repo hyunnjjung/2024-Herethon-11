@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="qna.gen.css" />
-    <title>일반 Q&A 질문하기</title>
+    <title>일반질문1</title>
   </head>
   <body>
     <header>
@@ -49,7 +49,7 @@
         <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
         <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
         <li>
-          <a class="nav-QnA" href="qna.gen.index.html">멘토 Q&A</a>
+          <a class="nav-QnA" href="genqna1.html">멘토 Q&A</a>
         </li>
       </ul>
     </nav>
@@ -66,9 +66,9 @@
     ></div>
 
     <div class="qna-navbar">
-      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <a class="nav-genQ" href="genqna1.html">일반 Q&A</a>
       <img src="../image/Line 9.png" style="top: 2px; position: relative" />
-      <a class="nav-oneQ" href="qna.chat.index.html">1 : 1 Q&A</a>
+      <a class="nav-oneQ" href="chatqna1.html">1 : 1 Q&A</a>
     </div>
     <div
       style="
@@ -81,24 +81,37 @@
         z-index: 200;
       "
     ></div>
-    <div class="question-container">
-      <div class="title">질문을 작성해 주세요.</div>
-      <div class="content">
-        질문 분야<input
-          id="new-post-tag"
-          placeholder="# UI # 유통 # IT # 생산 # 회계 # 무역 등"
-        />
-        제목<input
-          type="text"
-          id="new-post-title"
-          placeholder="제목을 작성해 주세요."
-        />
-        내용<textarea
-          id="new-post-content"
-          placeholder="질문의 내용을 작성해 주세요."
-        ></textarea>
+
+    <form class="search-box" action="" method="get">
+      <input
+        class="search-txt"
+        type="text"
+        name=""
+        placeholder="질문을 검색해 보세요!"
+      />
+      <button class="search-btn" type="submit">
+        <img src="../image/carbon_search.png" />
+      </button>
+    </form>
+
+    <div class="middle">
+      <div class="filter">
+        <button class="all_filter" data-filter="*">
+          <img src="../image/Vector.png" />전체
+        </button>
+        <button class="waiting_filter" data-filter="N">
+          <img src="../image/Vector.png" />답변 대기 질문
+        </button>
       </div>
-      <button id="new-post-submit" onclick="addPost()">질문하기</button>
+      <button class="nav-question" onclick="location.href='genqna5.html'">
+        <img src="../image/ph_pencil-line.png" />질문하기
+      </button>
+    </div>
+
+    <div class="forum">
+      <div id="post-list">
+        <!-- 게시글 목록 -->
+      </div>
     </div>
     <script src="qna.gen.js"></script>
   </body>
