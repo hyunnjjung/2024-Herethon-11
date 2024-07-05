@@ -13,7 +13,7 @@ from django.http import HttpResponseRedirect
 @login_required
 def chat_view(request, mentor_id):
     mentor = get_object_or_404(MentorProfile, id=mentor_id)
-    questions = Question.objects.filter(mentor).order_by('created_at')
+    questions = Question.objects.get
 
     if request.method == 'POST':
         if request.user == mentor.user:
@@ -81,7 +81,7 @@ def chat_view(request, mentor_id):
         'a_form': a_form,
         'e_form': e_form,
     }
-    return render(request, 'mentorship/chat.html', context)
+    return render(request, 'question/chat.html', context)
 
 
 
