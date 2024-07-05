@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div><a href="{% url 'profile_update' profile.id %}">수정하기</a></div>
+    {% endif %}
+    <div class="profile-preview">
+        <!-- 프로필 이미지 -->
+        <h2 class="profile-title"><img src="{{ profile.my_image.url }}" alt="Profile Image" /></h2>
+        <h3 class="profile-subtitle">{{ profile.short_intro }}</h3>
+        <h3 class="profile-subtitle">{{ profile.interest }}</h3>
+        <h3 class="profile-subtitle">{{ profile.current_job }}</h3>
+        <h3 class="profile-subtitle">{{ profile.introduce }}</h3>
+        <p class="post-meta">Created on: {{ profile.created_at }}</p>
+    </div>
+    
+    <!-- 교육 -->
+    <div class="education-section">
+        <h4>Education</h4>
+        <ul>
+            {% for education in profile.education_set.all %}
+                <li>{{ education.school }} - {{ education.grade }}</li>
+            {% empty %}
+                <li>No education records</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- 경력 -->
+    <div class="career-section">
+        <h4>Career</h4>
+        <ul>
+            {% for career in profile.career_set.all %}
+                <li>{{ career.department }} - {{ career.category }}</li>
+            {% empty %}
+                <li>No career records</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- 자격증-->
+    <div class="certificate-section">
+        <h4>Certificates</h4>
+        <ul>
+            {% for certificate in profile.certificate_set.all %}
+                <li>{{ certificate.certificate }}</li>
+            {% empty %}
+                <li>No certificates</li>
+            {% endfor %}
+        </ul>
+    </div>
+	<!-- 구분선 -->
+<hr class="my-4"/>
+</body>
+</html>

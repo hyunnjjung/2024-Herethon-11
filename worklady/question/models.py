@@ -4,6 +4,36 @@ from django.utils.text import slugify
 from signup.models import CustomUser
 
 
+class MentorProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    # Add other mentor-specific fields here
+
+class Chat_Question(models.Model):
+    question_text = models.TextField()
+    asker = models.ForeignKey(CustomUser, related_name='asked_questions', on_delete=models.CASCADE)
+    mentor = models.ForeignKey(MentorProfile, related_name='questions', on_delete=models.CASCADE)
+    is_accepted = models.BooleanField(default=False)
+    is_answered = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'[{self.id}]'
+
+
+class Chat_Answer(models.Model):
+    question = models.ForeignKey(Chat_Question, on_delete=models.CASCADE)
+    answer_text = models.TextField()
+    answered_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f'[{self.id}]'
+
+class Evaluation(models.Model):
+    answer = models.OneToOneField(Chat_Answer, on_delete=models.CASCADE)
+    score = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
@@ -62,22 +92,3 @@ class Rating(models.Model):
 
 
 
-
-
-class Chat(models.Model):
-    sender = models.ForeignKey(CustomUser, related_name='sent_messages', on_delete=models.CASCADE)
-    receiver = models.ForeignKey(CustomUser, related_name='received_messages', on_delete=models.CASCADE)
-    message = models.TextField(verbose_name="메시지")
-    timestamp = models.DateTimeField(auto_now_add=True)
-    is_rejected = models.BooleanField(default=False)  # Track rejection status
-    
-    def __str__(self):
-        return f"{self.sender} -> {self.receiver}: {self.message[:20]}"
-
-class ChatRating(models.Model):
-    message = models.ForeignKey(Chat, related_name='ratings', on_delete=models.CASCADE)
-    rater = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"{self.message} rated {self.rating} by {self.rater}"

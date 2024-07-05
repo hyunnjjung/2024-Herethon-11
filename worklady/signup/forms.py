@@ -28,7 +28,7 @@ class SignUpForm(UserCreationForm):
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput())
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('email', 'name', 'birthday', 'phone_number', 'password1', 'password2')
 
     def clean(self):
@@ -37,7 +37,7 @@ class SignUpForm(UserCreationForm):
         password2 = cleaned_data.get('password2')
 
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords do not match.")
+            raise forms.ValidationError("비밀번호가 일치하지 않습니다.")
 
         return cleaned_data
 

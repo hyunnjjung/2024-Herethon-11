@@ -1,10 +1,107 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Question, Answer, Rating, Chat, ChatRating
+
+from coin.models import Coin
+
+from .forms import QuestionForm, AnswerForm, EvaluationForm
+from .models import MentorProfile, Question, Answer, Rating
 from django.db.models import Q
 from .models import Tag
 from django.db.models import Avg
 from django.http import HttpResponseRedirect
+
+
+@login_required
+def chat_view(request, mentor_id):
+    mentor = get_object_or_404(MentorProfile, id=mentor_id)
+    questions = Question.objects.filter(mentor=mentor).order_by('created_at')
+    user_coins = Coin.objects.filter(user=request.user)
+
+    if request.method == 'POST':
+        if request.user == mentor.user:
+            # Mentor answering the most recent unanswered question
+            if 'answer_question' in request.POST:
+                question = questions.filter(is_answered=False).first()
+                if question:
+                    a_form = AnswerForm(request.POST)
+                    if a_form.is_valid():
+                        answer = a_form.save(commit=False)
+                        answer.question = question
+                        answer.save()
+                        question.is_answered = True
+                        question.save()
+                        user_coins.amount += 10
+                        return redirect('chat_view', mentor_id=mentor_id)
+
+            # Accepting or rejecting a question
+            elif 'accept_question' in request.POST:
+                question_id = request.POST.get('question_id')
+                question = get_object_or_404(Question, id=question_id)
+                question.is_accepted = True
+                question.save()
+                return redirect('chat_view', mentor_id=mentor_id)
+
+            elif 'reject_question' in request.POST:
+                question_id = request.POST.get('question_id')
+                question = get_object_or_404(Question, id=question_id)
+                question.is_accepted = False
+                question.save()
+                return redirect('chat_view', mentor_id=mentor_id)
+
+        else:
+            # User asking a question
+            if 'ask_question' in request.POST:
+                q_form = QuestionForm(request.POST)
+                if q_form.is_valid():
+                    question = q_form.save(commit=False)
+                    question.asker = request.user
+                    question.mentor = mentor
+                    question.is_accepted = True  # Automatically accept the question
+                    question.save()
+                    user_coins.amount -= 10
+                    return redirect('chat_view', mentor_id=mentor_id)
+
+            # Handling evaluation
+            elif 'evaluate_answer' in request.POST:
+                answer_id = request.POST.get('answer_id')
+                answer = get_object_or_404(Answer, id=answer_id)
+                e_form = EvaluationForm(request.POST)
+                if e_form.is_valid():
+                    evaluation = e_form.save(commit=False)
+                    evaluation.answer = answer
+                    evaluation.save()
+ 
+                    return redirect('chat_view', mentor_id=mentor_id)
+
+    else:
+        q_form = QuestionForm()
+        a_form = AnswerForm()
+        e_form = EvaluationForm()
+
+
+    context = {
+        'mentor': mentor,
+        'questions': questions,
+        'q_form': q_form,
+        'a_form': a_form,
+        'e_form': e_form,
+    }
+    return render(request, 'question/chat.html', context)
+
+
+@login_required
+def my_questions(request):
+    
+    questions = Question.objects.filter(author=request.user).order_by('-created_at')
+
+    filter_option = request.GET.get('filter', '')
+    if filter_option == 'answered':
+        questions = questions.filter(answers__isnull=False).distinct()
+    elif filter_option == 'unanswered':
+        questions = questions.filter(answers__isnull=True)
+        
+    return render(request, 'question/my_questions.html', {'questions': questions})
+
 
 def question_list(request):
     query = request.GET.get('q', '')
@@ -116,33 +213,3 @@ def answer_create(request, pk):
     return render(request, 'question/answer_create.html', {'question': question})
 
 
-
-
-@login_required
-def profile_chat(request, id):
-    user = get_object_or_404(User, id=id)
-    if request.method == 'POST':
-        if 'message' in request.POST:
-            message = request.POST.get('message')
-            if message:
-                Chat.objects.create(sender=request.user, receiver=user, message=message)
-                return redirect('profile_chat', id=id)
-        elif 'rating' in request.POST:
-            message_id = request.POST.get('message_id')
-            rating = request.POST.get('rating')
-            message = get_object_or_404(Chat, id=message_id)
-            ChatRating.objects.create(message=message, rater=request.user, rating=rating)
-            return redirect('profile_chat', id=id)
-        elif 'reject' in request.POST: 
-            message_id = request.POST.get('message_id') 
-            message = get_object_or_404(Chat, id=message_id) 
-            if message.receiver == request.user: 
-                message.is_rejected = True 
-                message.save() 
-                return redirect('profile_chat', id=id) 
-        elif 'reply' in request.POST: 
-            pass  # No specific action needed for reply, just keep the form open
-    messages = Chat.objects.filter(receiver=user).order_by('-timestamp')
-    return render(request, 'question/profile_chat.html', {
-        'messages': messages,
-    })

@@ -21,16 +21,25 @@
     </style>
 </head>
 <body>
+    <div><a href="{% url 'create_profile1' %}">프로필 작성</a></div>
     <h1>Profile List</h1>
     <form method="get" action="{% url 'profile_list' %}">
         <input type="text" name="q" placeholder="Search...">
         <button type="submit">Search</button>
     </form>
+    <a href="{% url 'profile_list' %}">전체</a>
+    <a href="{% url 'keyword_list2' interest1='UX' interest2='UI' %}">UX/UI</a>
+    <a href="{% url 'keyword_list2' interest1='유통' interest2='무역' %}">유통/무역</a>
+    <a href="{% url 'keyword_list2' interest1='IT' interest2='데이터' %}">IT/데이터</a>
+    <a href="{% url 'keyword_list1' interest='해외영업' %}">해외영업</a>
+    <a href="{% url 'keyword_list1' interest='서비스기획' %}">서비스기획</a>
+    <a href="{% url 'keyword_list2' interest1='생산' interest2='제조' %}">생산/제조</a>
+    <a href="{% url 'keyword_list2' interest1='회계' interest2='재무' %}">회계/재무</a>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Username</th>
+                <th>name</th>
                 <th>Short Intro</th>
                 <th>Interest</th>
                 <th>Current Job</th>
@@ -38,10 +47,12 @@
             </tr>
         </thead>
         <tbody>
-            {% for profile in profiles %}
-            <tr>
-                <td>{{ profile.id }}</td>
-                <td>{{ profile.username.name }}</td>
+            {% for profile in profiles%}
+                <td><a href="{% url 'profile_detail' profile.id %}">
+                    {{ profile.id }}
+                    </a>
+                </td>
+                <td>{{ profile.user.name }}</td>
                 <td>{{ profile.short_intro }}</td>
                 <td>{{ profile.interest }}</td>
                 <td>{{ profile.current_job }}</td>

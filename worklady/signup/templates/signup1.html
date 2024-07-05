@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- CSS 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup1.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <title>회원가입</title>
+    <!-- 모바일 크기 적용 -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: 988px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    </style>
+</head>
+<body>
+<article>
+  <header>
+    <div class="title_box">
+      <div class="page_title">회원가입</div>
+      <img src="{% static 'img/x.png' %}" alt="X아이콘" />
+    </div>
+    <div class="shadow_line"></div>
+  </header>
+  <form id="signup-form" method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <div class="first_info">
+      <div class="title">사용자 정보</div>
+      <div class="border_box">
+        <input type="text" class="input_box" name="name" placeholder="이름" />
+        <input type="text" class="input_box" name="birthday" placeholder="생년월일(YYYYMMDD)" />
+        <div class="gender_selection">
+            <button class="gender_option" data-gender="male">남자</button>
+            <button class="gender_option" data-gender="female">여자</button>
+        </div>
+        <input type="tel" class="input_box" name="phone_number" placeholder="휴대폰 번호 (-없이 숫자만 입력)" />
+    </div>
+    </div>
+    <div class="info">
+      <div class="title">이메일</div>
+      <div class="border_box">
+        <input type="email" class="input_box" name="email" placeholder="likelion@example.com" />
+    </div>
+    <br/>
+    <div class="title">이메일 본인인증</div>
+    <div class="border_box">
+        <input type="email" class="input_box" name="verification_email" placeholder="이메일" />
+        <button type="button" id="send-verification" class="certification">인증번호 요청</button>
+    </div>
+    <div class="border_box">
+        <input type="text" class="input_box" name="verification_code" placeholder="인증번호" />
+        <button type="button" id="verify-code" class="certification">인증확인</button>
+    </div>
+      </div>
+    </div>
+    <div class="info">
+      <div class="title">비밀번호</div>
+      <div class="border_box">
+        <input type="password" class="input_box" name="password1" placeholder="영문/숫자/특수문자 혼합,10~16자" />
+        <input type="password" class="input_box" name="password2" placeholder="비밀번호를 한 번 더 입력해 주세요." />
+    </div>
+    </div>
+    <div class="agree_terms">
+      <div class="all_agree"><input type="checkbox" id="all_agree">약관 전체 동의</div>
+      <hr>
+      <div class="indiv_agree"><input type="checkbox">[필수] 만 14세 이상 서비스 이용 동의</div>
+      <div class="indiv_agree"><input type="checkbox">[필수] 개인정보 수집/이용 동의
+        <a href="{% url 'signup2' %}">보기</a></div>
+      <div class="indiv_agree"><input type="checkbox">[필수] 서비스 이용 약관
+        <a href="{% url 'signup3' %}">보기</a></div>
+      <div class="indiv_agree"><input type="checkbox">[선택] 광고성 정보 수신 동의</div>
+      <div class="indiv_agree"><input type="checkbox">[선택] 마케팅 정보/이용 동의</div>
+    </div>
+    <div class="submit_box">
+      <input class="input-submit" type="submit" value="동의하고 가입하기" />
+    </div>
+  </form>
+</article>
+
+<script>
+  document.getElementById('send-verification').addEventListener('click', function() {
+      const email = document.querySelector('input[name="verification_email"]').value;
+      fetch('{% url "send_verification_email" %}', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: new URLSearchParams({
+              'email': email
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          alert(data.message || data.error);
+      });
+  });
+
+  document.getElementById('verify-code').addEventListener('click', function() {
+      const verification_code = document.querySelector('input[name="verification_code"]').value;
+      fetch('{% url "verify_code" %}', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: new URLSearchParams({
+              'verification_code': verification_code
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.message) {
+              alert(data.message);
+              document.getElementById('signup-form').submit();  // 폼 제출
+          } else {
+              alert(data.error);
+          }
+      });
+  });
+</script>
+
+
+</body>
+</html>
