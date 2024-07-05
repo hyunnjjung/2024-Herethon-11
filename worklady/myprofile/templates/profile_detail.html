@@ -1,57 +1,98 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="profile-preview">
-        <!-- 프로필 이미지 -->
-        <h2 class="profile-title"><img src="{{ profile.my_image.url }}" alt="Profile Image" /></h2>
-        <h3 class="profile-subtitle">{{ profile.short_intro }}</h3>
-        <h3 class="profile-subtitle">{{ profile.interest }}</h3>
-        <h3 class="profile-subtitle">{{ profile.current_job }}</h3>
-        <h3 class="profile-subtitle">{{ profile.introduce }}</h3>
-        <p class="post-meta">Created on: {{ profile.created_at }}</p>
-    </div>
-    
-    <!-- 교육 -->
-    <div class="education-section">
-        <h4>Education</h4>
-        <ul>
-            {% for education in profile.education_set.all %}
-                <li>{{ education.school }} - {{ education.grade }}</li>
-            {% empty %}
-                <li>No education records</li>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- css 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_check1.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <title>profile_check2_page</title>
+    <!-- 모바일 크기 적용 -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: 852px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="time_bar">
+          <img src="{% static 'img/time_bar.svg' %}" alt="최상단바" />
+        </div>
+        <div class="title_box">
+          <div class="menu_bar">
+            <img src="{% static 'img/menu.svg' %}" alt="메뉴바" />
+          </div>
+          <div class="logo">
+            <img src="{% static 'img/logo_full.png' %}" alt="로고" />
+          </div>
+          <div class="mypage">
+            <img src="{% static 'img/person.svg' %}" alt="마이페이지" />
+          </div>
+        </div>
+        <div class="shadow_line"></div>
+        <div class="subtitle_box">
+          <button class="menu" id="menu1" onclick="location.href" ="{% url 'create_profile1' %}">프로필 등록</button>
+          <button class="menu" id="menu2" onclick="location.href" ="{% url 'user_detail' %}">프로필 확인</button>
+          <button class="menu" id="menu3">멘토 Q&A</button>
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="main">
+        <div class="introduce">
+          <div class="title">{{ profile.short_intro }}</div>
+          <div class="intro_info">
+            <div class="profile_img"><img src="{{ profile.my_image.url }}" alt="Profile Image" /></div>
+            <div class="infomation">
+              <div class="username">{{ profile.user.name }}</div>
+              <div class="mycategory">{{ profile.current_job }}</div>
+              {% for education in profile.education_set.all %}
+              <div class="education">학력 | {{education.school}} {{education.grade}}</div>
+              {% endfor %} {% for career in profile.career_set.all %}
+              <div class="company">{{ career.category }} | {{ career.department }}</div>
+              {% endfor %}
+              <button class="question">멘토에게 질문하기</button>
+            </div>
+          </div>
+        </div>
+        <div class="puple_shadow_line"></div>
+        <div class="text">
+          <div class="title">대표(관심) 분야</div>
+          <div class="hashtag">{{ profile.interest }}</div>
+          <div class="title">소개</div>
+          <div class="intro_myself">{{ profile.introduce }}</div>
+          <div class="title">주요경력</div>
+          <div class="career">
+            {% for career in profile.career_set.all %} {{ career.category }} &#41; {{ career.department }}<br />
             {% endfor %}
-        </ul>
-    </div>
-    
-    <!-- 경력 -->
-    <div class="career-section">
-        <h4>Career</h4>
-        <ul>
-            {% for career in profile.career_set.all %}
-                <li>{{ career.department }} - {{ career.category }}</li>
-            {% empty %}
-                <li>No career records</li>
-            {% endfor %}
-        </ul>
-    </div>
-    
-    <!-- 자격증-->
-    <div class="certificate-section">
-        <h4>Certificates</h4>
-        <ul>
-            {% for certificate in profile.certificate_set.all %}
-                <li>{{ certificate.certificate }}</li>
-            {% empty %}
-                <li>No certificates</li>
-            {% endfor %}
-        </ul>
-    </div>
-	<!-- 구분선 -->
-<hr class="my-4"/>
-</body>
+          </div>
+          <div class="certificate">
+            {% for certificate in profile.certificate_set.all %} {% if certificate.certificate == None %} {% else %}
+            <div class="title">자격증</div>
+            {{ certificate.certificate }} {% endif %} {% endfor %}
+          </div>
+        </div>
+      </div>
+    </article>
+    <script src="{% static 'js/profile_register1.js' %}"></script>
+  </body>
 </html>

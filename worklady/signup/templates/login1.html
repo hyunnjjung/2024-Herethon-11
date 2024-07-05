@@ -1,8 +1,7 @@
-{% load socialaccount %}
-{% load static %}
+{% load socialaccount %} {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
     <!-- CSS 파일 불러오기 -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/login1.css' %}" />
@@ -12,83 +11,86 @@
     <title>login1_page</title>
     <!-- 모바일 크기 적용 -->
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            min-height: 100vh;
-            background-color: #efefef;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
 
-        article {
-            width: 393px;
-            height: 852px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            position: relative;
-            top: 0;
-            left: 0;
-        }
+      article {
+        width: 393px;
+        height: 852px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
     </style>
-</head>
-<body>
-<article>
-    <div class="logo_name">
+  </head>
+  <body>
+    <article>
+      <div class="logo_name">
         <img src="{% static 'img/logo_name.png' %}" alt="로고_이름만" />
-    </div>
-    <div class="logo_image">
+      </div>
+      <div class="logo_image">
         <img src="{% static 'img/logo_image.png' %}" alt="로고_아이콘만" />
-    </div>
-    <form method="post" action="{% url 'login' %}">
+      </div>
+      <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <div class="login_box">
-            <input type="text" name="email" class="input_box" placeholder="이메일" />
-            <div class="middle_line"></div>
-            <input type="password" name="password" class="input_box" placeholder="비밀번호" />
+          <input type="text" name="email" class="input_box" placeholder="이메일" />
+          <div class="middle_line"></div>
+          <input type="password" name="password" class="input_box" placeholder="비밀번호" />
         </div>
-        <div class="submit_box">
-            <input class="input-submit" type="submit" value="로그인" />
+        <div class="submit_box" onclick="goToMain()">
+          <input class="input-submit" type="submit" value="로그인" />
         </div>
         {% if form.non_field_errors %}
-            <div class="error">
-                {{ form.non_field_errors }}
-            </div>
+        <div class="error">{{ form.non_field_errors }}</div>
         {% endif %}
-    </form>
-    <div class="link">
+      </form>
+      <div class="link">
         <a href="{% url 'join' %}" class="signup-link">회원가입</a>
         <div class="V_line">|</div>
         <a href="{% url 'findemail' %}" class="signup-link">이메일 찾기</a>
         <div class="V_line">|</div>
         <a href="{% url 'find_pw' %}" class="signup-link">비밀번호 찾기</a>
-    </div>
-    <div class="easy_title">
+      </div>
+      <div class="easy_title">
         <hr />
         <div class="text">간편로그인/회원가입</div>
         <hr />
-    </div>
-    <div class="easy_login">
+      </div>
+      <div class="easy_login">
         <div class="social">
-            <a href="{% provider_login_url 'kakao' %}">
-                <img src="{% static 'img/kakao_logo.png' %}" alt="카카오로고" />
-                <span>카카오</span>
-            </a>
+          <a href="{% provider_login_url 'kakao' %}">
+            <img src="{% static 'img/kakao_logo.png' %}" alt="카카오로고" />
+            <span>카카오</span>
+          </a>
         </div>
         <div class="social">
-            <a href="{% provider_login_url 'naver' %}">
-                <img src="{% static 'img/naver_logo.png' %}" alt="네이버로고" />
-                <span>네이버</span>
-            </a>
+          <a href="{% provider_login_url 'naver' %}">
+            <img src="{% static 'img/naver_logo.png' %}" alt="네이버로고" />
+            <span>네이버</span>
+          </a>
         </div>
         <div class="social">
-            <a href="{% provider_login_url 'google' %}">
-                <img src="{% static 'img/google_logo.png' %}" alt="구글로고" />
-                <span>구글</span>
-            </a>
+          <a href="{% provider_login_url 'google' %}">
+            <img src="{% static 'img/google_logo.png' %}" alt="구글로고" />
+            <span>구글</span>
+          </a>
         </div>
-    </div>
-</article>
-</body>
+      </div>
+    </article>
+    <script>
+      function goToMain() {
+        window.location.href = "{% url 'main' %}";
+      }
+    </script>
+  </body>
 </html>

@@ -97,10 +97,14 @@
             현금 전환 완료 후 취소나 포인트로 환불이 불가해요.
           </div>
         </div>
-        <button class="payment_button">전환하기</button>
+        <button class="payment_button" onclick="goToMain()">전환하기</button>
       </div>
     </article>
-
+    <script>
+      function goToMain() {
+        window.location.href = "{% url 'coin5' %}";
+      }
+    </script>
     <script src="{% static 'js/profile_register1.js' %}"></script>
   </body>
 </html>

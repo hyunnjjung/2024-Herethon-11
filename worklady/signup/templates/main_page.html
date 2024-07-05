@@ -13,13 +13,10 @@
     <div class="height">
       <header>
         <div class="blank"></div>
-        <a class="nav-main" href="{% url 'main' }"
-          ><img
-            class="header_logo"
-            style="width: 96.1px; height: 26.4px"
-            src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
+        <a class="nav-main" href="{% url 'main' %}"
+          ><img class="header_logo" style="width: 96.1px; height: 26.4px" src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
         /></a>
-        <a class="nav-MyPage" href="{% url 'mypage' %}"><img src="{% static 'img/bi_person.png' %}" /></a>
+        <a class="nav-MyPage" href="{% url 'main' %}"><img src="{% static 'img/bi_person.png' %}" /></a>
       </header>
       <div
         style="
@@ -39,27 +36,18 @@
       </div>
       <div id="overlay" class="overlay"></div>
       <div id="sidebar" class="sidebar">
-        <div
-          style="
-            position: fixed;
-            width: 318px;
-            height: 0;
-            top: 70px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-            border: 1px #5422e1 solid;
-          "
-        ></div>
+        <div style="position: fixed; width: 318px; height: 0; top: 70px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); border: 1px #5422e1 solid"></div>
         <div class="ham-menu mt-5">
           <div class="welcome">이수빈님, 반갑습니다.</div>
           <div class="menu-list">
             <ul class="ham-top-menu">
               <li>
-                <a href="">프로필 등록</a>
+                <a href="{% url 'user_detail' %}">프로필 등록</a>
               </li>
             </ul>
             <ul class="ham-top-menu">
               <li>
-                <a href="#">프로필 보기</a>
+                <a href="{% url 'profile_list' %}">프로필 보기</a>
               </li>
             </ul>
             <ul class="ham-top-menu">
@@ -77,9 +65,9 @@
                 <ul class="ham-sub-menu">
                   <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
                   <li><a href="../my_qna/myanswer.html">답변 관리</a></li>
-                  <li><a href="#">코인 사용 내역 조회</a></li>
-                  <li><a href="#">코인 구매하기</a></li>
-                  <li><a href="#">현금 전환하기</a></li>
+                  <li><a href="{% url 'coin_history' %}">코인 사용 내역 조회</a></li>
+                  <li><a href="{% url 'coin_purchase' %}">코인 구매하기</a></li>
+                  <li><a href="{% url 'cash_conversion' %}">현금 전환하기</a></li>
                 </ul>
               </li>
             </ul>
@@ -95,14 +83,14 @@
               "
             ></div>
           </div>
-          <a class="logout" href="#">로그아웃<img src="{% static 'img/mage_logout.png' %}" /></a>
+          <a class="logout" href="{% url 'login' %}">로그아웃<img src="{% static 'img/mage_logout.png' %}" /></a>
         </div>
       </div>
 
       <nav class="navbar">
         <ul>
-          <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
-          <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+          <li><a class="nav-SignUpProfile" href="{% url 'user_detail' %}">프로필 등록</a></li>
+          <li><a class="nav-ViewProfile" href="{% url 'profile_list' %}">프로필 보기</a></li>
           <li>
             <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
           </li>
@@ -132,7 +120,7 @@
       <section class="mentorOfMonth">
         <div>
           <div class="mentor_title">이달의 멘토</div>
-          <a class="nav-ViewProfile" href="#none">
+          <a class="nav-ViewProfile" href="{% url 'profile_list' %}">
             <div>더보기</div>
             <img src="{% static 'img/화살표.png' %}" />
           </a>

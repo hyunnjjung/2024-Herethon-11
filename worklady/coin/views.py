@@ -98,3 +98,6 @@ def process_cash_conversion(request):
 
             return render(request, 'conversion_complete.html', {'cash_amount': cash_amount, 'account_holder': account_holder, 'bank_name': bank_name, 'account_number': account_number})
     return redirect('cash_conversion')
+
+def coin5(request):
+    return render(request, 'coin5.html')

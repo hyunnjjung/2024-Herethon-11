@@ -1,65 +1,121 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile List</title>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- css 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_check1.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <title>profile_check1_page</title>
+    <!-- 모바일 크기 적용 -->
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        form {
-            margin-bottom: 20px;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: 1023px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
     </style>
-</head>
-<body>
-    <div><a href="{% url 'create_profile1' %}">프로필 작성</a></div>
-    <h1>Profile List</h1>
-    <form method="get" action="{% url 'profile_list' %}">
-        <input type="text" name="q" placeholder="Search...">
-        <button type="submit">Search</button>
-    </form>
-    <a href="{% url 'profile_list' %}">전체</a>
-    <a href="{% url 'keyword_list2' interest1='UX' interest2='UI' %}">UX/UI</a>
-    <a href="{% url 'keyword_list2' interest1='유통' interest2='무역' %}">유통/무역</a>
-    <a href="{% url 'keyword_list2' interest1='IT' interest2='데이터' %}">IT/데이터</a>
-    <a href="{% url 'keyword_list1' interest='해외영업' %}">해외영업</a>
-    <a href="{% url 'keyword_list1' interest='서비스기획' %}">서비스기획</a>
-    <a href="{% url 'keyword_list2' interest1='생산' interest2='제조' %}">생산/제조</a>
-    <a href="{% url 'keyword_list2' interest1='회계' interest2='재무' %}">회계/재무</a>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>name</th>
-                <th>Short Intro</th>
-                <th>Interest</th>
-                <th>Current Job</th>
-                <th>Introduce</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for profile in profiles%}
-                <td><a href="{% url 'profile_detail' profile.id %}">
-                    {{ profile.id }}
-                    </a>
-                </td>
-                <td>{{ profile.user.name }}</td>
-                <td>{{ profile.short_intro }}</td>
-                <td>{{ profile.interest }}</td>
-                <td>{{ profile.current_job }}</td>
-                <td>{{ profile.introduce }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="time_bar">
+          <img src="{% static 'img/time_bar.svg' %}" alt="최상단바" />
+        </div>
+        <div class="title_box">
+          <div class="menu_bar">
+            <img src="{% static 'img/menu.svg' %}" alt="메뉴바" />
+          </div>
+          <div class="logo">
+            <img src="{% static 'img/logo_full.png' %}" alt="로고" />
+          </div>
+          <div class="mypage">
+            <img src="{% static 'img/person.svg' %}" alt="마이페이지" />
+          </div>
+        </div>
+        <div class="shadow_line"></div>
+        <div class="subtitle_box">
+          <button class="menu" id="menu1" onclick="location.href" ="{% url 'create_profile1' %}">프로필 등록</button>
+          <button class="menu" id="menu2" onclick="location.href" ="{% url 'user_detail' %}">프로필 확인</button>
+          <button class="menu" id="menu3">멘토 Q&A</button>
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="main">
+        <!--Post로 검색위한 form 추가-->
+        <form method="get" action="{% url 'profile_list' %}">
+          <div class="serch">
+            <input type="text" name="q" class="serch_box" placeholder="관심있는 직무 및 멘토를 검색해 보세요!" />
+            <button class="serch_icon" type="submit">
+              <img src="{% static 'img/search.svg' %}" alt="검색아이콘" />
+            </button>
+          </div>
+        </form>
+
+        <div class="category_box">
+          <button class="category" id="category1" onclick="location.href" ="{% url 'profile_list' %}">전체</button>
+          <button class="category" id="category2" onclick="location.href" ="{% url 'keyword_list2' interest1='UX' interest2='UI' %}">UI/UX</button>
+          <button class="category" id="category3" onclick="location.href" ="{% url 'keyword_list2' interest1='유통' interest2='무역' %}">유통/무역</button>
+          <button class="category" id="category4" onclick="location.href" ="{% url 'keyword_list2' interest1='IT' interest2='데이터' %}">IT/데이터</button>
+          <button class="category" id="category5" onclick="location.href" ="{% url 'keyword_list1' interest='해외영업' %}">해외영업</button>
+          <button class="category" id="category6" onclick="location.href" ="{% url 'keyword_list1' interest='서비스기획' %}">서비스기획</button>
+          <button class="category" id="category7" onclick="location.href" ="{% url 'keyword_list2' interest1='생산' interest2='제조' %}">생산/제조</button>
+          <button class="category" id="category8" onclick="location.href" ="{% url 'keyword_list2' interest1='회계' interest2='재무' %}">회계/재무</button>
+        </div>
+        <div class="profile_list">
+          <div class="check_box">
+            <div class="indiv_agree"><input type="checkbox" />전체</div>
+            <div class="indiv_agree"><input type="checkbox" />질문가능</div>
+            <div class="indiv_agree"><input type="checkbox" />답변중</div>
+          </div>
+          {% for profile in profiles%}
+          <div class="intro_info">
+            <div class="profile_img"><img src="{{ profile.my_image.url }}" alt="Profile Image" /></div>
+            <div class="infomation">
+              <div class="username" onclick="location.href" ="{% url 'profile_detail' profile.id %}">
+                <!--이름 누르면 하나의 페이지 보기로 이동-->
+                {{ profile.user.name }}
+                <button class="question">질문가능</button>
+              </div>
+              <div class="mycategory">{{ profile.current_job }}</div>
+              <div class="hashtag">{{ profile.interest }}</div>
+              {% for education in profile.education_set.all %}
+              <div class="education">학력 | {{education.school}} {{education.grade}}</div>
+              {% endfor %} {% for career in profile.career_set.all %}
+              <div class="company">{{ career.category }} | {{ career.department }}</div>
+              {% endfor %}
+              <div class="star">
+                평균별점
+                <div class="star_score">
+                  <img src="{% static 'img/star_full.svg' %}" alt="별점" />
+                  <img src="{% static 'img/star_full.svg' %}" alt="별점" />
+                  <img src="{% static 'img/star_full.svg' %}" alt="별점" />
+                  <img src="{% static 'img/star_full.svg' %}" alt="별점" />
+                  <img src="{% static 'img/star_full.svg' %}" alt="별점" />
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+    <script src="{% static 'js/profile_register1.js' %}"></script>
+  </body>
 </html>

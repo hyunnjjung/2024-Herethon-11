@@ -70,7 +70,7 @@ def signup3_view(request):
     return render(request, 'signup3.html')
 
 def findemail(request):
-    return render(request, 'findEmail.html')
+    return render(request, 'find_email1.html')
 
 #이메일 찾기 구현 == 완료 ;)
 class EmailFindSerializer(serializers.Serializer):
@@ -98,7 +98,7 @@ def findemail(request):
    
     else:
         form = EmailFindForm()
-    return render(request, 'findEmail.html', {'form': form})
+    return render(request, 'find_email1.html', {'form': form})
 
 #본인인증 figma형식으로 구현 완료;)
 # 이메일 인증 코드 전송 뷰
@@ -223,7 +223,7 @@ def password_reset_complete(request):
 
 #소셜로그인 성공 후 돌아갈 페이지
 def socialSuccess(request):
-    return render(request, 'coin4.html')
+    return render(request, 'login1.html')
 
-def mypage(request):
-    return render(request, 'mypage1.html')
+def main(request):
+    return render(request, 'main_page.html')
