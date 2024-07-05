@@ -1,0 +1,185 @@
+@media only screen and (min-device-width: 393px) and (max-device-width: 430px) and (min-device-height: 852px) and (max-device-height: 932px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  /* 세로 방향 스타일 정의 */
+}
+body {
+  width: 393px;
+  height: 852px;
+  background: #fff;
+  margin: 0%;
+  position: relative;
+}
+
+header {
+  display: flex;
+  padding: 19px 27px 17.6px 27px;
+  align-items: center;
+  position: fixed;
+  gap: 87px;
+  z-index: 100;
+  background: #fff;
+  height: 37px;
+}
+
+.navbar {
+  z-index: 100;
+  position: fixed;
+  top: 70px;
+  background: #fff;
+  width: 100%;
+  ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0%;
+    margin: 0%;
+    li {
+      padding: 15px 22px 15px 22px;
+      color: #8a8888;
+      text-align: center;
+      font-family: "Noto Sans KR";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .nav-QnA {
+        color: #5422e1;
+      }
+    }
+  }
+}
+
+.qna-navbar {
+  width: 100%;
+  height: 55px;
+  background: #fff;
+  z-index: 100;
+  position: fixed;
+  top: 125.6px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  .nav-genQ,
+  .nav-oneQ {
+    padding: 17px 60px;
+    white-space: nowrap;
+    width: 83px;
+    height: 28px;
+    font-size: 17px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+  }
+}
+
+/* chatroom */
+.mychat {
+  border-radius: 10px;
+  background: rgba(132, 128, 128, 0.1);
+  display: flex;
+  width: 92%;
+  height: 36px;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 8px;
+  left: 14px;
+  input {
+    background-repeat: no-repeat;
+    background: none;
+    border: none;
+    width: 300px;
+  }
+  input::-webkit-input-placeholder {
+    background-image: url(../image/f7_exclamationmark-circle.png);
+    background-size: contain;
+    background-position: 1px center;
+    background-repeat: no-repeat;
+    text-align: center;
+    text-indent: 0;
+  }
+  button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+/* chat.index */
+.chatroom-container {
+  position: relative;
+  top: 180px;
+  .title {
+    padding: 20px 254px 34px 21px;
+    white-space: nowrap;
+    color: #5422e1;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px; /* 110% */
+    letter-spacing: -0.408px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #chatroom-list {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      width: 89%;
+      .chatroom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          width: 91px;
+          height: 96px;
+          border-radius: 30px;
+          background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+        div {
+          height: 96px;
+          padding-left: 14px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2px;
+          h2 {
+            color: #000;
+            font-family: Inter;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px; /* 129.412% */
+            letter-spacing: -0.408px;
+            margin: 0;
+            position: relative;
+          }
+          p {
+            color: #848080;
+            font-family: Inter;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 15px; /* 136.364% */
+            margin: 0;
+            display: -webkit-box;
+            word-wrap: break-word;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

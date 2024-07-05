@@ -1,0 +1,108 @@
+@media only screen and (min-device-width: 393px) and (max-device-width: 430px) and (min-device-height: 852px) and (max-device-height: 932px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  /* 세로 방향 스타일 정의 */
+}
+body {
+  width: 393px;
+  height: 852px;
+  background: #fff;
+  margin: 0%;
+  position: relative;
+}
+
+header {
+  display: flex;
+  padding: 19px 27px 17.6px 27px;
+  align-items: center;
+  position: fixed;
+  gap: 87px;
+  z-index: 100;
+  background: #fff;
+  height: 37px;
+}
+
+.navbar {
+  z-index: 100;
+  position: fixed;
+  top: 70px;
+  background: #fff;
+  width: 100%;
+  ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0%;
+    margin: 0%;
+    li {
+      padding: 15px 22px 15px 22px;
+      color: #8a8888;
+      text-align: center;
+      font-family: "Noto Sans KR";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.blank {
+  height: 123px;
+}
+.myquestion-title {
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px; /* 122.222% */
+  letter-spacing: -0.408px;
+  padding: 24px 0 20px 30px;
+}
+.middle {
+  position: relative;
+  white-space: nowrap;
+  .filter {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    button {
+      border: none;
+      padding-right: 10px;
+      padding-left: 0;
+      background: #fff;
+      color: #8a8888;
+      font-family: "Noto Sans KR";
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 22px; /* 169.231% */
+      letter-spacing: -0.408px;
+      img {
+        padding-right: 3px;
+      }
+    }
+  }
+}
+/* 활성화된 버튼 스타일 */
+.filter button.active {
+  color: #5422e1;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px; /* 169.231% */
+  letter-spacing: -0.408px;
+}
+
+/* myanswer */
+.myanswer-guide {
+  padding: 0px 0 20px 30px;
+  color: #000;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

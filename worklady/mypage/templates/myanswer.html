@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="myqna.css" />
+    <title>답변관리1</title>
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <button onclick="sidebar.open()">
+          <img style="width: 28px; height: 24px" src="../image/Group.png" />
+        </button>
+        <aside class="side_bar js-side_bar"></aside>
+      </div>
+      <a class="nav-main" href="../main/main.html"
+        ><img
+          class="header_logo"
+          style="width: 96.1px; height: 26.4px"
+          src="../image/워크레디 로고 수정 (이름+로고) 2.png"
+      /></a>
+      <a class="nav-MyPage" href="#none"
+        ><img src="../image/bi_person.png"
+      /></a>
+    </header>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 70px;
+        z-index: 200;
+      "
+    ></div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li>
+          <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 125px;
+        z-index: 200;
+      "
+    ></div>
+
+    <div class="blank"></div>
+    <div class="myquestion-title">답변관리</div>
+    <div class="myanswer-guide">
+      질문에 대한 답변은 5일 이내에 보내주세요. <br />
+      답변하기 곤란한 질문은 거절할 수 있으며, 거절 시 불이익은 없습니다.
+    </div>
+    <div
+      style="
+        width: 100%;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25);
+        border: 1px rgba(84, 34, 225, 0.38) solid;
+      "
+    ></div>
+
+    <div class="myanswer-list">
+      <div class="myanswer">
+        <div class="myanswer-top">
+          <h4><strong></strong> 김유미</h4>
+          <h3 data-type="complete">답변 완료</h3>
+        </div>
+        <p>
+          <strong></strong>컴퓨터공학과를 전공 중인 대학교 4학년 학생입니다.
+          졸업을 앞둔 상태에서 늦게 게임 개발자가 되고자 하는 막연한 꿈을 가지게
+          되었습니다. 어디서부터 어떻게 무엇을 준비해야 하는지 잘 알지도 못해서
+          이에 대한 해답을 얻고자 멘토님께 질문을 여쭤보려고 합니다. 진로는 우선
+          게임 클라이언트 개발자로 정해둔 상태입니다! 1. 게임 클라이언트
+          개발자가 되려면 무엇을 하는 게 좋은지 궁금합니다.
+        </p>
+      </div>
+      <div class="myanswer">
+        <div class="myanswer-top">
+          <h4><strong></strong>이보경</h4>
+          <h3 data-type="complete">답변 완료</h3>
+        </div>
+        <p>
+          <strong></strong>안녕하세요 1년 차 언리얼 개발자로 일하고 게임
+          개발자로 다시 도전을 하고 싶어서 현재는 퇴사한 상태에서 구직 활동을
+          하고 있습니다. 한 달 동안 포트폴리오도 좀 가다듬고 코딩 테스트 준비도
+          하면서 보내고 있었고 최근부터 이력서를 돌리기 시작했습니다. 그런데
+          열람 알림은 떴지만 제가 작업한 영상물의 조회수는 변함이 없다는 것을
+          알게 되었고 과연 제 포트폴리오가 경쟁력이 있을지 궁금합니다.
+        </p>
+      </div>
+      <div class="myanswer">
+        <div class="myanswer-top">
+          <h4><strong></strong>박소현</h4>
+          <h3 data-type="complete">거절한 질문</h3>
+        </div>
+        <p>
+          <strong></strong>멀티미디어 전공으로 졸업을 하고 취업을 준비하고
+          있습니다. 졸업만 했지, 취업에는 여전히 감을 못 잡고 있습니다.  게임
+          회사를 생각하고 있고, 게임 기획 분야를 일단 알아보고 있는데요. 게임
+          기획 분야로 취업하기 위해서는 어떤 방식으로 접근하는 게 가장
+          현명할까요?
+        </p>
+      </div>
+    </div>
+
+    <script src="myqna.js"></script>
+  </body>
+</html>
