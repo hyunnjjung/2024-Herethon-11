@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <!-- css 파일 불러오기 -->
-    <link rel="stylesheet" type="text/css" href="../../static/css/coin2.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/coin2.css' %}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,17 +38,17 @@
     <article>
       <header>
         <div class="time_bar">
-          <img src="../../static/img/time_bar.svg" alt="최상단바" />
+          <img src="{% static 'img/time_bar.svg' %}" alt="최상단바" />
         </div>
         <div class="title_box">
           <div class="menu_bar">
-            <img src="../../static/img/menu.svg" alt="메뉴바" />
+            <img src="{% static 'img/menu.svg' %}" alt="메뉴바" />
           </div>
           <div class="logo">
-            <img src="../../static/img/logo_full.png" alt="로고" />
+            <img src="{% static 'img/logo_full.png' %}" alt="로고" />
           </div>
           <div class="mypage">
-            <img src="../../static/img/person.svg" alt="마이페이지" />
+            <img src="{% static 'img/person.svg' %}" alt="마이페이지" />
           </div>
         </div>
         <div class="shadow_line"></div>
@@ -64,7 +64,7 @@
           <div class="title">코인을 구매하고 질문을 이어나가보세요.</div>
           <div class="coin_box">
             <div class="coin">
-              <img src="../../static/img/pupple_coin_bold.svg" alt="코인아이콘" />
+              <img src="{% static 'img/pupple_coin_bold.svg' %}" alt="코인아이콘" />
               10
             </div>
             <div class="text">
@@ -74,7 +74,7 @@
           </div>
           <div class="coin_box">
             <div class="coin">
-              <img src="../../static/img/pupple_coin_bold.svg" alt="코인아이콘" />
+              <img src="{% static 'img/pupple_coin_bold.svg' %}" alt="코인아이콘" />
               20
             </div>
             <div class="text">
@@ -84,7 +84,7 @@
           </div>
           <div class="coin_box">
             <div class="coin">
-              <img src="../../static/img/pupple_coin_bold.svg" alt="코인아이콘" />
+              <img src="{% static 'img/pupple_coin_bold.svg' %}" alt="코인아이콘" />
               30
             </div>
             <div class="text">
@@ -98,7 +98,7 @@
           <div class="subtitle">결제수단</div>
           <div class="pay">
             <div class="indiv_agree"><input type="checkbox" /></div>
-            <img src="../../static/img/tosspay.png" />
+            <img src="{% static 'img/tosspay.png' %}" />
             토스페이
           </div>
         </div>
@@ -106,7 +106,7 @@
         <div class="payment_box">
           <div class="pay">
             <div class="indiv_agree"><input type="checkbox" /></div>
-            <img src="../../static/img/naverpay.png" />
+            <img src="{% static 'img/naverpay.png' %}" />
             <span>네이버페이</span>
           </div>
         </div>
@@ -114,7 +114,7 @@
         <div class="payment_box">
           <div class="pay">
             <div class="indiv_agree"><input type="checkbox" /></div>
-            <img src="../../static/img/kakaopay.png" />
+            <img src="{% static 'img/kakaopay.png' %}" />
             카카오페이
           </div>
         </div>
@@ -136,6 +136,6 @@
         <button class="payment_button">결제하기</button>
       </div>
     </article>
-    <script src="../../static/js/profile_register1.js"></script>
+    <script src="{% static 'js/profile_register1.js' %}"></script>
   </body>
 </html>
