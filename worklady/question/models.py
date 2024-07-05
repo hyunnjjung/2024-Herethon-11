@@ -36,8 +36,6 @@ class Evaluation(models.Model):
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
