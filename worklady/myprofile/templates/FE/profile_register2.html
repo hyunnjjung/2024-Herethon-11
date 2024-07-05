@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_register2.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>profile_register2_page</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: #efefef;
+      }
+
+      article {
+        width: 393px;
+        height: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="time_bar">
+          <img src="{% static 'img/time_bar.svg' %}" alt="최상단바" />
+        </div>
+        <div class="title_box">
+          <div class="menu_bar">
+            <img src="{% static 'img/menu.svg' %}" alt="메뉴바" />
+          </div>
+          <div class="logo">
+            <img src="{% static 'img/logo_full.png' %}" alt="로고" />
+          </div>
+          <div class="mypage">
+            <img src="{% static  'img/person.svg' %}" alt="마이페이지" />
+          </div>
+        </div>
+        <div class="shadow_line"></div>
+        <div class="subtitle_box">
+          <button class="menu" id="menu1">프로필 등록</button>
+          <button class="menu" id="menu2">프로필 확인</button>
+          <button class="menu" id="menu3">멘토 Q&A</button>
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <div class="main">
+        <div class="head_title">프로필을 작성해 주세요.</div>
+        <div class="profile_box">
+          <form class="profile_form">
+            <div class="uploda_group">
+              <label for="profile_image" class="image_upload">
+                <img
+                  id="profile_preview"
+                  src="{% static 'img/default_profile.png' %}"
+                  alt="프로필 사진"
+                />
+                <input type="file" id="profile_image" accept="image/*" style="display: none" />
+                <div class="essential">* 필수 입력 항목입니다.</div>
+                <span>사진 업로드</span>
+              </label>
+            </div>
+            <div class="form_group">
+              <div class="essential">* 필수 입력 항목입니다.</div>
+              <input type="text" class="input_box" placeholder="한 줄 소개를 작성해 주세요." />
+            </div>
+            <div class="form_group">
+              <div class="title">학력</div>
+              <div class="select_box">
+                <input type="text" class="input_box" placeholder="학교명&학과명" />
+                <select id="education_year">
+                  <option value="">학년</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option value="3">3학년</option>
+                  <option value="4">4학년 이상</option>
+                  <option value="4">졸업</option>
+                </select>
+              </div>
+              <button type="button" class="add_field" data-type="education">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">경력</div>
+              <div class="select_box">
+                <input type="text" class="input_box" placeholder="근무지명&소속 부서" />
+                <select id="experience_type">
+                  <option value="">유형</option>
+                  <option value="fulltime">전 근무지</option>
+                  <option value="parttime">현 근무지</option>
+                  <option value="intern">인턴</option>
+                </select>
+              </div>
+              <button type="button" class="add_field" data-type="experience">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">자격증</div>
+              <div class="select_box2">
+                <input type="text" class="input_box" placeholder="취득한 자격증을 작성해 주세요." />
+              </div>
+              <button type="button" class="add_field" data-type="certification">
+                <img src="{% static 'img/plus.svg' %}" alt="추가아이콘" />
+                항목 추가
+              </button>
+            </div>
+            <div class="form_group">
+              <div class="title">
+                대표(관심) 분야
+                <div class="essential">* 필수 입력 항목입니다.</div>
+              </div>
+              <input
+                type="text"
+                class="input_box"
+                placeholder="#UI #유통 #IT #생산 #회계 #무역 등"
+              />
+            </div>
+            <div class="form_group">
+              <div class="title">
+                현재(관심) 직무
+                <div class="essential">* 필수 입력 항목입니다.</div>
+              </div>
+              <input
+                type="text"
+                class="input_box"
+                placeholder="현재 직무 혹은 희망하는 직무를 작성해 주세요."
+              />
+            </div>
+            <div class="form_group">
+              <div class="title">소개</div>
+              <textarea class="input_box" placeholder="자기소개를 작성해 주세요."></textarea>
+            </div>
+            <div class="form_group">
+              <button type="submit" class="submit_button">등록하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+    <script src="{% static 'js/profile_register2.js' %}"></script>
+  </body>
+</html>

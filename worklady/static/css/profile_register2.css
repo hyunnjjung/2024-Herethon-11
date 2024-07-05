@@ -101,6 +101,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 }
 
 .head_title {
@@ -116,7 +117,7 @@ header {
 
 .profile_box {
   width: 356px;
-  height: 1150px;
+  height: 100%;
   flex-shrink: 0;
   border-radius: 5px;
   border: 1px solid rgba(84, 34, 225, 0.5);
@@ -147,14 +148,24 @@ header {
 }
 
 .image_upload img {
-  width: 147px;
-  height: 157px;
+  width: 116.102px;
+  height: 124px;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 5px;
   background: rgba(138, 136, 136, 0.18);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  margin-top: 31px;
+  margin-top: 20px;
+}
+
+.essential {
+  color: #8a8888;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px 0px;
 }
 
 .image_upload span {
@@ -173,7 +184,7 @@ header {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  margin: 12px 0px 20px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
 input[type="text"],
@@ -189,23 +200,9 @@ textarea {
   resize: none;
 }
 
-textarea {
-  padding-top: 15px;
-}
-
 .select_box input[type="text"] {
   width: 215px;
   margin-right: 5px;
-}
-
-select {
-  width: 85px;
-  height: 43px;
-  border: 2px solid #dadada;
-  border-radius: 5px;
-  font-size: 14px;
-  color: rgba(138, 136, 136, 0.8);
-  text-align: center;
 }
 
 input:focus,
@@ -222,6 +219,22 @@ textarea:focus {
   line-height: 22px; /* 129.412% */
   letter-spacing: -0.408px;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.title .essential {
+  margin-left: 10px;
+}
+
+select {
+  width: 85px;
+  height: 43px;
+  border: 2px solid #dadada;
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgba(138, 136, 136, 0.8);
+  text-align: center;
 }
 
 .select_box {
@@ -230,6 +243,11 @@ textarea:focus {
   align-items: center;
   width: 100%;
   margin-bottom: 5px;
+}
+
+.select_box2 {
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 .add_field {
