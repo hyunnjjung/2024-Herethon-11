@@ -2,7 +2,7 @@ from django.db import models
 from signup.models import CustomUser   
     
 class Profile(models.Model):
-    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     my_image = models.ImageField(verbose_name="프로필사진", upload_to='profile_image')
     short_intro = models.CharField(verbose_name="한줄소개", max_length=200)
     interest = models.CharField(verbose_name="대표관심분야", max_length=200)

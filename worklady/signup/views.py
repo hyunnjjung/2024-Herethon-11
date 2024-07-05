@@ -54,7 +54,7 @@ def login_page(request):
                 print("로그인 실패")
     else:
         form = LoginForm()
-    return render(request, 'Home.html', {'form': form})
+    return render(request, 'Login.html', {'form': form})
 
 def main_page(request):
     form = LoginForm()

@@ -7,16 +7,12 @@ from django.shortcuts import render, get_object_or_404
 
 #프로필 보기
 def profile_list(request):
-    # profiles 쿼리셋을 가져올 때 관련된 Education, Career, Certificate 정보도 함께 가져오기
     profiles = Profile.objects.all().prefetch_related('education_set', 'career_set', 'certificate_set').order_by('-created_at')
     return render(request, "profile_list.html", {'profiles': profiles})
 
-# <a href="{% url 'user_detail' %}">View My Profile</a> 이거 입력하면 내 프로필로 이동
 @login_required
 def user_detail(request):
-    # 현재 로그인한 사용자의 ID를 기반으로 프로필을 가져옵니다.
     profile = get_object_or_404(Profile, username=request.user)
-    # 관련된 Education, Career, Certificate 데이터를 prefetch_related로 가져옵니다.
     profile = Profile.objects.prefetch_related('education_set', 'career_set', 'certificate_set').get(username=request.user)
 
     return render(request, "user_detail.html", {
@@ -34,10 +30,8 @@ def create_profile1(request):
         career_form = CareerModelForm(request.POST)
         certificate_form = CertificateModelForm(request.POST)
 
-        # 모든 폼이 유효한 경우에만 저장
         if profile_form.is_valid() and education_form.is_valid() and career_form.is_valid() and certificate_form.is_valid:
             new_profile = profile_form.save()
-            # Profile 인스턴스와 연관된 Education과 Career 인스턴스 생성
             new_education = education_form.save(commit=False)
             new_education.profile = new_profile
             new_education.save()
@@ -49,7 +43,7 @@ def create_profile1(request):
             new_certificate = certificate_form.save(commit=False)
             new_certificate.profile = new_profile
             new_certificate.save()
-            return redirect('profile_list') #내 프로필 확인으로 이동
+            return redirect('profile_list')
     else:
         profile_form = ProfileModelForm()
         education_form = EducationModelForm()
@@ -61,11 +55,10 @@ def create_profile1(request):
         'education_form': education_form,
         'career_form': career_form,
         'certificate_form': certificate_form,
-    }) #form 객체를 html에 찍어 보냄 
+    })
  
 #하나의 프로필 조회
 def profile_detail(request, profile_id):
-    # prefetch_related를 사용하여 연관된 모든 데이터를 함께 가져옵니다.
     profile = get_object_or_404(Profile.objects.prefetch_related('education_set', 'career_set', 'certificate_set'), pk=profile_id)
 
     return render(request, "profile_detail.html", {
@@ -112,14 +105,28 @@ def profile_update(request, profile_id):
 
 #검색기능
 def profile_list(request):
-    search_keyword = request.GET.get('q', '') # 검색어 가져오기
-    # profiles 쿼리셋을 가져올 때 관련된 Education, Career, Certificate 정보도 함께 가져오기
+    search_keyword = request.GET.get('q', '')
     if search_keyword:
         profiles = Profile.objects.prefetch_related('education_set', 'career_set', 'certificate_set').filter(
-            Q(username__name__icontains=search_keyword) |
+            Q(user__name__icontains=search_keyword) |
+            Q(interest__icontains=search_keyword) | 
             Q(current_job__icontains=search_keyword)
         ).order_by('-created_at')
     else:
         profiles = Profile.objects.all().prefetch_related('education_set', 'career_set', 'certificate_set').order_by('-created_at')
     
     return render(request, "profile_list.html", {'profiles': profiles})
+
+#카테고리로 검색(필터링)
+def keyword_list1(request, interest):
+    profiles = Profile.objects.filter(interest__icontains=interest).order_by('-created_at')
+    
+    return render(request, "profile_list.html", {'profiles': profiles})
+
+def keyword_list2(request, interest1, interest2):
+    profiles = Profile.objects.filter(
+        Q(interest__icontains=interest1) | Q(interest__icontains=interest2)
+    ).distinct().order_by('-created_at')
+    
+    return render(request, "profile_list.html", {'profiles': profiles})
+
