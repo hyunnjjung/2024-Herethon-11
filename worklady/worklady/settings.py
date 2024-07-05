@@ -56,11 +56,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',  #구글
     'allauth.socialaccount.providers.naver',  #네이버
     'allauth.socialaccount.providers.kakao',  #카카오
+    
+    'corsheaders', #연동
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    #바로 밑에 2줄은 맨 윗줄에 추가해야하는 명령어라 위치 바꾸지 말아주세요!
+    'corsheaders.middleware.CorsMiddleware', 
+	'django.middleware.common.CommonMiddleware', 
+ 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +77,16 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware', 
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True 
+
+CORS_ALLOW_METHODS = [
+	'DELETE',
+	'GET',
+	'OPTIONS',
+	'PATCH',
+	'POST',
+	'PUT',
+]
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -181,6 +197,16 @@ REST_FRAMEWORK = {
 	'DEFAULT_AUTHENTICATION_CLASSES': [
     'rest_framework.authentication.TokenAuthentication', 
     ],
+    # CamelCaseJSON 관련 설정
+	'DEFAULT_RENDERER_CLASSES': (
+	'djangorestframework_camel_case.render.CamelCaseJSONRenderer', 
+	'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+	),
+	'DEFAULT_PARSER_CLASSES': (
+	'djangorestframework_camel_case.parser.CamelCaseFormParser', 
+	'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
+	'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+	),
 }
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None # username 필드 사용 x
