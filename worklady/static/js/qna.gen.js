@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
       // 모든 버튼에서 active 클래스 제거
       buttons.forEach((btn) => {
         btn.classList.remove("active");
-        btn.querySelector("img").src = "../image/Vector.png"; // 기본 이미지 경로
+        btn.querySelector("img").src = "static/img/Vector.png"; // 기본 이미지 경로
       });
 
       // 클릭된 버튼에 active 클래스 추가
       this.classList.add("active");
-      this.querySelector("img").src = "../image/Vector_selected.png"; // 활성화된 이미지 경로
+      this.querySelector("img").src = "static/img/Vector_selected.png"; // 활성화된 이미지 경로
     });
   });
 });

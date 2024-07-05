@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'css/myqna.css' %}" />
-    <title>답변관리1</title>
+    <title>MY 질문1</title>
   </head>
   <body>
     <header>
@@ -134,85 +134,78 @@
     ></div>
 
     <div class="blank"></div>
-    <div class="myquestion-title">답변관리</div>
-    <div class="myanswer-guide">
-      질문에 대한 답변은 5일 이내에 보내주세요. <br />
-      답변하기 곤란한 질문은 거절할 수 있으며, 거절 시 불이익은 없습니다.
+    <div class="myquestion-title">MY 질문 기록</div>
+    <div class="middle">
+      <div class="filter">
+        <button class="all_filter" data-filter="*">
+          <img src="{% static 'img/Vector.png' %}" />전체
+        </button>
+        <button class="complete_filter" data-filter="complete">
+          <img src="{% static 'img/Vector.png' %}" />답변 완료
+        </button>
+        <button class="waiting_filter" data-filter="waiting">
+          <img src="{% static 'img/Vector.png' %}" />답변 대기
+        </button>
+      </div>
     </div>
-    <div
-      style="
-        width: 100%;
-        height: 0;
-        box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25);
-        border: 1px rgba(84, 34, 225, 0.38) solid;
-      "
-    ></div>
 
-    <div class="myanswer-list">
-      <div class="myanswer">
-        <div class="myanswer-top">
-          <h4><strong></strong> 김유미</h4>
-          <h3 data-type="complete">답변 완료</h3>
+    <div class="myquestion-container">
+      <div id="myquestion-list">
+        <!-- 내 질문 목록 -->
+
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역 # 구매</h4>
+            <h3 data-type="complete">답변 완료</h3>
+          </div>
+          <h2 onclick="viewPost(2)">물류 직무, 여성은 잘 뽑지 않나요?</h2>
+          <h5><strong>댓글</strong> 1</h5>
+          <p>
+            <strong></strong>첫 번째로는, 물류 직무는 알려진 것처럼 실제로도
+            여성을 많이 뽑지 않는 직무인지 여쭈어봅니다. 또한, 물류 안의 세부
+            파트 중 이 파트는 비교적 여성을 많이 뽑는다 하시는 추천 파트가
+            있으실지 고견 여쭈어봅니다! 두 번째로는, 자격증 취득 외에도 다양한
+            물류 관련 강의를 수강해 보고자 한다면, 혹시 어떤 분야, 어떤 주제로의
+            학습을 추천하시나요? 세 번째로, 포워딩 직무에도 지원을 하고
+            싶습니다.
+          </p>
         </div>
-        <div
-          style="
-            width: 100%;
-            height: 0;
-            box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25);
-            border: 1px rgba(84, 34, 225, 0.38) solid;
-          "
-        ></div>
-        <p>
-          <strong></strong>컴퓨터공학과를 전공 중인 대학교 4학년 학생입니다.
-          졸업을 앞둔 상태에서 늦게 게임 개발자가 되고자 하는 막연한 꿈을 가지게
-          되었습니다. 어디서부터 어떻게 무엇을 준비해야 하는지 잘 알지도 못해서
-          이에 대한 해답을 얻고자 멘토님께 질문을 여쭤보려고 합니다. 진로는 우선
-          게임 클라이언트 개발자로 정해둔 상태입니다! 1. 게임 클라이언트
-          개발자가 되려면 무엇을 하는 게 좋은지 궁금합니다.
-        </p>
-      </div>
-      <div class="myanswer">
-        <div class="myanswer-top">
-          <h4><strong></strong>이보경</h4>
-          <h3 data-type="complete">답변 완료</h3>
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역</h4>
+            <h3 data-type="waiting">대기 중</h3>
+          </div>
+          <h2 onclick="viewPost(3)">
+            이 정도 경험으로 구매직무에 도전해도 될까요?
+          </h2>
+          <h5><strong>댓글</strong> 0</h5>
+          <p>
+            <strong></strong> AMD 업무를 하면서 구매 직무에 관심이 생겼습니다.
+            하반기 공채 시작 전까지 자격증, 교육 수강 등 필요한 부분을 채울
+            계획인데요. 관련하여 몇 가지 질문을 드리고 싶습니다. 1. 현재
+            재고관리, 입출고 관리, 주문 건 관리의 업무를 하고는 있지만, 모두
+            전사 시스템 상으로만 관리를 해본 것인데, 이 정도 경험으로 구매
+            직무의 문을 두드릴 수 있을까요? 구매 직무로 최종 합격을 하시는
+            분들은 저처럼 업무의 한 부분으로써 가 아닌, 직접적으로 구매 인턴을
+            하신 건지 궁금합니다.
+          </p>
         </div>
-        <div
-          style="
-            width: 100%;
-            height: 0;
-            box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25);
-            border: 1px rgba(84, 34, 225, 0.38) solid;
-          "
-        ></div>
-        <p>
-          <strong></strong>안녕하세요 1년 차 언리얼 개발자로 일하고 게임
-          개발자로 다시 도전을 하고 싶어서 현재는 퇴사한 상태에서 구직 활동을
-          하고 있습니다. 한 달 동안 포트폴리오도 좀 가다듬고 코딩 테스트 준비도
-          하면서 보내고 있었고 최근부터 이력서를 돌리기 시작했습니다. 그런데
-          열람 알림은 떴지만 제가 작업한 영상물의 조회수는 변함이 없다는 것을
-          알게 되었고 과연 제 포트폴리오가 경쟁력이 있을지 궁금합니다.
-        </p>
-      </div>
-      <div class="myanswer">
-        <div class="myanswer-top">
-          <h4><strong></strong>박소현</h4>
-          <h3 data-type="complete">거절한 질문</h3>
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역 # 구매</h4>
+            <h3 data-type="complete">답변 완료</h3>
+          </div>
+          <h2 onclick="viewPost(1)">면접에서 어떤 경험을 강조해야 할까요?</h2>
+          <h5><strong>댓글</strong> 1</h5>
+          <p>
+            <strong></strong>물류업계를 준비하고 있는 취준생입니다. 제 경험을
+            어떻게 면접에서 활용할 수 있을지 너무 고민이 되고 답답해서
+            질문드려요. 인턴은 무역상사에서 했고, 아무래도 그 속에서 물류와
+            관련된 경험은 화주로서의 운송사를 이용한 경험, 회사에서 보유한 작은
+            규모의 창고를 본 경험이 있는데요. 1차 면접 질문에서 "물류 회사에서
+            인턴을 하거나 물류와 관련된 다른 경험은 없나요?"라는 질문...
+          </p>
         </div>
-        <div
-          style="
-            width: 100%;
-            height: 0;
-            box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25);
-            border: 1px rgba(84, 34, 225, 0.38) solid;
-          "
-        ></div>
-        <p>
-          <strong></strong>멀티미디어 전공으로 졸업을 하고 취업을 준비하고
-          있습니다. 졸업만 했지, 취업에는 여전히 감을 못 잡고 있습니다. 게임
-          회사를 생각하고 있고, 게임 기획 분야를 일단 알아보고 있는데요. 게임
-          기획 분야로 취업하기 위해서는 어떤 방식으로 접근하는 게 가장
-          현명할까요?
-        </p>
       </div>
     </div>
 

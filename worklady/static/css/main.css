@@ -311,6 +311,9 @@ header {
     padding: 12px 12px;
   }
 }
+.mentor-card-container::-webkit-scrollbar {
+  display: none;
+}
 .mentor-info {
   display: flex;
   flex-direction: column;
@@ -402,5 +405,38 @@ header {
     border: 1px solid rgba(84, 34, 225, 0.5);
     background: #fff;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 18px;
+    padding: 7px 16px;
+    .question-inner {
+      .question-tags {
+        color: #5422e1;
+        font-family: Inter;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px; /* 220% */
+        letter-spacing: -0.408px;
+      }
+      .question-title {
+        color: #000;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px; /* 169.231% */
+        letter-spacing: -0.408px;
+      }
+      .question-answers {
+        color: #8a8888;
+        font-family: Inter;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
   }
+}
+.questions-container::-webkit-scrollbar {
+  display: none;
 }
