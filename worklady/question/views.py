@@ -145,7 +145,7 @@ def question_list(request):
 
     questions = questions.order_by('-created_at')
 
-    return render(request, 'question/question_list.html', {'questions': questions})
+    return render(request, 'question/genqna1.html', {'questions': questions})
 
 def tag(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
@@ -223,7 +223,7 @@ def question_detail(request, pk):
         'answers': answers,
     }
     
-    return render(request, 'question/question_detail.html', context)
+    return render(request, 'question/genqna2.html', context)
 
 @login_required
 def answer_create(request, pk):

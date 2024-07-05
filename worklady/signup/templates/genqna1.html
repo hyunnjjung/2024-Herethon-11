@@ -12,8 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'css/qna.chat.css' %}" />
-    <title>1:1 질문1</title>
+    <link rel="stylesheet" href="{% static 'css/qna.gen.css' %}" />
+    <title>일반질문1</title>
   </head>
   <body>
     <header>
@@ -134,7 +134,7 @@
     ></div>
 
     <div class="qna-navbar">
-      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <a class="nav-genQ" href="{% url 'questionlist' %}">일반 Q&A</a>
       <img
         src="{% static 'img/Line 9.png' %}"
         style="top: 2px; position: relative"
@@ -153,48 +153,60 @@
       "
     ></div>
 
-    <div class="chatroom-container">
-      <div class="title">나의 멘토 목록</div>
-      <div class="content">
-        <div id="chatroom-list">
-          <!-- 채팅 방 목록 -->
-          <div class="chatroom">
-            <img src="{% static 'img/mentor김사자.png' %}" />
-            <div>
-              <h2>김사자</h2>
-              <p>
-                안녕하세요.<br />
-                답변드리도록 하겠습니다. 우선 SI에서 테크 회사로 넘어가기 위한
-                스토리를 짤 필요가 있습니다.
-              </p>
-            </div>
-          </div>
-          <div class="chatroom">
-            <img src="{% static 'img/mentor김사자.png' %}" />
-            <div>
-              <h2>이정은</h2>
-              <p>
-                안녕하세요.<br />
-                지금부터 드릴 답변은 제조업 특히 자동차 산업 구매에 대한 내용을
-                기반으로 하고 있습니다.
-              </p>
-            </div>
-          </div>
-          <div class="chatroom">
-            <img src="{% static 'img/mentor김사자.png' %}" />
-            <div>
-              <h2>박다은</h2>
-              <p>
-                만나 뵙게 되어 반갑습니다. 패키지 디자이너로 진로를 잡으셨으나,
-                산디과 학사편입과 학원 포폴 준비로 둘 중에 고민 중에 계신 것으로
-                보입니다.
-              </p>
-            </div>
-          </div>
-        </div>
+    <form class="search-box" action="" method="get">
+      <input
+        class="search-txt"
+        type="text"
+        name=""
+        placeholder="질문을 검색해 보세요!"
+      />
+      <button class="search-btn" type="submit">
+        <img src="{% static 'img/carbon_search.png' %}" />
+      </button>
+    </form>
+
+    <div class="middle">
+      <div class="filter">
+        <a href="{% url 'questionlist' %}">
+          <button class="all_filter" data-filter="*">
+            <img src="{% static 'img/Vector.png' %}" />전체
+          </button>
+        </a>
+
+        <a href="?filter=unanswered">
+          <button class="waiting_filter" data-filter="N">
+            <img src="{% static 'img/Vector.png' %}" />답변 대기 질문
+          </button>
+        </a>
       </div>
+
+      <button
+        class="nav-question"
+        onclick="location.href='{% url 'askquestion' %}'"
+      >
+        <img src="{% static 'img/ph_pencil-line.png' %}" />질문하기
+      </button>
     </div>
 
-    <script src="{% static 'js/qna.chat.js' %}"></script>
+    {% for question in questions %}
+    <div class="forum">
+      <div id="post-list">
+        <!-- 게시글 목록 -->
+        <p>
+          {% for tag in question.tags.all %}
+          <a href="{{ tag.get_absolute_url }}">#{{ tag.name }}</a>
+          {% if not forloop.last %} {% endif %} {% endfor %}
+        </p>
+        <h2>
+          <a href="{% url 'questiondetail' question.id %}"
+            >{{ question.title }}</a
+          >
+        </h2>
+        <p>답변 {{ question.answers.count }}</p>
+        <p>{{ question.content | truncatewords:80}}</p>
+      </div>
+    </div>
+    {% endfor %}
+    <script src="{% static 'js/qna.gen.js' %}"></script>
   </body>
 </html>

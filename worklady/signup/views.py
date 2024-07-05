@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
+
+from question.models import Answer, Question, Rating, Tag
 from .forms import SignUpForm, LoginForm, EmailFindForm
 from django.contrib.auth import authenticate, login
 from .models import CustomUser
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from .tokens import account_activation_token
 from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
@@ -16,6 +18,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status, serializers
 from django.urls import reverse
+from django.db.models import Q
+from django.db.models import Avg
 
 User = CustomUser
 
@@ -224,3 +228,96 @@ def password_reset_complete(request):
 #소셜로그인 성공 후 돌아갈 페이지
 def socialSuccess(request):
     return render(request, 'main copy.html')
+
+
+def questionlist(request):
+    query = request.GET.get('q', '')
+    questions = Question.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+
+    filter_option = request.GET.get('filter', '')
+    if filter_option == 'answered':
+        questions = questions.filter(answers__isnull=False).distinct()
+    elif filter_option == 'unanswered':
+        questions = questions.filter(answers__isnull=True)
+
+    questions = questions.order_by('-created_at')
+
+    return render(request, 'genqna1.html', {'questions': questions})
+
+
+def askquestion(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        tags_input = request.POST.get('tags')
+
+        # Check if title and content are not empty
+        if not title or not content:
+            return render(request, 'genqna5.html', {'error': 'Title and Content cannot be empty.'})
+
+        # Create a new question associated with the current user
+        new_question = Question(
+            title=title,
+            content=content,
+            author=request.user, # Associate the question with the logged-in user
+        )
+        
+        new_question.save()
+
+        # Process tags and associate them with the question
+        if tags_input:
+            tags_list = tags_input.split('#')
+            for tag_text in tags_list:
+                tag_text = tag_text.strip()
+                if tag_text:
+                    tag_obj, created = Tag.objects.get_or_create(name=tag_text)
+                    new_question.tags.add(tag_obj)
+
+        # Redirect to a success page or another view
+        return redirect('questionlist')  # Adjust this according to your URL configuration
+
+    return render(request, 'genqna5.html')
+
+
+def qtag(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    questions = tag.question_set.all()
+    return render(request, 'genqna1tag.html', {'tag': tag, 'questions': questions})
+
+
+
+def questiondetail(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    
+    # Check if current user has answered this question
+    user_has_answered = question.answers.filter(author=request.user).exists()
+    
+    # Handle rating submission
+    if request.method == 'POST' and 'answer_id' in request.POST and 'rating' in request.POST:
+        answer_id = request.POST.get('answer_id')
+        rating_value = int(request.POST.get('rating'))
+        
+        try:
+            answer = Answer.objects.get(id=answer_id, question=question)
+            if answer.author != request.user:  # Prevent authors from rating their own answers
+                # Check if the user has already rated this answer
+                existing_rating = Rating.objects.filter(answer=answer, user=request.user).first()
+                if existing_rating:
+                    existing_rating.value = rating_value
+                    existing_rating.save()
+                else:
+                    new_rating = Rating(answer=answer, user=request.user, value=rating_value)
+                    new_rating.save()
+        except Answer.DoesNotExist:
+            return HttpResponseRedirect(request.path)  # Answer not found
+    
+    # Retrieve answers with average rating
+    answers = question.answers.annotate(avg_rating=Avg('ratings__value'))
+    
+    context = {
+        'question': question,
+        'user_has_answered': user_has_answered,
+        'answers': answers,
+    }
+    
+    return render(request, 'genqna2.html', context)

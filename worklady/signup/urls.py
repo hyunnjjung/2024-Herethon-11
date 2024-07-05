@@ -1,5 +1,5 @@
-from django.urls import path, include
-from .views import signup, signup_success, join_page, login_page, main_page, home_page, findemail,send_verification_email, verify_code, reset_password,password_reset_complete
+from django.urls import path, include, re_path
+from .views import askquestion, signup, signup_success, join_page, login_page, main_page, home_page, findemail,send_verification_email, verify_code, reset_password,password_reset_complete, questionlist
 from .views import UserActivateView
 from django.contrib import admin
 from . import views
@@ -22,7 +22,11 @@ urlpatterns = [
     path('send_reset_password_email/', views.send_reset_password_email, name='send_reset_password_email'),
     path('password_reset_complete/',password_reset_complete, name='password_reset_complete'),
     path('rest-auth/', include('dj_rest_auth.urls')),
+    path('questionlist/', questionlist, name='questionlist'),
+    path('askquestion/', askquestion, name='askquestion'),
+    re_path(r'^questionlist/tag/(?P<slug>[-\w]+)/$', views.qtag, name='qtag'),
     #소셜로그인 성공 후 기본 url path 화면으로 넘어가게 설정 -> 추후 / path 사용시 메인페이지로 view바꾸기 가능
     path('', views.socialSuccess, name="socialSuccess"),
+    path('questionlist/<int:pk>/', views.questiondetail, name='questiondetail'),
     
 ]

@@ -154,7 +154,7 @@
 
     <div class="wrap">
       <div class="chat ch1">
-        <img src="../image/mentor김사자.png"/>
+        <img src="{% static 'img/mentor김사자.png' %}"/>
         <div class="textbox">안녕하세요. 7년차 UX 디자이너, 김사자입니다.</div>
       </div>
       <div class="chat ch2">
@@ -167,7 +167,7 @@
         id="chat-input"
         placeholder="멘토의 답변을 받으면 10 코인이 차감돼요."
       ></input>
-      <button id="chat-send" onclick="sendChat()"><img src="{% static 'img/clarity_circle-arrow-solid.pngLine 9.png' %}"></button>
+      <button id="chat-send" onclick="sendChat()"><img src="{% static 'img/clarity_circle-arrow-solid.png' %}"></button>
     </div>
     <script src="{% static 'js/qna.chat.js' %}"></script>
   </body>

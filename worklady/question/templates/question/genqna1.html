@@ -152,13 +152,14 @@
         z-index: 200;
       "
     ></div>
-
+    {% block content %}
     <form class="search-box" action="" method="get">
       <input
         class="search-txt"
         type="text"
-        name=""
+        name="q"
         placeholder="질문을 검색해 보세요!"
+        value="{{ request.GET.q }}"
       />
       <button class="search-btn" type="submit">
         <img src="{% static 'img/carbon_search.png' %}" />
@@ -184,6 +185,7 @@
         <!-- 게시글 목록 -->
       </div>
     </div>
+    {% endblock %}
     <script src="{% static 'js/qna.gen.js' %}"></script>
   </body>
 </html>
