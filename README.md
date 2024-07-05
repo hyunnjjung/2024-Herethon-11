@@ -1,5 +1,5 @@
 # 2024-Herethon-11
- 2024 여기톤 : HERETHON 11조
+ 2024 여기톤 : HERETHON 11조 입니다 ;)
 <br/>
 <br/>
 <img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/1fa61e25-e4ba-459c-a184-44eac7b920d0">
@@ -12,7 +12,10 @@
 <br/>
 
 <img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/695bfd57-a59a-4c4d-8536-e742a68a02e6">
-
+<br/>
+<img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/57d3c6df-9351-4467-bb57-49215b67a424">
+<img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/9eb5bdad-b5ab-45d8-bd13-0f1904815d46">
+<img src"https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/389ccc8e-9a87-44ae-9b82-e07967063f0f">
 <br/>
 <br/>
 
