@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
 from coin.models import Coin
+from signup.models import CustomUser
 
 from .forms import QuestionForm, AnswerForm, EvaluationForm
-from .models import MentorProfile, Question, Answer, Rating
+
+from .models import MentorProfile, Chat_Question, Chat_Answer, Question, Answer, Rating
 from django.db.models import Q
 from .models import Tag
 from django.db.models import Avg
@@ -13,7 +15,7 @@ from django.http import HttpResponseRedirect
 @login_required
 def chat_view(request, mentor_id):
     mentor = get_object_or_404(MentorProfile, id=mentor_id)
-    questions = Question.objects.get
+    questions = Chat_Question.objects.filter(mentor=mentor).order_by('created_at')
 
     if request.method == 'POST':
         if request.user == mentor.user:
@@ -33,14 +35,14 @@ def chat_view(request, mentor_id):
             # Accepting or rejecting a question
             elif 'accept_question' in request.POST:
                 question_id = request.POST.get('question_id')
-                question = get_object_or_404(Question, id=question_id)
+                question = get_object_or_404(Chat_Question, id=question_id)
                 question.is_accepted = True
                 question.save()
                 return redirect('chat_view', mentor_id=mentor_id)
 
             elif 'reject_question' in request.POST:
                 question_id = request.POST.get('question_id')
-                question = get_object_or_404(Question, id=question_id)
+                question = get_object_or_404(Chat_Question, id=question_id)
                 question.is_accepted = False
                 question.save()
                 return redirect('chat_view', mentor_id=mentor_id)
@@ -60,7 +62,7 @@ def chat_view(request, mentor_id):
             # Handling evaluation
             elif 'evaluate_answer' in request.POST:
                 answer_id = request.POST.get('answer_id')
-                answer = get_object_or_404(Answer, id=answer_id)
+                answer = get_object_or_404(Chat_Answer, id=answer_id)
                 e_form = EvaluationForm(request.POST)
                 if e_form.is_valid():
                     evaluation = e_form.save(commit=False)
@@ -82,7 +84,6 @@ def chat_view(request, mentor_id):
         'e_form': e_form,
     }
     return render(request, 'question/chat.html', context)
-
 
 
 @login_required
