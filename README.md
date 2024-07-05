@@ -1,15 +1,15 @@
 # 2024-Herethon-11
 2024 여기톤 : HERETHON 11조
-
+<img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/1fa61e25-e4ba-459c-a184-44eac7b920d0">
 <br/>
 <br/>
 
 ## 📙 서비스 소개
-여성들이 성장할 수 있도록 다양한 Q&A 기능을 제공하며, <br/>
-모든 사용자의 프로필을 공개해 선택의 폭을 넓히는 커리어 네트워킹 플랫폼
+### 여성들이 성장할 수 있도록 다양한 Q&A 기능을 제공하며, <br/>
+### 모든 사용자의 프로필을 공개해 선택의 폭을 넓히는 커리어 네트워킹 플랫폼
 <br/>
 
-<img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/2fed4185-a3ad-4bd1-9f91-484b4ae739b0">
+<img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/695bfd57-a59a-4c4d-8536-e742a68a02e6">
 
 <br/>
 <br/>
@@ -52,12 +52,12 @@
   <td  align="center">여현정</a></td>
   </tr>
   <tr width="100%">
-  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/93052a06-f617-4121-860f-ebd75e3d5eff" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/0fcd9a86-a106-43de-9ebc-4e43e8f4c38c" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
   <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/MRr1QMW/f67635fddb50d05f2d0f142e63b0ab5c-sticker.png" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
-  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/ccd1ef3b-af06-4191-9526-019afe1f2ddf" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
-  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/3ff7306c-d2d5-4fc9-9f5d-a8622df036f2" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/f34f194d-47b9-4bd2-a74b-a24933bed287" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/3083080a-f82d-4941-bef9-7fcb278a24c2" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
   <td  align="center"><img src="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/0230cf9c-c72f-479f-827e-0aeab1442faa" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
-  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/2KDG82L/d006044e5996d0023cd2e18425aa4677-sticker.png" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://github.com/2024-HERETHON/2024-Herethon-11/assets/128691874/40db4470-4719-464b-ab90-4ecd316c969a" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
   </tr>
   <tr width="100%">
   <td  align="center">기획·디자인</td>
