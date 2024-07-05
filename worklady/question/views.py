@@ -10,12 +10,10 @@ from .models import Tag
 from django.db.models import Avg
 from django.http import HttpResponseRedirect
 
-
 @login_required
 def chat_view(request, mentor_id):
     mentor = get_object_or_404(MentorProfile, id=mentor_id)
-    questions = Question.objects.filter(mentor=mentor).order_by('created_at')
-    user_coins = Coin.objects.filter(user=request.user)
+    questions = Question.objects.filter(mentor).order_by('created_at')
 
     if request.method == 'POST':
         if request.user == mentor.user:
@@ -30,7 +28,6 @@ def chat_view(request, mentor_id):
                         answer.save()
                         question.is_answered = True
                         question.save()
-                        user_coins.amount += 10
                         return redirect('chat_view', mentor_id=mentor_id)
 
             # Accepting or rejecting a question
@@ -58,7 +55,6 @@ def chat_view(request, mentor_id):
                     question.mentor = mentor
                     question.is_accepted = True  # Automatically accept the question
                     question.save()
-                    user_coins.amount -= 10
                     return redirect('chat_view', mentor_id=mentor_id)
 
             # Handling evaluation
@@ -70,7 +66,6 @@ def chat_view(request, mentor_id):
                     evaluation = e_form.save(commit=False)
                     evaluation.answer = answer
                     evaluation.save()
- 
                     return redirect('chat_view', mentor_id=mentor_id)
 
     else:
@@ -86,7 +81,8 @@ def chat_view(request, mentor_id):
         'a_form': a_form,
         'e_form': e_form,
     }
-    return render(request, 'question/chat.html', context)
+    return render(request, 'mentorship/chat.html', context)
+
 
 
 @login_required
