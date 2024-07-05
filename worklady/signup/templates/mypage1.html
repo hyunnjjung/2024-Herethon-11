@@ -1,0 +1,62 @@
+{% extends 'base.html' %}{% load static %}{% block title %}mypage1_page{% endblock %} {% block style %}<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/mypage1.css' %}"
+/>{% endblock %} {% block main_area %}
+<div class="main">
+  <div class="introduce">
+    <div class="profile_img"></div>
+    <div class="information">
+      <div class="username">이수빈</div>
+      <div class="email">likelion@example.com</div>
+      <button class="mycoin">MY 코인</button>
+    </div>
+  </div>
+  <div class="page_box">
+    <div class="title">질문</div>
+    <div class="indiv_page">
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/my_question.svg' %}" alt="my질문기록" />
+        <span>MY 질문 기록</span>
+        <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
+      </div>
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/comment.svg' %}" alt="my질문기록" />
+        <span>답변 관리</span>
+        <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
+      </div>
+    </div>
+  </div>
+  <div class="puple_shadow_line"></div>
+  <div class="page_box">
+    <div class="title">코인</div>
+    <div class="indiv_page">
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/coin.svg' %}" alt="my질문기록" />
+        <span>코인 사용 내역 조회</span>
+        <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
+      </div>
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/coin.svg' %}" alt="my질문기록" />
+        <span>코인 구매하기</span>
+        <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
+      </div>
+    </div>
+  </div>
+  <div class="puple_shadow_line"></div>
+  <div class="page_box">
+    <div class="title">기타</div>
+    <div class="indiv_page">
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/clip.svg' %}" alt="my질문기록" />
+        <span>서비스 이용약관</span>
+        <img class="arrow_back" src="{% static 'img/arrow-back.svg' %}" alt="바로가기아이콘" />
+      </div>
+      <div class="page_move">
+        <img class="icon" src="{% static 'img/logout.svg' %}" alt="my질문기록" />
+        <span>로그아웃</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
