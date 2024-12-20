@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ profile_form.as_p }}
+                <hr/>
+                <h3>Education</h3>
+                {% for form in education_forms %}
+                    {{ form.as_p }}
+                {% endfor %}
+                <h3>Career</h3>
+                {% for form in career_forms %}
+                    {{ form.as_p }}
+                {% endfor %}
+                <h3>Certificates</h3>
+                {% for form in certificate_forms %}
+                    {{ form.as_p }}
+                {% endfor %}
+                <input type="submit" value="수정하기">
+            </form>      
+        </div> <br>
+</body>
+</html>

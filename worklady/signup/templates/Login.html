@@ -1,0 +1,26 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">login</button>
+        <hr/>
+        <a href="{% provider_login_url 'google' %}">
+            <i>구글 로그인</i>
+        </a> &nbsp;
+        <a href="{% provider_login_url 'naver' %}">
+            <i>네이버 로그인</i>
+        </a> &nbsp;
+        <a href="{% provider_login_url 'kakao' %}">
+            <i>카카오 로그인</i>
+        </a>
+    </form>
+</body>
+</html>

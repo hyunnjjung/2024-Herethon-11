@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- css 파일 불러오기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/find.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>이메일찾기1</title>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div class="title_box">
+          <div class="page_title">이메일 찾기</div>
+          <img src="{% static 'img/ph_x.png' %}" alt="X아이콘" />
+        </div>
+        <div class="shadow_line"></div>
+      </header>
+      <form method="#" action="#">
+        <div class="first_info">
+            <div class="title">이름과 이메일을 입력해주세요.</div>
+            <div class="guide">회원가입 시 등록한 이름과 이메일이 <br />있다면 이메일 주소를 알려드려요.</div>
+            <div class="border_box">
+                <div class="choose_box">
+                    <input type="text" class="input_box" placeholder="이름" />
+                </div>
+                <div class="middle_line"></div>
+                <div class="choose_box">
+                    <input type="text" class="input_box" placeholder="이메일" />
+                    <button class="certification"><a href="#">확인</a></button>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script src="{% static 'js/find.js' %}"></script>
+  </body>
+</html>

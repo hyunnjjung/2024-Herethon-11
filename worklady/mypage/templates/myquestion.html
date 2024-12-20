@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/myqna.css' %}" />
+    <title>MY 질문1</title>
+  </head>
+  <body>
+    <header>
+      <div class="blank"></div>
+      <a class="nav-main" href="../main/main.html"
+        ><img
+          class="header_logo"
+          style="width: 96.1px; height: 26.4px"
+          src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
+      /></a>
+      <a class="nav-MyPage" href="#none"
+        ><img src="{% static 'img/bi_person.png' %}"
+      /></a>
+    </header>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 70px;
+        z-index: 200;
+      "
+    ></div>
+    <div id="menu-trigger" class="menu-trigger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <div id="sidebar" class="sidebar">
+      <div
+        style="
+          position: fixed;
+          width: 318px;
+          height: 0;
+          top: 70px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px #5422e1 solid;
+        "
+      ></div>
+      <div class="ham-menu mt-5">
+        <div class="welcome">이수빈님, 반갑습니다.</div>
+        <div class="menu-list">
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 등록</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 보기</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >멘토 Q&A<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../qna/qna.gen.index.html">일반 질문</a></li>
+                <li><a href="../qna/qna.chat.index.html">1:1 질문</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >마이페이지<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
+                <li><a href="../my_qna/myanswer.html">답변 관리</a></li>
+                <li><a href="#">코인 사용 내역 조회</a></li>
+                <li><a href="#">코인 구매하기</a></li>
+                <li><a href="#">현금 전환하기</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div
+            style="
+              position: absolute;
+              width: 318px;
+              height: 0;
+              bottom: -28px;
+              left: -28px;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+              border: 1px #5422e1 solid;
+            "
+          ></div>
+        </div>
+        <a class="logout" href="#"
+          >로그아웃<img src="{% static 'img/mage_logout.png' %}"
+        /></a>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li>
+          <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 125px;
+        z-index: 200;
+      "
+    ></div>
+
+    <div class="blank"></div>
+    <div class="myquestion-title">MY 질문 기록</div>
+    <div class="middle">
+      <div class="filter">
+        <button class="all_filter" data-filter="*">
+          <img src="{% static 'img/Vector.png' %}" />전체
+        </button>
+        <button class="complete_filter" data-filter="complete">
+          <img src="{% static 'img/Vector.png' %}" />답변 완료
+        </button>
+        <button class="waiting_filter" data-filter="waiting">
+          <img src="{% static 'img/Vector.png' %}" />답변 대기
+        </button>
+      </div>
+    </div>
+
+    <div class="myquestion-container">
+      <div id="myquestion-list">
+        <!-- 내 질문 목록 -->
+
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역 # 구매</h4>
+            <h3 data-type="complete">답변 완료</h3>
+          </div>
+          <h2 onclick="viewPost(2)">물류 직무, 여성은 잘 뽑지 않나요?</h2>
+          <h5><strong>댓글</strong> 1</h5>
+          <p>
+            <strong></strong>첫 번째로는, 물류 직무는 알려진 것처럼 실제로도
+            여성을 많이 뽑지 않는 직무인지 여쭈어봅니다. 또한, 물류 안의 세부
+            파트 중 이 파트는 비교적 여성을 많이 뽑는다 하시는 추천 파트가
+            있으실지 고견 여쭈어봅니다! 두 번째로는, 자격증 취득 외에도 다양한
+            물류 관련 강의를 수강해 보고자 한다면, 혹시 어떤 분야, 어떤 주제로의
+            학습을 추천하시나요? 세 번째로, 포워딩 직무에도 지원을 하고
+            싶습니다.
+          </p>
+        </div>
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역</h4>
+            <h3 data-type="waiting">대기 중</h3>
+          </div>
+          <h2 onclick="viewPost(3)">
+            이 정도 경험으로 구매직무에 도전해도 될까요?
+          </h2>
+          <h5><strong>댓글</strong> 0</h5>
+          <p>
+            <strong></strong> AMD 업무를 하면서 구매 직무에 관심이 생겼습니다.
+            하반기 공채 시작 전까지 자격증, 교육 수강 등 필요한 부분을 채울
+            계획인데요. 관련하여 몇 가지 질문을 드리고 싶습니다. 1. 현재
+            재고관리, 입출고 관리, 주문 건 관리의 업무를 하고는 있지만, 모두
+            전사 시스템 상으로만 관리를 해본 것인데, 이 정도 경험으로 구매
+            직무의 문을 두드릴 수 있을까요? 구매 직무로 최종 합격을 하시는
+            분들은 저처럼 업무의 한 부분으로써 가 아닌, 직접적으로 구매 인턴을
+            하신 건지 궁금합니다.
+          </p>
+        </div>
+        <div class="myquestion">
+          <div class="myquestion-top">
+            <h4><strong></strong> # 유통 # 무역 # 구매</h4>
+            <h3 data-type="complete">답변 완료</h3>
+          </div>
+          <h2 onclick="viewPost(1)">면접에서 어떤 경험을 강조해야 할까요?</h2>
+          <h5><strong>댓글</strong> 1</h5>
+          <p>
+            <strong></strong>물류업계를 준비하고 있는 취준생입니다. 제 경험을
+            어떻게 면접에서 활용할 수 있을지 너무 고민이 되고 답답해서
+            질문드려요. 인턴은 무역상사에서 했고, 아무래도 그 속에서 물류와
+            관련된 경험은 화주로서의 운송사를 이용한 경험, 회사에서 보유한 작은
+            규모의 창고를 본 경험이 있는데요. 1차 면접 질문에서 "물류 회사에서
+            인턴을 하거나 물류와 관련된 다른 경험은 없나요?"라는 질문...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/myqna.js' %}"></script>
+  </body>
+</html>

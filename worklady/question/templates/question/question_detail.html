@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ question.title }}</title>
+</head>
+<body>
+    <p>
+      {% for tag in question.tags.all %}
+      #{{ tag.name }}</a>
+      {% if not forloop.last %}, {% endif %} {% endfor %}
+    </p>
+    <h2>{{ question.title }}</h2>
+    <h3>'{{ question.author }}'의 질문</h3>
+    <p>{{ question.content }}</p>
+
+    <hr>
+    {% if answers %}
+        {% for answer in answers %}
+            <h3>'{{ answer.author }}'님의 답변</h3>
+            <p>{{ answer.content }}</p>
+            <p>평균 평점: {{ answer.avg_rating|default:"아직 평가된 답변이 없습니다." }}</p>
+
+            {% if answer.user_rating %}
+                <p>나의 평점: {{ answer.user_rating }}</p>
+            {% endif %}
+            
+            {% if user != answer.author %}
+                <form method="post" action="{% url 'question_detail' question.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="answer_id" value="{{ answer.id }}">
+                    <label for="rating">Rate this answer:</label>
+                    <select id="rating" name="rating">
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="5">5 stars</option>
+                    </select>
+                    <button type="submit">Submit Rating</button>
+                </form>
+            {% else %}
+                <p>본인이 작성한 답변에는 별점을 매길 수 없습니다.</p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>아직 답변이 없어요</p>
+    {% endif %}
+
+    {% if not user_has_answered and user != question.author %}
+        <a href="{% url 'answer_create' question.id %}">
+            <button type="button">답변하기</button>
+        </a>
+    {% elif user == question.author %}
+        <p>본인의 질문에는 답변할 수 없습니다.</p>
+    {% else %}
+        <p>이미 답변을 하셨습니다.</p>
+    {% endif %}
+</body>
+</html>

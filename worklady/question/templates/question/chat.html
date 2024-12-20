@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat with {{ mentor.user.name }}</title>
+  </head>
+  <body>
+    <h1>Chat with {{ mentor.user.username }}</h1>
+
+    <div id="chat-box">
+      {% for question in questions %}
+      <div class="question">
+        <strong>{{ question.asker }}:</strong>
+        <p>{{ question.question_text }}</p>
+
+        {% if request.user == mentor.user %}
+        <form method="post" style="display: inline">
+          {% csrf_token %}
+          <input type="hidden" name="question_id" value="{{ question.id }}" />
+          {% if not question.is_accepted or not question.is_declined %}
+          <button type="submit" name="accept_question">Accept</button>
+          <button type="submit" name="reject_question">Reject</button>
+          {% endif %}
+          <hr />
+        </form>
+        {% endif %} {% if question.is_answered %}
+        <div class="answer">
+          <strong>{{ question.mentor.user }}:</strong>
+          <p>{{ question.answer.answer_text }}</p>
+
+          {% if request.user != mentor.user %}
+          <!--     <form method="post">
+            {% csrf_token %}
+            <input
+              type="hidden"
+              name="answer_id"
+              value="{{ question.answer.id }}"
+            />
+            {{ e_form.as_p }}
+            <button type="submit" name="evaluate_answer">Evaluate</button>
+          </form>-->
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      <hr />
+      {% endfor %}
+    </div>
+
+    <div id="input-box">
+      <form method="post">
+        {% csrf_token %} {% if request.user == mentor.user %} {{ a_form.as_p }}
+        <button type="submit" name="answer_question">Answer</button>
+        {% else %} {{ q_form.as_p }}
+        <button type="submit" name="ask_question">Ask</button>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>

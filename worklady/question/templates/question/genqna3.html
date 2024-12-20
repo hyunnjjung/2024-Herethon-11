@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/qna.gen.css' %}" />
+    <title>일반질문3</title>
+  </head>
+  <body>
+    <header>
+      <div class="blank"></div>
+      <a class="nav-main" href="../main/main.html"
+        ><img
+          class="header_logo"
+          style="width: 96.1px; height: 26.4px"
+          src="{% static 'img/워크레디 로고 수정 (이름+로고) 2.png' %}"
+      /></a>
+      <a class="nav-MyPage" href="#none"
+        ><img src="{% static 'img/bi_person.png' %}"
+      /></a>
+    </header>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 70px;
+        z-index: 200;
+      "
+    ></div>
+    <div id="menu-trigger" class="menu-trigger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <div id="sidebar" class="sidebar">
+      <div
+        style="
+          position: fixed;
+          width: 318px;
+          height: 0;
+          top: 70px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          border: 1px #5422e1 solid;
+        "
+      ></div>
+      <div class="ham-menu mt-5">
+        <div class="welcome">이수빈님, 반갑습니다.</div>
+        <div class="menu-list">
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 등록</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#">프로필 보기</a>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >멘토 Q&A<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../qna/qna.gen.index.html">일반 질문</a></li>
+                <li><a href="../qna/qna.chat.index.html">1:1 질문</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="ham-top-menu">
+            <li>
+              <a href="#"
+                >마이페이지<img src="{% static 'img/sidebar_down.png' %}"
+              /></a>
+              <ul class="ham-sub-menu">
+                <li><a href="../my_qna/myquestion.html">MY 질문 기록</a></li>
+                <li><a href="../my_qna/myanswer.html">답변 관리</a></li>
+                <li><a href="#">코인 사용 내역 조회</a></li>
+                <li><a href="#">코인 구매하기</a></li>
+                <li><a href="#">현금 전환하기</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div
+            style="
+              position: absolute;
+              width: 318px;
+              height: 0;
+              bottom: -28px;
+              left: -28px;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+              border: 1px #5422e1 solid;
+            "
+          ></div>
+        </div>
+        <a class="logout" href="#"
+          >로그아웃<img src="{% static 'img/mage_logout.png' %}"
+        /></a>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-SignUpProfile" href="#none">프로필 등록</a></li>
+        <li><a class="nav-ViewProfile" href="#none">프로필 보기</a></li>
+        <li>
+          <a class="nav-QnA" href="../qna/qna.gen.index.html">멘토 Q&A</a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 125px;
+        z-index: 200;
+      "
+    ></div>
+
+    <div class="qna-navbar">
+      <a class="nav-genQ" href="qna.gen.index.html">일반 Q&A</a>
+      <img
+        src="{% static 'img/Line 9.png' %}"
+        style="top: 2px; position: relative"
+      />
+      <a class="nav-oneQ" href="qna.chat.index.html">1 : 1 Q&A</a>
+    </div>
+    <div
+      style="
+        width: 393px;
+        height: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border: 1px rgba(138, 136, 136, 0.38) solid;
+        position: fixed;
+        top: 180.6px;
+        z-index: 200;
+      "
+    ></div>
+
+    <div class="blank"></div>
+    <div class="post-container">
+      <p id="post-tag"># 서비스기획 # UX # UI</p>
+      <h1 id="post-title">UX 취업, 도메인이 중요할까요?</h1>
+      <div class="post-middle"><img src="{% static 'img/mynaui_letter-q-square.png' %}" />'이사자'님의 질문</p></div>
+      <p id="post-content">안녕하세요.<br />
+        현재 제 커리어 방향성에 고민이 있어 조언을 구하고자 합니다.
+        <br /><br />
+        1. 도메인에 대한 확신<br />
+        취업 성공을 하려면 도메인에 대한 열정이 필요하다고 합니다. 그런데 도메인에 별다른 열정이 없던 친구들이 취업에 성공하는 경우를 많이 봐서 이 결정이 꼭 필요한가라는 의구심이 생겼습니다.
+        다른분들께서는 커리어 방향 설정을 할 때 어떻게 확신을 가지셨는지 궁금합니다.
+        <br /><br />
+        2. 포트폴리오 방향성에 관한 고민<br />
+        포트폴리오와 제 실력에 대한 확신이 부족합니다. 실무에서 기획을 보조하고 UI를 주도적으로 디자인하긴 했지만, 포트폴리오로 정리하기에는 논리와 임팩트가 부족해 보입니다.
+        <br /><br />
+        3. 대학원 진학에 관한 고민<br />
+        실무를 1년여간 해보며 대학원 진학을 해야겠다고 결심했습니다. 리서치/기획력이 돋보이는 탄탄한 포트폴리오를 만들어서 취업하고 싶습니다. 실제로 정보 대학원이나 특수 대학원 등 실무 베이스의 대학원에 진학했을 때 커리어에 어떤 도움이 될 수 잇을지 의견을 듣고 싶습니다.</p>
+    </div>
+    <div style="width: 100%; height: 0; box-shadow: 0px 2px 4px rgba(109, 80, 208, 0.25); border: 1px rgba(84, 34, 225, 0.38) solid"></div>
+    <div class="bottom">
+        <div>아직 답변이 없어요.</div>
+        <button><img src="{% static 'img/Group 13.png' %}"/></button>
+    </div>
+    <script src="{% static 'js/qna.gen.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .question-container {
+        border: 3px solid #ccc;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    <h1>일반질문</h1>
+    <form method="get">
+      <input
+        type="text"
+        name="q"
+        placeholder="질문을 검색해보세요!"
+        value="{{ request.GET.q }}"
+      />
+      <button type="submit">검색</button>
+    </form>
+
+    <a href="{% url 'question_list' %}">전체</a>
+    <a href="?filter=unanswered">답변대기질문</a>
+    <a href="{% url 'ask_question' %}"
+      ><button type="button">질문하기</button></a
+    >
+    {% for question in questions %}
+    <br />
+    <div class="question-container">
+      <a href="{% url 'question_detail' question.id %}">
+        <p>
+          {% for tag in question.tags.all %}
+          <a href="{{ tag.get_absolute_url }}">#{{ tag.name }}</a>
+          {% if not forloop.last %} {% endif %} {% endfor %}
+        </p>
+        <h2><a href="{% url 'question_detail' question.id %}">{{ question.title }}</a></h2>
+        <p>답변 {{ question.answers.count }}</p>
+        <p>{{ question.content | truncatewords:80}}</p>
+    </div>
+    {% endfor %} {% endblock %}
+  </body>
+</html>

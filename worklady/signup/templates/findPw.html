@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+</head>
+<body>
+    <h1>비밀번호 찾기</h1>
+    <form id="find-pw-form" method="POST">
+        {% csrf_token %}
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="button" id="send-verification">인증번호 전송</button>
+        <br>
+        <label for="verification_code">인증번호:</label>
+        <input type="text" id="verification_code" name="verification_code" required>
+        <button type="button" id="verify-code">인증확인</button>
+    </form>
+
+    <script>
+        document.getElementById('send-verification').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // 인증번호 요청
+            fetch('{% url "send_verification_email" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({
+                    'name': name,
+                    'email': email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error);
+            });
+        });
+
+        document.getElementById('verify-code').addEventListener('click', function() {
+            const verification_code = document.getElementById('verification_code').value;
+
+            // 인증 확인
+            fetch('{% url "verify_code" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({
+                    'verification_code': verification_code
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+
+                    fetch('{% url "send_reset_password_email" %}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: new URLSearchParams({
+                            'email': document.getElementById('email').value
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                        } else {
+                            alert(data.error);
+                        }
+                    });
+                } else {
+                    alert(data.error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
